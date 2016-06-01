@@ -1,46 +1,37 @@
-require "rails_helper"
+require 'rails_helper'
 
-feature "User can sign in and out" do
-  context "user not signed in and on the homepage" do
-    it "should see a 'sign in' link" do
-      visit("/")
-      expect(page).to have_link("Sign in")
+# As a User
+# So what I can post photos on Instagram as me
+# I want to log in and log out of my account
+feature 'User can log in and out' do
+  context 'User not logged in and on the homepage' do
+    scenario "should see a 'Log in' link and a 'Sign up' link" do
+      visit root_path
+      expect(page).to have_link 'Log in'
+      expect(page).to have_link 'Sign up'
     end
 
-    it "should see a 'sign up' link" do
-      visit("/")
-      expect(page).to have_link("Sign up")
-    end
-
-    it "should not see 'sign out' link" do
-      visit("/")
-      expect(page).not_to have_link("Sign out")
+    scenario "should not see 'Log out' link" do
+      visit root_path
+      expect(page).not_to have_link 'Log out'
     end
   end
 
-  context "user signed in on the homepage" do
-    before do
-      visit("/")
-      click_link("Sign up")
-      fill_in("Email", with: "test@example.com")
-      fill_in("Password", with: "testtest")
-      fill_in("Password confirmation", with: "testtest")
-      click_button("Sign up")
+  context 'User logged in on the homepage' do
+    background do
+      user = create :user
+      log_in_with user
     end
 
-    it "should see 'sign out' link" do
-      visit("/")
-      expect(page).to have_link("Sign out")
+    scenario "should see a 'Log out' link" do
+      expect(current_path).to eq root_path
+      expect(page).to have_link 'Log out'
     end
 
-    it "should not see a 'sign in' link" do
-      visit("/")
-      expect(page).not_to have_link("Sign in")
-    end
-
-    it "should not see a 'sign up' link" do
-      visit("/")
-      expect(page).not_to have_link("Sign up")
+    scenario "should not see a 'Log in' link and a 'Sign up' link" do
+      expect(current_path).to eq root_path
+      expect(page).not_to have_link 'Log in'
+      expect(page).not_to have_link 'Sign up'
     end
   end
 end
