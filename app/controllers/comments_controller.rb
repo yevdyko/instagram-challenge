@@ -10,11 +10,15 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
     if @comment.save
+      flash[:success] = "Your comment has been added."
       redirect_to posts_path
     else
-      render("new")
+      flash[:alert] = "Warning! Something goes wrong"
+      render :new
     end
   end
+
+  private
 
   def comment_params
     params.require(:comment).permit(:thoughts)

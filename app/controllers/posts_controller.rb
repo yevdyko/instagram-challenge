@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
 
   def index
-    @post = Post.all
+    @posts = Post.all
   end
 
   def new
@@ -12,9 +12,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
+      flash[:success] = "Your post has been created."
       redirect_to posts_path
     else
-      render("new")
+      flash[:alert] = "Warning! You need an image to post here!"
+      render :new
     end
   end
 
@@ -28,16 +30,27 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to("/posts")
+    if @post.update(post_params)
+      flash[:success] = "Post updated."
+      redirect_to posts_path
+    else
+      flash[:alert] = "Update failed. Please check the form."
+      render :edit
+    end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    flash[:notice] = "Post deleted successfully"
-    redirect_to("/posts")
+    if @post.destroy
+      flash[:notice] = "Post deleted successfully"
+      redirect_to posts_path
+    else
+      flash[:alert] = "Delete failed. Please check the form."
+      render :edit
+    end
   end
+
+  private
 
   def post_params
     params.require(:post).permit(:image, :description)
