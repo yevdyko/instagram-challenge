@@ -15,6 +15,8 @@ gem 'jbuilder'
 gem 'sdoc', group: :doc
 gem 'haml'
 gem 'haml-rails'
+gem 'bootstrap-sass'
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug'

@@ -1,9 +1,8 @@
-%h2 New Post
-= form_for @post, html: { multipart: true } do |f|
-  = f.label :image
-  = f.file_field :image
-  %br/
-  = f.label :description
-  = f.text_area :description
-  %br/
-  = f.submit
+.form-wrapper
+  = simple_form_for @post, html: { class: 'form-horizontal', multipart: true } do |f|
+    .form-group
+      = f.input :image
+    .form-group.text-center
+      = f.input :description
+    .form-group.text-center
+      = f.button :submit, class: 'btn-success'
