@@ -6,7 +6,6 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'paperclip'
-gem 'shoulda'
 gem 'devise', '3.5.2'
 gem 'launchy'
 gem 'jquery-rails'
@@ -26,6 +25,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'shoulda'
 end
 
 group :development do
