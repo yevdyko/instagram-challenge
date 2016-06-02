@@ -2,7 +2,7 @@ require 'rails_helper'
 
 module AuthHelpers
   def log_in_with user
-    visit '/'
+    visit root_path
     click_link 'Log in'
     fill_in 'Email',    with: user.email
     fill_in 'Password', with: user.password

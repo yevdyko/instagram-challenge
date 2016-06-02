@@ -1,11 +1,21 @@
-require "rails_helper"
+require 'rails_helper'
 
-feature "comments" do
-  scenario "allows users to leave a comment" do
-    sign_up
-    create_post("My first post")
-    write_comment("Nice one!")
-    expect(page).to have_content("Nice one!")
-    expect(current_path).to eq("/posts")
+# As a User
+# So that I can let people know my thoughts
+# I want to leave a comment on picture
+feature 'Comments' do
+  background do
+    user = create :user
+    log_in_with user
+
+    text = create :post
+    create_post_with text
+  end
+
+  scenario 'user can leave a comment on an existing post' do
+    message = create :comment
+
+    write_comment_with message
+    expect(page).to have_content "#{message.thoughts}"
   end
 end

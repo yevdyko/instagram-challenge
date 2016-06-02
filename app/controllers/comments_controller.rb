@@ -1,20 +1,17 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-
-  def new
-    @post = Post.find(params[:post_id])
-    @comment = Comment.new
-  end
+  before_action :set_post
 
   def create
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.new(comment_params)
+    @comment = @post.comments.build(comment_params)
+    @comment.user_id = current_user.id
+
     if @comment.save
       flash[:success] = "Your comment has been added."
       redirect_to posts_path
     else
-      flash[:alert] = "Warning! Something goes wrong"
-      render :new
+      flash[:alert] = "Check the comment form. Something went wrong."
+      render root_path
     end
   end
 
@@ -22,5 +19,9 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:thoughts)
+  end
+
+  def set_post
+    @post = Post.find(params[:post_id])
   end
 end
