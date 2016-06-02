@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 # As a User
-# So what I can post photos on Instagram as me
+# So that I can post pictures on Instagram as me
 # I want to log in and log out of my account
 feature 'User can log in and out' do
   context 'User not logged in and on the homepage' do
