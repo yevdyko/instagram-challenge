@@ -4,7 +4,7 @@ feature 'Posts' do
   context 'no posts have been added' do
     background do
       user = create :user
-      log_in_with user
+      log_in_as user
     end
 
     scenario 'displays a link to add a post' do
@@ -21,13 +21,13 @@ feature 'Posts' do
   context 'posts have been added' do
     background do
       user = create :user
-      log_in_with user
+      log_in_as user
     end
 
-    scenario 'displays a description to posts' do
+    scenario 'displays a description to posts on the index' do
       text = create :post
       create_post_with text
-      visit root_path
+      save_and_open_page
       expect(page).to have_content "#{text.description}"
       expect(page).not_to have_content 'There are no posts'
     end
@@ -39,7 +39,7 @@ feature 'Posts' do
   context 'creating posts' do
     background do
       user = create :user
-      log_in_with user
+      log_in_as user
     end
 
     scenario 'prompts user to fill out a form, then display new posts' do
@@ -61,7 +61,7 @@ feature 'Posts' do
   context 'viewing posts' do
     background do
       user = create :user
-      log_in_with user
+      log_in_as user
     end
 
     scenario 'lets a user to view a post' do
@@ -78,7 +78,7 @@ feature 'Posts' do
   context 'updating posts' do
     background do
       user = create :user
-      log_in_with user
+      log_in_as user
     end
 
     scenario 'user can edit a post' do
@@ -96,7 +96,7 @@ feature 'Posts' do
   context 'deleting posts' do
     background do
       user = create :user
-      log_in_with user
+      log_in_as user
     end
 
     scenario 'user can remove a post' do
@@ -112,7 +112,7 @@ feature 'Posts' do
   context 'adding pictures' do
     background do
       user = create :user
-      log_in_with user
+      log_in_as user
     end
 
     scenario 'user can add a picture when he creates a post' do

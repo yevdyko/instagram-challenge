@@ -4,7 +4,7 @@ module PostHelpers
   def create_post_with text
     visit root_path
     click_link 'Create Post'
-    attach_file('post[image]', File.expand_path("./spec/files/images/test.jpg"))
+    attach_file('Image', "spec/files/images/test.jpg")
     fill_in 'Description', with: text.description
     click_button 'Create Post'
   end
