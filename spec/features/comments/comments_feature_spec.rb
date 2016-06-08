@@ -6,7 +6,7 @@ require 'rails_helper'
 feature 'Comments' do
   background do
     user = create :user
-    log_in_with user
+    log_in_as user
 
     text = create :post
     create_post_with text
