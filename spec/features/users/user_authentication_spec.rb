@@ -4,7 +4,7 @@ require 'rails_helper'
 # So that I can post pictures on Instagram as me
 # I want to log in and log out of my account
 feature 'User can log in and out' do
-  context 'User not logged in and on the homepage' do
+  context 'user not logged in and on the homepage' do
     scenario "should see a 'Log in' link and a 'Sign up' link" do
       visit root_path
       expect(page).to have_link 'Log in'
@@ -17,10 +17,10 @@ feature 'User can log in and out' do
     end
   end
 
-  context 'User logged in on the homepage' do
+  context 'user logged in on the homepage' do
     background do
       user = create :user
-      log_in_with user
+      log_in_as user
     end
 
     scenario "should see a 'Log out' link" do

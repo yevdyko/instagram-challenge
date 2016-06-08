@@ -18,6 +18,10 @@ User Stories
 ```
 As a User
 So that I can post pictures on Instagram as me
+I want to register for my account
+
+As a User
+So that I can post pictures on Instagram as me
 I want to log in and log out of my account
 
 As a User
@@ -91,7 +95,7 @@ Create a test database:
 
 Setup the test database using the rake task:
 
-    $ rake db:auto_migrate RACK_ENV=test
+    $ rake db:migrate RACK_ENV=test
 
 To run the tests:
 
