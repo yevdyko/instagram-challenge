@@ -1,7 +1,7 @@
-Instagram Challenge
-===================
+Pixagram
+========
 
-[![Build Status](https://travis-ci.org/yevdyko/instagram-challenge.svg?branch=master)](https://travis-ci.org/yevdyko/instagram-challenge)  [![Coverage Status](https://coveralls.io/repos/github/yevdyko/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/yevdyko/instagram-challenge?branch=master)  [![Code Climate](https://codeclimate.com/github/yevdyko/instagram-challenge/badges/gpa.svg)](https://codeclimate.com/github/yevdyko/instagram-challenge)
+[![Build Status](https://travis-ci.org/yevdyko/pixagram.svg?branch=master)](https://travis-ci.org/yevdyko/pixagram)  [![Coverage Status](https://coveralls.io/repos/github/yevdyko/pixagram/badge.svg?branch=master)](https://coveralls.io/github/yevdyko/pixagram?branch=master)  [![Code Climate](https://codeclimate.com/github/yevdyko/pixagram/badges/gpa.svg)](https://codeclimate.com/github/yevdyko/pixagram)
 
 An application that allows users to post pictures to a public stream. The basic requirements were that users should be able to sign up for a new account, log in or out, post new pictures, write comments on pictures, like a picture and add filters.
 
@@ -17,16 +17,16 @@ User Stories
 
 ```
 As a User
-So that I can post pictures on Instagram as me
+So that I can post pictures on Pixagram as me
 I want to register for my account
 
 As a User
-So that I can post pictures on Instagram as me
+So that I can post pictures on Pixagram as me
 I want to log in and log out of my account
 
 As a User
 So that I can let people know what I am doing
-I want to post pictures on Instagram
+I want to post pictures on Pixagram
 
 As a User
 So that I can rectify what I originally post
@@ -62,11 +62,11 @@ Setup
 
 Clone the repository:
 
-    $ git clone git@github.com:yevdyko/instagram-challenge.git
+    $ git clone git@github.com:yevdyko/pixagram.git
 
 Change into the directory:
 
-    $ cd instagram-challenge
+    $ cd pixagram
 
 If you don't have bundle already, run the command:
 
@@ -75,6 +75,10 @@ If you don't have bundle already, run the command:
 Install the local gems while suppressing the installation of production gems using the `--without production` option:
 
     $ bundle install --without production
+
+Create a development database:
+
+    $ createdb pixagram_development
 
 Run the migrations to setup the database:
 
@@ -91,7 +95,7 @@ Testing
 
 Create a test database:
 
-    $ createdb instagram-challenge_test
+    $ createdb pixagram_test
 
 Setup the test database using the rake task:
 

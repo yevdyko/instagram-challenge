@@ -27,7 +27,6 @@ feature 'Posts' do
     scenario 'displays a description to posts on the index' do
       text = create :post
       create_post_with text
-      save_and_open_page
       expect(page).to have_content "#{text.description}"
       expect(page).not_to have_content 'There are no posts'
     end
@@ -102,7 +101,6 @@ feature 'Posts' do
     scenario 'user can remove a post' do
       text = create :post
       create_post_with text
-      save_and_open_page
       delete_post
       expect(page).not_to have_content("#{text.description}")
       expect(page).to have_content('Post deleted successfully')
