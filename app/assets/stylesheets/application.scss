@@ -155,3 +155,46 @@ body {
   margin-top: 20px;
   margin-bottom: 40px;
 }
+
+html {
+  height: 100%;
+}
+
+.registration-bg {
+  padding-top: 4em;
+  height: 100%;
+  background-size: cover;
+}
+
+.login-bg {
+  padding-top: 4em;
+  height: 100%;
+  background-size: cover;
+}
+
+.log-in{
+  margin-left: auto;
+  margin-right: auto;
+  text-align:center;
+  border: none;
+}
+
+.panel {
+  border-radius: 8px;
+}
+
+.panel-heading{
+  h1 {
+    text-align: center;
+  }
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+.alert {
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 0px;
+}
