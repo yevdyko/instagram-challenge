@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 # As a User
-# So that I can post pictures on Instagram as me
+# So that I can post pictures on Pixagram as me
 # I want to register for my account
 feature 'New user registration' do
   scenario 'can create a new user account' do

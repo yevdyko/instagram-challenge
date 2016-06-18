@@ -34,7 +34,7 @@ feature 'Posts' do
 
   # As a User
   # So that I can let people know what I am doing
-  # I want to post pictures on Instagram
+  # I want to post pictures on Pixagram
   context 'creating posts' do
     background do
       user = create :user
@@ -45,6 +45,7 @@ feature 'Posts' do
       text = create :post
       create_post_with text
       expect(page).to have_content "#{text.description}"
+      expect(page).to have_content "#{user.username}"
       expect(current_path).to eq posts_path
     end
 
@@ -83,8 +84,8 @@ feature 'Posts' do
     scenario 'user can edit a post' do
       text = create :post
       create_post_with text
-      edit_post_with('My edited post')
-      expect(page).to have_content('My edited post')
+      edit_post_with 'My edited post'
+      expect(page).to have_content 'My edited post'
       expect(current_path).to eq root_path
     end
   end
@@ -102,8 +103,8 @@ feature 'Posts' do
       text = create :post
       create_post_with text
       delete_post
-      expect(page).not_to have_content("#{text.description}")
-      expect(page).to have_content('Post deleted successfully')
+      expect(page).not_to have_content "#{text.description}"
+      expect(page).to have_content 'Post deleted successfully'
     end
   end
 
@@ -116,7 +117,7 @@ feature 'Posts' do
     scenario 'user can add a picture when he creates a post' do
       text = create :post
       create_post_with text
-      expect(page).to have_css("img[src*='test.jpg']")
+      expect(page).to have_css "img[src*='test.jpg']"
     end
   end
 end

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.1'
 
 gem 'rails', '4.2.6'
 gem 'pg'
@@ -32,6 +33,8 @@ end
 group :development do
   gem 'web-console'
   gem 'spring'
+  gem 'guard'
+  gem 'guard-rspec', require: false
 end
 
 group :production do

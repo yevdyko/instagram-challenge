@@ -1,19 +1,16 @@
-Pixagram
-========
+# Pixagram
 
 [![Build Status](https://travis-ci.org/yevdyko/pixagram.svg?branch=master)](https://travis-ci.org/yevdyko/pixagram)  [![Coverage Status](https://coveralls.io/repos/github/yevdyko/pixagram/badge.svg?branch=master)](https://coveralls.io/github/yevdyko/pixagram?branch=master)  [![Code Climate](https://codeclimate.com/github/yevdyko/pixagram/badges/gpa.svg)](https://codeclimate.com/github/yevdyko/pixagram)
 
 An application that allows users to post pictures to a public stream. The basic requirements were that users should be able to sign up for a new account, log in or out, post new pictures, write comments on pictures, like a picture and add filters.
 
-Technologies used
------------------
+## Technologies used
 
 - Ruby on Rails
 - PostgreSQL database
 - Tested with RSpec and Capybara
 
-User Stories
-------------
+## User Stories
 
 ```
 As a User
@@ -57,8 +54,7 @@ So that I can't tally up the likes of a picture
 I want to like pictures once
 ```
 
-Setup
------
+## Setup
 
 Clone the repository:
 
@@ -90,8 +86,7 @@ Start the server:
 
 Go to your browser and open [http://localhost:3000](http://localhost:3000)
 
-Testing
--------
+## Testing
 
 Create a test database:
 
@@ -105,5 +100,4 @@ To run the tests:
 
     $ rspec
 
-Screenshots
------------
+## Screenshots
