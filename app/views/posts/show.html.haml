@@ -2,20 +2,26 @@
   .post
     .post-head
       .name
-        Yev
+        = @post.user.username
     .image.center-block
       =image_tag @post.image.url(:medium)
     %p.description
-      =@post.description
+      = @post.description
     .text-center.edit-links
       = link_to "Cancel", posts_path
       |
       = link_to "Edit Post", edit_post_path(@post)
     %h3 Comments:
     - if @post.comments.any?
-      %ul
-        - @post.comments.each do |comment|
-          %li
+      - @post.comments.each do |comment|
+        .comment
+          .name
+            = comment.user.username
+          .comment-content
             = comment.thoughts
     - else
       %p No comments.
+    .comment-form
+      = form_for [@post, @post.comments.new] do |f|
+        = f.text_field :thoughts, placeholder: 'Add a comment...'
+        = f.submit 'New comment'

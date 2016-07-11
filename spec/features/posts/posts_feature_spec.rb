@@ -1,12 +1,14 @@
 require 'rails_helper'
 
 feature 'Posts' do
-  context 'no posts have been added' do
-    background do
-      user = create :user
-      log_in_as user
-    end
+  given(:user) { create :user }
+  given(:text) { build :post }
 
+  background do
+    log_in_as user
+  end
+
+  context 'no posts have been added' do
     scenario 'displays a link to add a post' do
       visit root_path
       expect(page).to have_link 'Create Post'
@@ -18,35 +20,21 @@ feature 'Posts' do
     end
   end
 
-  context 'posts have been added' do
-    background do
-      user = create :user
-      log_in_as user
-    end
-
-    scenario 'displays a description to posts on the index' do
-      text = create :post
-      create_post_with text
-      expect(page).to have_content "#{text.description}"
-      expect(page).not_to have_content 'There are no posts'
-    end
-  end
-
   # As a User
   # So that I can let people know what I am doing
   # I want to post pictures on Pixagram
-  context 'creating posts' do
-    background do
-      user = create :user
-      log_in_as user
-    end
 
-    scenario 'prompts user to fill out a form, then display new posts' do
-      text = create :post
+  # As a User
+  # So that I can post pictures on Pixagram as me
+  # I want the posts I create belong to me only
+  context 'creating posts' do
+    scenario 'can create a new post' do
       create_post_with text
-      expect(page).to have_content "#{text.description}"
-      expect(page).to have_content "#{user.username}"
       expect(current_path).to eq posts_path
+      expect(page).to have_content "#{text.description}"
+      expect(page).to have_css "img[src*='test']"
+      expect(page).not_to have_content 'There are no posts'
+      expect(page).to have_content "#{user.username}"
     end
 
     scenario 'user needs to add an image' do
@@ -59,15 +47,8 @@ feature 'Posts' do
   end
 
   context 'viewing posts' do
-    background do
-      user = create :user
-      log_in_as user
-    end
-
-    scenario 'lets a user to view a post' do
-      text = create :post
+    scenario 'user can see a post on the index' do
       create_post_with text
-      visit posts_path
       expect(page).to have_content "#{text.description}"
     end
   end
@@ -76,31 +57,33 @@ feature 'Posts' do
   # So that I can rectify what I originally post
   # I want to edit my posts
   context 'updating posts' do
-    background do
-      user = create :user
-      log_in_as user
-    end
-
     scenario 'user can edit a post' do
-      text = create :post
       create_post_with text
       edit_post_with 'My edited post'
-      expect(page).to have_content 'My edited post'
       expect(current_path).to eq root_path
+      expect(page).to have_content 'My edited post'
     end
+  end
+end
+
+feature 'editing posts' do
+  background do
+    user = create :user
+    user_two = create(:user, email: 'hi@hi.com',
+                             username: 'BennyBoy',
+                             id: user.id + 1)
+    post = create(:post, user_id: user.id)
+    post_two = create(:post, user_id: user.id + 1)
+
+    sign_in_with user
+    visit '/'
   end
 
   # As a User
   # So that I can rectify what I originally post
   # I want to delete my posts
   context 'deleting posts' do
-    background do
-      user = create :user
-      log_in_as user
-    end
-
     scenario 'user can remove a post' do
-      text = create :post
       create_post_with text
       delete_post
       expect(page).not_to have_content "#{text.description}"
@@ -109,13 +92,7 @@ feature 'Posts' do
   end
 
   context 'adding pictures' do
-    background do
-      user = create :user
-      log_in_as user
-    end
-
     scenario 'user can add a picture when he creates a post' do
-      text = create :post
       create_post_with text
       expect(page).to have_css "img[src*='test.jpg']"
     end

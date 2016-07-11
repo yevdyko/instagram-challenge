@@ -7,7 +7,7 @@ module AuthHelpers
     fill_in 'Email', with: user.email
     fill_in 'Username', with: user.username
     fill_in 'Password', with: user.password, match: :first
-    fill_in 'Password confirmation', with: user.password_confirmation
+    fill_in 'Confirm Password', with: user.password_confirmation
     click_button 'Sign up'
   end
 
