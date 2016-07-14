@@ -47,7 +47,7 @@ body {
 .posts-wrapper {
   padding-top: 40px;
   margin: 0 auto;
-  max-width: 642px;
+  max-width: 602px;
   width: 100%;
 }
 
@@ -60,10 +60,10 @@ body {
   margin-bottom: 60px;
   .post-head {
     flex-direction: row;
-    height: 64px;
     padding-left: 24px;
     padding-right: 24px;
     padding-top: 24px;
+    padding-bottom: 22px;
     color: #125688;
     font-size: 15px;
     line-height: 18px;
@@ -112,10 +112,10 @@ body {
     }
   }
   margin-bottom: 7px;
-  padding-top: 24px;
   padding-left: 24px;
   padding-right: 24px;
-  padding-bottom: 10px;
+  padding-top: 24px;
+  padding-bottom: 22px;
   font-size: 15px;
   line-height: 18px;
 }
@@ -161,6 +161,9 @@ html {
 }
 
 .registration-bg {
+  background-color: grey;
+  padding: 0;
+  margin: 0;
   padding-top: 4em;
   height: 100%;
   background-size: cover;
@@ -194,7 +197,8 @@ html {
 }
 
 .alert {
-  margin-left: 15px;
-  margin-right: 15px;
+  width: 60%;
+  margin: auto;
+  margin-top: 20px;
   margin-bottom: 0px;
 }
