@@ -11,15 +11,15 @@ module PostHelpers
 
   def edit_post_with text
     visit root_path
-    find(:xpath, "//a[contains(@href,\"posts/#{post.id}\")]").click
+    find(:xpath, "//a[contains(@href,'posts/6')]").click
     click_link 'Edit Post'
-    fill_in 'Description', with: text
+    fill_in 'Description', with: text.description
     click_button 'Update Post'
   end
 
   def delete_post
     visit root_path
-    find(:xpath, "//a[contains(@href,\"posts/#{post.id}\")]").click
+    find(:xpath, "//a[contains(@href,'posts/7')]").click
     click_link 'Edit Post'
     click_link 'Delete Post'
   end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Posts' do
   given(:user) { create :user }
-  given(:text) { build :post }
+  given!(:text) { build :post }
 
   background do
     log_in_as user
@@ -30,7 +30,7 @@ feature 'Posts' do
   context 'creating posts' do
     scenario 'can create a new post' do
       create_post_with text
-      expect(current_path).to eq posts_path
+      expect(current_path).to eq root_path
       expect(page).to have_content "#{text.description}"
       expect(page).to have_css "img[src*='test']"
       expect(page).not_to have_content 'There are no posts'
@@ -42,7 +42,7 @@ feature 'Posts' do
       click_link 'Create Post'
       fill_in 'Description', with: 'No picture'
       click_button 'Create Post'
-      expect(page).to have_content "can't be blank"
+      expect(page).to have_content 'Warning! You need an image to post here!'
     end
   end
 
@@ -51,6 +51,13 @@ feature 'Posts' do
       create_post_with text
       expect(page).to have_content "#{text.description}"
     end
+
+    scenario 'user can view an individual post' do
+      create_post_with text
+      visit root_path
+      find(:xpath, "//a[contains(@href,'posts/5')]").click
+      expect(page.current_path).to eq(post_path(5))
+    end
   end
 
   # As a User
@@ -58,25 +65,12 @@ feature 'Posts' do
   # I want to edit my posts
   context 'updating posts' do
     scenario 'user can edit a post' do
+      other_text = build(:post, description: 'My edited post')
       create_post_with text
-      edit_post_with 'My edited post'
+      edit_post_with other_text
       expect(current_path).to eq root_path
-      expect(page).to have_content 'My edited post'
+      expect(page).to have_content "#{other_text.description}"
     end
-  end
-end
-
-feature 'editing posts' do
-  background do
-    user = create :user
-    user_two = create(:user, email: 'hi@hi.com',
-                             username: 'BennyBoy',
-                             id: user.id + 1)
-    post = create(:post, user_id: user.id)
-    post_two = create(:post, user_id: user.id + 1)
-
-    sign_in_with user
-    visit '/'
   end
 
   # As a User
