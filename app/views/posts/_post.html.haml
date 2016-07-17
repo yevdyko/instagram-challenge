@@ -14,6 +14,7 @@
         .comments{id: "comments_#{post.id}"}
           - if post.comments
             = render post.comments, post: post
+    .comment-like-form.row
       .comment-form.col-sm-11.col-sm-offset-1
         = form_for([post, post.comments.build], remote: true) do |f|
           = f.text_field :thoughts, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}"

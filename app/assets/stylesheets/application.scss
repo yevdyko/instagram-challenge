@@ -103,11 +103,11 @@ body {
       margin-right: 0.3em;
     }
   }
-  margin-bottom: 7px;
+  margin-bottom: 5px;
   padding-left: 24px;
   padding-right: 24px;
   padding-top: 24px;
-  padding-bottom: 22px;
+  padding-bottom: 10px;
   font-size: 15px;
   line-height: 18px;
 }
@@ -118,6 +118,19 @@ body {
   border: medium none;
   width: 100%;
   color: #4B4F54;
+  outline: none;
+}
+
+.comment-like-form {
+  padding-top: 24px;
+  margin-top: 10px;
+  margin-left: 24px;
+  margin-right: 24px;
+  min-height: 68px;
+  align-items: center;
+  border-top: 1px solid #EEEFEF;
+  flex-direction: row;
+  justify-content: center;
 }
 
 /* ## Wrapper and styling for the new and edit views ## */
