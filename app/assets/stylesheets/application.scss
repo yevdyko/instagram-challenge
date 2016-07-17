@@ -67,10 +67,10 @@ body {
     color: #125688;
     font-size: 15px;
     line-height: 18px;
-    .user-name, .time-ago {
+    .username, .time-ago {
       display: inline;
     }
-    .user-name {
+    .username {
       font-weight: 500;
     }
     .time-ago {
@@ -85,24 +85,24 @@ body {
 }
 
 .post-bottom {
-  .user-name, .comment-content {
+  .username, .comment-content {
     display: inline;
   }
   .caption {
     margin-bottom: 7px;
   }
-  .user-name {
+  .username {
     font-weight: 500;
     margin-right: 0.3em;
     color: #125688;
     font-size: 15px;
   }
-  .user-name, .caption-content {
+  .username, .caption-content {
     display: inline;
   }
   #comment {
     margin-top: 7px;
-    .user-name {
+    .username {
       font-weight: 500;
       margin-right: 0.3em;
     }
