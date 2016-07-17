@@ -47,17 +47,24 @@ feature 'Posts' do
     end
   end
 
+  # As a User
+  # So that I can see what others are posting
+  # I want to see all pictures in reverse chronological order
   context 'viewing posts' do
-    scenario 'can see a post on the index' do
+    scenario 'can see posts in reverse chronological order on the index' do
+      other_text = build(:post, description: 'My second peep')
       create_post_with text
-      expect(page).to have_content "#{text.description}"
+      create_post_with other_text
+      within('.description', match: :first) do
+        expect(page).to have_content "#{other_text.description}"
+      end
     end
 
     scenario 'can view an individual post' do
       create_post_with text
       visit root_path
-      find(:xpath, "//a[contains(@href,'posts/5')]").click
-      expect(page.current_path).to eq(post_path(5))
+      find(:xpath, "//a[contains(@href,'posts/6')]").click
+      expect(page.current_path).to eq(post_path(6))
     end
   end
 
@@ -83,7 +90,7 @@ feature 'Posts' do
 
     context "can't edit a post that doesn't belong to you" do
       scenario 'when visiting the show page' do
-        find(:xpath, "//a[contains(@href,'posts/10')]").click
+        find(:xpath, "//a[contains(@href,'posts/11')]").click
         expect(page).to_not have_content 'Edit Post'
       end
 
@@ -95,7 +102,7 @@ feature 'Posts' do
     end
 
     scenario "can't update a post without an attached image" do
-      find(:xpath, "//a[contains(@href,'posts/9')]").click
+      find(:xpath, "//a[contains(@href,'posts/10')]").click
       click_link 'Edit Post'
       attach_file('Image', 'spec/files/test.zip')
       click_button 'Update Post'
