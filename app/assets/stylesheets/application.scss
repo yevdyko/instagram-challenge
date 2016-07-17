@@ -67,15 +67,11 @@ body {
     color: #125688;
     font-size: 15px;
     line-height: 18px;
-    .username, .time-ago {
+    .username {
       display: inline;
     }
     .username {
       font-weight: 500;
-    }
-    .time-ago {
-      color: #A5A7AA;
-      float: right;
     }
   }
   .image {
@@ -88,7 +84,7 @@ body {
   .username, .comment-content {
     display: inline;
   }
-  .caption {
+  .description {
     margin-bottom: 7px;
   }
   .username {
@@ -97,7 +93,7 @@ body {
     color: #125688;
     font-size: 15px;
   }
-  .username, .caption-content {
+  .username, .description-content {
     display: inline;
   }
   #comment {
@@ -105,10 +101,6 @@ body {
     .username {
       font-weight: 500;
       margin-right: 0.3em;
-    }
-    .delete-comment {
-      float: right;
-      color: #515151;
     }
   }
   margin-bottom: 7px;
@@ -126,18 +118,6 @@ body {
   border: medium none;
   width: 100%;
   color: #4B4F54;
-}
-
-.comment-like-form {
-  padding-top: 24px;
-  margin-top: 13px;
-  margin-left: 24px;
-  margin-right: 24px;
-  min-height: 68px;
-  align-items: center;
-  border-top: 1px solid #EEEFEF;
-  flex-direction: row;
-  justify-content: center;
 }
 
 /* ## Wrapper and styling for the new and edit views ## */
@@ -175,7 +155,7 @@ html {
   background-size: cover;
 }
 
-.log-in{
+.login {
   margin-left: auto;
   margin-right: auto;
   text-align:center;
