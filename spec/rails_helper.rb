@@ -1,10 +1,15 @@
+require 'coveralls'
+Coveralls.wear!('rails')
+
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
-# Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
+require File.expand_path('../../config/environment', __FILE__)
+
 require 'rspec/rails'
 require 'capybara/rails'
+
+# Prevent database truncation if the environment is production
+abort("The Rails environment is running in production mode!") if Rails.env.production?
 
 Dir[Rails.root.join('spec/helpers/**/*.rb')].each { |f| require f }
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
