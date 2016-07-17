@@ -4,13 +4,16 @@
       .name
         = @post.user.username
     .image.center-block
-      =image_tag @post.image.url(:medium)
+      = image_tag @post.image.url(:medium)
     %p.description
       = @post.description
     .text-center.edit-links
-      = link_to "Cancel", posts_path
-      |
-      = link_to "Edit Post", edit_post_path(@post)
+      - if @post.user.id == current_user.id
+        = link_to "Cancel", posts_path
+        |
+        = link_to "Edit Post", edit_post_path(@post)
+      - else
+        = link_to "Cancel", root_path
     %h3 Comments:
     - if @post.comments.any?
       - @post.comments.each do |comment|

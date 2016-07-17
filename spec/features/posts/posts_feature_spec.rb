@@ -37,22 +37,23 @@ feature 'Posts' do
       expect(page).to have_content "#{user.username}"
     end
 
-    scenario 'user needs to add an image' do
+    scenario 'needs to add an image' do
       visit root_path
       click_link 'Create Post'
       fill_in 'Description', with: 'No picture'
       click_button 'Create Post'
       expect(page).to have_content 'Warning! You need an image to post here!'
+      expect(page).to have_content "can't be blank"
     end
   end
 
   context 'viewing posts' do
-    scenario 'user can see a post on the index' do
+    scenario 'can see a post on the index' do
       create_post_with text
       expect(page).to have_content "#{text.description}"
     end
 
-    scenario 'user can view an individual post' do
+    scenario 'can view an individual post' do
       create_post_with text
       visit root_path
       find(:xpath, "//a[contains(@href,'posts/5')]").click
@@ -64,12 +65,42 @@ feature 'Posts' do
   # So that I can rectify what I originally post
   # I want to edit my posts
   context 'updating posts' do
-    scenario 'user can edit a post' do
-      other_text = build(:post, description: 'My edited post')
+    background do
+      user_two = create(:user, username: 'paulsmith',
+                               email: 'paulsmith@email.com',
+                               id: 2)
+      text_two = create(:post, user_id: 2)
       create_post_with text
+    end
+
+    scenario 'can edit a post as an owner' do
+      other_text = build(:post, description: 'My edited post')
       edit_post_with other_text
       expect(current_path).to eq root_path
       expect(page).to have_content "#{other_text.description}"
+      expect(page).to have_content 'Post updated successfully.'
+    end
+
+    context "can't edit a post that doesn't belong to you" do
+      scenario 'when visiting the show page' do
+        find(:xpath, "//a[contains(@href,'posts/10')]").click
+        expect(page).to_not have_content 'Edit Post'
+      end
+
+      scenario 'when the url path is directly visited' do
+        visit "/posts/8/edit"
+        expect(page.current_path).to eq root_path
+        expect(page).to have_content "That post doesn't belong to you!"
+      end
+    end
+
+    scenario "can't update a post without an attached image" do
+      find(:xpath, "//a[contains(@href,'posts/9')]").click
+      click_link 'Edit Post'
+      attach_file('Image', 'spec/files/test.zip')
+      click_button 'Update Post'
+      expect(page).to have_content 'Update failed. Please check the form.'
+      expect(page).to have_content 'is invalid'
     end
   end
 
@@ -77,7 +108,7 @@ feature 'Posts' do
   # So that I can rectify what I originally post
   # I want to delete my posts
   context 'deleting posts' do
-    scenario 'user can remove a post' do
+    scenario 'can remove a post' do
       create_post_with text
       delete_post
       expect(page).not_to have_content "#{text.description}"
@@ -85,10 +116,4 @@ feature 'Posts' do
     end
   end
 
-  context 'adding pictures' do
-    scenario 'user can add a picture when he creates a post' do
-      create_post_with text
-      expect(page).to have_css "img[src*='test.jpg']"
-    end
-  end
 end

@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :owned_post, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -31,7 +32,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      flash[:success] = "Post updated."
+      flash[:success] = "Post updated successfully."
       redirect_to root_path
     else
       flash[:alert] = "Update failed. Please check the form."
@@ -42,7 +43,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      flash[:notice] = "Post deleted successfully"
+      flash[:notice] = "Post deleted successfully."
       redirect_to root_path
     else
       flash[:alert] = "Delete failed. Please check the form."
@@ -55,4 +56,13 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:image, :description)
   end
+
+  def owned_post
+    @post = current_user.posts.find_by(id: params[:id])
+    if @post.nil?
+      flash[:alert] = "That post doesn't belong to you!"
+      redirect_to root_path
+    end
+  end
+
 end
