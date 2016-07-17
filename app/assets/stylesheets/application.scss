@@ -133,6 +133,11 @@ body {
   justify-content: center;
 }
 
+.comment-submit-button {
+  position: absolute;
+  left: -9999px;
+}
+
 /* ## Wrapper and styling for the new and edit views ## */
 
 .form-wrapper {
