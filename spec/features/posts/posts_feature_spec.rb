@@ -63,8 +63,8 @@ feature 'Posts' do
     scenario 'can view an individual post' do
       create_post_with text
       visit root_path
-      find(:xpath, "//a[contains(@href,'posts/6')]").click
-      expect(page.current_path).to eq(post_path(6))
+      find(:xpath, "//a[contains(@href,'posts/5')]").click
+      expect(page.current_path).to eq(post_path(5))
     end
   end
 
@@ -90,24 +90,23 @@ feature 'Posts' do
 
     context "can't edit a post that doesn't belong to you" do
       scenario 'when visiting the show page' do
-        find(:xpath, "//a[contains(@href,'posts/11')]").click
+        find(:xpath, "//a[contains(@href,'posts/10')]").click
         expect(page).to_not have_content 'Edit Post'
       end
 
       scenario 'when the url path is directly visited' do
-        visit "/posts/8/edit"
+        visit "/posts/10/edit"
         expect(page.current_path).to eq root_path
         expect(page).to have_content "That post doesn't belong to you!"
       end
     end
 
     scenario "can't update a post without an attached image" do
-      find(:xpath, "//a[contains(@href,'posts/10')]").click
+      find(:xpath, "//a[contains(@href,'posts/9')]").click
       click_link 'Edit Post'
       attach_file('Image', 'spec/files/test.zip')
       click_button 'Update Post'
       expect(page).to have_content 'Update failed. Please check the form.'
-      expect(page).to have_content 'is invalid'
     end
   end
 
