@@ -16,7 +16,18 @@ feature 'Comments' do
     scenario 'can leave a comment on an existing post' do
       message = create :comment
       write_comment_with message
+      expect(page).to have_css ".comments#{text.id}", text: "#{message.thoughts}"
+    end
+  end
+
+  context 'deleting comments' do
+    scenario 'can delete a comment on an existing post' do
+      message = create :comment
+      write_comment_with message
       expect(page).to have_content "#{message.thoughts}"
+      delete_comment
+      expect(page).to_not have_content "#{message.thoughts}"
+      expect(page).to have_content 'Comment deleted successfully.'
     end
   end
 end

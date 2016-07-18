@@ -118,7 +118,7 @@ feature 'Posts' do
       create_post_with text
       delete_post
       expect(page).not_to have_content "#{text.description}"
-      expect(page).to have_content 'Post deleted successfully'
+      expect(page).to have_content 'Post deleted successfully.'
     end
   end
 

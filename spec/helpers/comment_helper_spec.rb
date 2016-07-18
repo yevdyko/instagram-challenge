@@ -6,4 +6,9 @@ module CommentHelpers
     fill_in "comment[thoughts]", with: message.thoughts, match: :first
     click_button 'New comment', match: :first
   end
+
+  def delete_comment
+    visit root_path
+    click_link 'Delete'
+  end
 end
