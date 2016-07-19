@@ -3,4 +3,4 @@
     = comment.user.username
   .comment-content
     = comment.thoughts
-    = link_to "Delete", post_comment_path(post, comment), method: :delete, id: "delete-#{comment.id}"
+    = link_to "Delete", post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" }, remote: true, id: "delete_#{comment.id}", class: "delete-comment"
