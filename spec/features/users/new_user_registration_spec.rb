@@ -25,6 +25,6 @@ feature 'User signs up' do
   scenario 'having a username with more than 16 characters' do
     user = build(:user, username: 'johndoeknucklesjames')
     sign_up_as user
-    expect(page).to have_content('maximum is 16 characters')
+    expect(page).to have_content 'maximum is 16 characters'
   end
 end
