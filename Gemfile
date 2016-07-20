@@ -28,6 +28,7 @@ group :test do
   gem 'capybara'
   gem 'shoulda'
   gem 'database_cleaner'
+  gem 'coveralls', require: false
 end
 
 group :development do
