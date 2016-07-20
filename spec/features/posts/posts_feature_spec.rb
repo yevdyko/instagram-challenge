@@ -84,7 +84,7 @@ feature 'Posts' do
       other_text = build(:post, description: 'My edited post')
       edit_post_with other_text
       expect(current_path).to eq root_path
-      expect(page).to have_content "#{other_text.description}"
+      expect(page).to have_content other_text.description
       expect(page).to have_content 'Post updated successfully.'
     end
 
@@ -117,7 +117,7 @@ feature 'Posts' do
     scenario 'can remove a post' do
       create_post_with text
       delete_post
-      expect(page).not_to have_content "#{text.description}"
+      expect(page).not_to have_content text.description
       expect(page).to have_content 'Post deleted successfully.'
     end
   end

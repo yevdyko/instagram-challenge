@@ -2,7 +2,9 @@ require 'rails_helper'
 
 feature 'Comments' do
   given(:user)     { create :user }
-  given(:user_two) { create(:user, username: 'paulsmith', email: 'paulsmith@email.com', id: 2) }
+  given(:user_two) do
+    create(:user, username: 'paulsmith', email: 'paulsmith@email.com', id: 2)
+  end
   given(:text)     { build :post }
   given(:message)  { build :comment }
 
@@ -21,7 +23,7 @@ feature 'Comments' do
 
   # As a User
   # So that I can rectify what I originally comment
-  # I want to delete my comment
+  # I want to delete my comments
   context 'deleting comments' do
     background do
       log_in_as user
@@ -38,10 +40,13 @@ feature 'Comments' do
       user_should_not_see_comment message
     end
 
+    # As a User
+    # So that I can protect comments from deleting by another user
+    # I want to delete comments that only belong to me
     scenario "can't delete a comment not belonging to them" do
       log_out
       log_in_as user
-      expect(page).to have_content "#{message.thoughts}"
+      expect(page).to have_content message.thoughts
       expect(page).to_not have_content 'Delete'
     end
 
@@ -50,7 +55,7 @@ feature 'Comments' do
       log_in_as user
       page.driver.submit :delete, "posts/4/comments/4", {}
       expect(page).to have_content "That comment doesn't belong to you!"
-      expect(page).to have_content "#{message.thoughts}"
+      expect(page).to have_content message.thoughts
     end
   end
 end
