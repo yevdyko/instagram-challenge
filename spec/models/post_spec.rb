@@ -7,7 +7,11 @@ describe Post do
   end
 
   context "validations" do
-    it { should validate_presence_of(:image) }
-    it { should validate_presence_of(:user_id) }
+    it { is_expected.to validate_presence_of(:image) }
+    it { is_expected.to validate_presence_of(:user_id) }
+    it do
+      is_expected.to validate_length_of(:description)
+        .is_at_least(3).is_at_most(300)
+    end
   end
 end

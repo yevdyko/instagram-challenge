@@ -17,6 +17,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'simple_form'
+gem 'rails-timeago'
 
 group :development, :test do
   gem 'byebug'
@@ -28,6 +29,8 @@ group :test do
   gem 'capybara'
   gem 'shoulda'
   gem 'database_cleaner'
+  gem 'coveralls', require: false
+  gem 'selenium-webdriver'
 end
 
 group :development do

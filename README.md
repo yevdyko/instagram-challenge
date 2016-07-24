@@ -42,8 +42,12 @@ So that I can let people know my thoughts
 I want to leave a comment on picture
 
 As a User
-So that I can rectify what I originally write
-I want to edit/delete my comments
+So that I can rectify what I originally comment
+I want to delete my comments
+
+As a User
+So that I can protect comments from deleting by another user
+I want to delete comments that only belong to me
 
 As a User
 So that I can register my appreciation of the picture

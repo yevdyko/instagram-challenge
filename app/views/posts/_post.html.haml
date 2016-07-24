@@ -1,23 +1,25 @@
 .posts-wrapper
   .post
     .post-head
-      .name
+      .username
         = post.user.username
+      .time-ago
+        = timeago_tag post.created_at, nojs: true, force: true
     .image.center-block
       = link_to (image_tag post.image.url(:medium), class: 'img-responsive'), post_path(post)
     .post-bottom
       .description
-        = post.description
-      - if post.comments.any?
-        - post.comments.each do |comment|
-          .comment
-            .name
-              = comment.user.username
-            .comment-content
-              = comment.thoughts
-      - else
-        %p No comments.
-      .comment-form
-        = form_for [post, post.comments.new] do |f|
-          = f.text_field :thoughts, placeholder: 'Add a comment...'
-          = f.submit 'New comment'
+        .description-content
+          .username
+            = post.user.username
+          = post.description
+        .comments{ id: "comments_#{post.id}" }
+          - if post.comments
+            = render post.comments, post: post
+    .comment-like-form.row
+      .comment-form.col-sm-11.col-sm-offset-1
+        = form_for([post, post.comments.build], remote: true) do |f|
+          = f.text_field :thoughts, placeholder: 'Add a comment...',
+                                    class: "comment_content",
+                                    id: "comment_content_#{post.id}"
+          = f.submit 'New comment', class: 'comment-submit-button'

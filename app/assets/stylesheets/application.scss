@@ -16,24 +16,28 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import "variables";
+
 body {
-  background-color: #fafafa;
+  background-color: $color-snow;
   font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
 /* ## NAVBAR CUSTOMISATIONS ## */
 
 .navbar-brand {
+
   a {
-    color: #125688;
+    color: $color-bahamablue;
   }
 }
 
 .navbar-default {
-  background-color: #fff;
+  background-color: $color-white;
   height: 54px;
+
   .navbar-nav li a {
-    color: #125688;
+    color: $color-bahamablue;
   }
 }
 
@@ -52,72 +56,86 @@ body {
 }
 
 .post {
-  background-color: #fff;
-  border-color: #edeeee;
+  background-color: $color-white;
+  border-color: $color-lightgrey;
   border-style: solid;
   border-radius: 3px;
   border-width: 1px;
   margin-bottom: 60px;
+
   .post-head {
     flex-direction: row;
     padding-left: 24px;
     padding-right: 24px;
     padding-top: 24px;
     padding-bottom: 22px;
-    color: #125688;
+    color: $color-bahamablue;
     font-size: 15px;
     line-height: 18px;
-    .username, .time-ago {
+
+    .username,
+    .time-ago {
       display: inline;
     }
+
     .username {
       font-weight: 500;
     }
+
     .time-ago {
-      color: #A5A7AA;
+      color: $color-steelgrey;
       float: right;
     }
   }
+
   .image {
-    border-bottom: 1px solid #eeefef;
-    border-top: 1px solid #eeefef;
+    border-bottom: 1px solid $color-azure;
+    border-top: 1px solid $color-azure;
   }
 }
 
 .post-bottom {
-  .username, .comment-content {
+  font-size: 15px;
+  line-height: 18px;
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 24px;
+
+  .username,
+  .comment-content {
     display: inline;
   }
-  .caption {
+
+  .description {
     margin-bottom: 7px;
   }
+
   .username {
     font-weight: 500;
     margin-right: 0.3em;
-    color: #125688;
+    color: $color-bahamablue;
     font-size: 15px;
   }
-  .username, .caption-content {
+
+  .username,
+  .description-content {
     display: inline;
   }
+
   #comment {
     margin-top: 7px;
+
     .username {
       font-weight: 500;
       margin-right: 0.3em;
     }
+
     .delete-comment {
       float: right;
-      color: #515151;
     }
   }
-  margin-bottom: 7px;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-top: 24px;
-  padding-bottom: 22px;
-  font-size: 15px;
-  line-height: 18px;
 }
 
 .comment_content {
@@ -125,19 +143,25 @@ body {
   line-height: 18px;
   border: medium none;
   width: 100%;
-  color: #4B4F54;
+  color: $color-darkgrey;
+  outline: none;
 }
 
 .comment-like-form {
   padding-top: 24px;
-  margin-top: 13px;
+  margin-top: 10px;
   margin-left: 24px;
   margin-right: 24px;
   min-height: 68px;
   align-items: center;
-  border-top: 1px solid #EEEFEF;
+  border-top: 1px solid $color-azure;
   flex-direction: row;
   justify-content: center;
+}
+
+.comment-submit-button {
+  left: -9999px;
+  position: absolute;
 }
 
 /* ## Wrapper and styling for the new and edit views ## */
@@ -145,9 +169,9 @@ body {
 .form-wrapper {
   width: 60%;
   margin: 20px auto;
-  background-color: #fff;
+  background-color: $color-white;
   padding: 40px;
-  border: 1px solid #eeefef;
+  border: 1px solid $color-azure;
   border-radius: 3px;
 }
 
@@ -175,7 +199,7 @@ html {
   background-size: cover;
 }
 
-.log-in{
+.login {
   margin-left: auto;
   margin-right: auto;
   text-align:center;
@@ -187,6 +211,7 @@ html {
 }
 
 .panel-heading{
+
   h1 {
     text-align: center;
   }

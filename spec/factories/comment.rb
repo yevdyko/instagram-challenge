@@ -1,5 +1,7 @@
 FactoryGirl.define do
   factory :comment do
-    thoughts 'This is my comment'
+    sequence(:thoughts) { |n| "This is my comment #{n}"}
+    user
+    post
   end
 end

@@ -4,3 +4,9 @@ ruby:
 
 javascript:
   config_file: .javascript-style.json
+
+scss:
+  config_file: .scss-lint.yml
+
+haml:
+  config_file: .haml-lint.yml
