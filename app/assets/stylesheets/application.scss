@@ -67,11 +67,15 @@ body {
     color: #125688;
     font-size: 15px;
     line-height: 18px;
-    .username {
+    .username, .time-ago {
       display: inline;
     }
     .username {
       font-weight: 500;
+    }
+    .time-ago {
+      color: #A5A7AA;
+      float: right;
     }
   }
   .image {
