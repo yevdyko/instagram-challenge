@@ -13,7 +13,7 @@
           .username
             = post.user.username
           = post.description
-        .comments{id: "comments_#{post.id}"}
+        .comments{ id: "comments_#{post.id}" }
           - if post.comments
             = render post.comments, post: post
     .comment-like-form.row

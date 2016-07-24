@@ -95,8 +95,16 @@ body {
 }
 
 .post-bottom {
+  font-size: 15px;
+  line-height: 18px;
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 24px;
 
-  .username, .comment-content {
+  .username,
+  .comment-content {
     display: inline;
   }
 
@@ -128,14 +136,6 @@ body {
       float: right;
     }
   }
-
-  margin-bottom: 5px;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-top: 24px;
-  padding-bottom: 10px;
-  font-size: 15px;
-  line-height: 18px;
 }
 
 .comment_content {
@@ -160,8 +160,8 @@ body {
 }
 
 .comment-submit-button {
-  position: absolute;
   left: -9999px;
+  position: absolute;
 }
 
 /* ## Wrapper and styling for the new and edit views ## */
