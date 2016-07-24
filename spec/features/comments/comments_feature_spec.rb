@@ -1,20 +1,21 @@
 require 'rails_helper'
 
 feature 'Comments' do
-  given(:user)     { create :user }
-  given(:user_two) do
-    create(:user, username: 'paulsmith', email: 'paulsmith@email.com', id: 2)
-  end
-  given(:text)     { build :post }
-  given(:message)  { build :comment }
+  given(:user)      { create :user }
+  given(:user_2)    { create :user }
+  given(:text)      { create :post, user: user }
+  given(:message)   { build :comment, user: user, post: text }
+  given(:message_2) { build :comment, user: user_2, post: text }
 
   # As a User
   # So that I can let people know my thoughts
   # I want to leave a comment on picture
   context 'creating comments' do
-    scenario 'can leave a comment on an existing post' do
+    background do
       log_in_as user
-      create_post_with text
+    end
+
+    scenario 'can leave a comment on an existing post' do
       write_comment_with message
       user_should_see_username_of user
       user_should_see_comment message
@@ -26,18 +27,15 @@ feature 'Comments' do
   # I want to delete my comments
   context 'deleting comments' do
     background do
-      log_in_as user
-      create_post_with text
-      log_out
-      log_in_as user_two
-      write_comment_with message
+      log_in_as user_2
+      write_comment_with message_2
     end
 
     scenario 'can delete a comment on an existing post' do
-      user_should_see_comment message
-      user_should_see_username_of user_two
+      user_should_see_comment message_2
+      user_should_see_username_of user_2
       delete_comment
-      user_should_not_see_comment message
+      user_should_not_see_comment message_2
     end
 
     # As a User
@@ -46,16 +44,16 @@ feature 'Comments' do
     scenario "can't delete a comment not belonging to them" do
       log_out
       log_in_as user
-      expect(page).to have_content message.thoughts
-      expect(page).to_not have_content 'Delete'
+      user_should_see_comment message_2
+      user_should_not_see_link 'Delete'
     end
 
     scenario "can't delete a comment not belonging to them via urls" do
       log_out
       log_in_as user
       page.driver.submit :delete, "posts/4/comments/4", {}
-      expect(page).to have_content "That comment doesn't belong to you!"
-      expect(page).to have_content message.thoughts
+      user_should_see_alert "That comment doesn't belong to you!"
+      user_should_see_comment message_2
     end
   end
 end
