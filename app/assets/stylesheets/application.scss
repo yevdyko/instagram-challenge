@@ -16,6 +16,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import "variables";
+
 body {
   background-color: #fafafa;
   font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -67,14 +69,15 @@ body {
     color: #125688;
     font-size: 15px;
     line-height: 18px;
-    .username, .time-ago {
+    .username,
+    .time-ago {
       display: inline;
     }
     .username {
       font-weight: 500;
     }
     .time-ago {
-      color: #A5A7AA;
+      color: $color-steelgray;
       float: right;
     }
   }
