@@ -34,7 +34,7 @@ feature 'Posts' do
       expect(page).to have_content "#{text.description}"
       expect(page).to have_css "img[src*='test']"
       expect(page).not_to have_content 'There are no posts'
-      expect(page).to have_content "#{user.username}"
+      expect(page).to have_content user.username
     end
 
     scenario 'needs to add an image' do
@@ -56,7 +56,7 @@ feature 'Posts' do
       create_post_with text
       create_post_with other_text
       within('.description', match: :first) do
-        expect(page).to have_content "#{other_text.description}"
+        expect(page).to have_content other_text.description
       end
     end
 
@@ -65,6 +65,21 @@ feature 'Posts' do
       visit root_path
       find(:xpath, "//a[contains(@href,'posts/8')]").click
       expect(page.current_path).to eq(post_path(8))
+    end
+
+    # As a User
+    # So that I can better appreciate the context of a post
+    # I want to see how long ago picture was posted
+    scenario 'can see a post with a created date', js: true do
+      text_1 = create(:post, created_at: 12.minutes.ago, user: user)
+      text_2 = create(:post, created_at: 4.hours.ago, user: user)
+      text_3 = create(:post, created_at: 5.years.ago, user: user)
+      visit root_path
+      travel_to Time.now do
+        expect(page).to have_content '12 minutes ago'
+        expect(page).to have_content 'about 4 hours ago'
+        expect(page).to have_content '5 years ago'
+      end
     end
   end
 
@@ -90,19 +105,19 @@ feature 'Posts' do
 
     context "can't edit a post that doesn't belong to you" do
       scenario 'when visiting the show page' do
-        find(:xpath, "//a[contains(@href,'posts/13')]").click
+        find(:xpath, "//a[contains(@href,'posts/5')]").click
         expect(page).to_not have_content 'Edit Post'
       end
 
       scenario 'when the url path is directly visited' do
-        visit "/posts/13/edit"
+        visit "/posts/6/edit"
         expect(page.current_path).to eq root_path
         expect(page).to have_content "That post doesn't belong to you!"
       end
     end
 
     scenario "can't update a post without an attached image" do
-      find(:xpath, "//a[contains(@href,'posts/12')]").click
+      find(:xpath, "//a[contains(@href,'posts/4')]").click
       click_link 'Edit Post'
       attach_file('Image', 'spec/files/test.zip')
       click_button 'Update Post'
@@ -118,7 +133,7 @@ feature 'Posts' do
       create_post_with text
       delete_post
       expect(page).not_to have_content text.description
-      expect(page).to have_content 'Post deleted successfully.'
+      expect(page).to have_content 'Post deleted successfully'
     end
   end
 end
