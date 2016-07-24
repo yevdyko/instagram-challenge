@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Posts' do
-  given(:user) { create :user }
+  given(:user)  { create :user }
   given!(:text) { build :post }
 
   background do
@@ -87,11 +87,10 @@ feature 'Posts' do
   # So that I can rectify what I originally post
   # I want to edit my posts
   context 'updating posts' do
+    given(:user_two) { create :user }
+    given(:text_two) { create(:post, user: user_two) }
+
     background do
-      user_two = create(:user, username: 'paulsmith',
-                               email: 'paulsmith@email.com',
-                               id: 2)
-      text_two = create(:post, user_id: 2)
       create_post_with text
     end
 
@@ -105,19 +104,21 @@ feature 'Posts' do
 
     context "can't edit a post that doesn't belong to you" do
       scenario 'when visiting the show page' do
-        find(:xpath, "//a[contains(@href,'posts/5')]").click
+        log_out
+        log_in_as user_two
+        find(:xpath, "//a[contains(@href,'posts/3')]").click
         expect(page).to_not have_content 'Edit Post'
       end
 
       scenario 'when the url path is directly visited' do
-        visit "/posts/6/edit"
+        visit "/posts/3/edit"
         expect(page.current_path).to eq root_path
         expect(page).to have_content "That post doesn't belong to you!"
       end
     end
 
     scenario "can't update a post without an attached image" do
-      find(:xpath, "//a[contains(@href,'posts/4')]").click
+      find(:xpath, "//a[contains(@href,'posts/2')]").click
       click_link 'Edit Post'
       attach_file('Image', 'spec/files/test.zip')
       click_button 'Update Post'
