@@ -18,6 +18,7 @@ gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'rails-timeago'
+gem 'puma'
 
 group :development, :test do
   gem 'byebug'
