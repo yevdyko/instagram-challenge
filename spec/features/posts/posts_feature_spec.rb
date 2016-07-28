@@ -61,10 +61,10 @@ feature 'Posts' do
     end
 
     scenario 'can view an individual post' do
-      create_post_with text
+      post = create(:post, user: user)
       visit root_path
-      find(:xpath, "//a[contains(@href,'posts/8')]").click
-      expect(page.current_path).to eq(post_path(8))
+      find(:xpath, "//a[contains(@href,'posts/#{post.id}')]", match: :first).click
+      expect(page.current_path).to eq(post_path(post.id))
     end
 
     # As a User
@@ -87,15 +87,12 @@ feature 'Posts' do
   # So that I can rectify what I originally post
   # I want to edit my posts
   context 'updating posts' do
-    given(:user_two) { create :user }
-    given(:text_two) { create(:post, user: user_two) }
-
-    background do
-      create_post_with text
-    end
+    given(:user_two)  { create :user }
+    given!(:post)     { create(:post, user: user) }
+    given!(:post_two) { create(:post, user: user_two) }
 
     scenario 'can edit a post as an owner' do
-      other_text = build(:post, description: 'My edited post')
+      other_text = build(:post, description: 'My edited post', user: user)
       edit_post_with other_text
       expect(current_path).to eq root_path
       expect(page).to have_content other_text.description
@@ -106,19 +103,20 @@ feature 'Posts' do
       scenario 'when visiting the show page' do
         log_out
         log_in_as user_two
-        find(:xpath, "//a[contains(@href,'posts/3')]").click
+        find(:xpath, "//a[contains(@href,'posts/#{post.id}')]", match: :first).click
         expect(page).to_not have_content 'Edit Post'
       end
 
       scenario 'when the url path is directly visited' do
-        visit "/posts/3/edit"
+        visit "/posts/#{post_two.id}/edit"
         expect(page.current_path).to eq root_path
         expect(page).to have_content "That post doesn't belong to you!"
       end
     end
 
     scenario "can't update a post without an attached image" do
-      find(:xpath, "//a[contains(@href,'posts/2')]").click
+      visit root_path
+      find(:xpath, "//a[contains(@href,'posts/#{post.id}')]", match: :first).click
       click_link 'Edit Post'
       attach_file('Image', 'spec/files/test.zip')
       click_button 'Update Post'
@@ -130,8 +128,9 @@ feature 'Posts' do
   # So that I can rectify what I originally post
   # I want to delete my posts
   context 'deleting posts' do
+    given!(:post) { create(:post, user: user) }
+
     scenario 'can remove a post' do
-      create_post_with text
       delete_post
       expect(page).not_to have_content text.description
       expect(page).to have_content 'Post deleted successfully'
