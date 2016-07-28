@@ -13,10 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 @import "variables";
+@import "likes";
 
 body {
   background-color: $color-snow;
@@ -101,7 +103,6 @@ body {
   padding-bottom: 10px;
   padding-left: 24px;
   padding-right: 24px;
-  padding-top: 24px;
 
   .username,
   .comment-content {
@@ -114,7 +115,6 @@ body {
 
   .username {
     font-weight: 500;
-    margin-right: 0.3em;
     color: $color-bahamablue;
     font-size: 15px;
   }
