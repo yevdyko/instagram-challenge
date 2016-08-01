@@ -19,10 +19,7 @@
             = render post.comments, post: post
     .comment-like-form.row
       .col-sm-1
-        = link_to '', like_post_path(post.id),
-                      remote: true,
-                      id: "like_#{post.id}",
-                      class: 'glyphicon glyphicon-heart-empty'
+        = liked_post post
       .comment-form.col-sm-11
         = form_for([post, post.comments.build], remote: true) do |f|
           = f.text_field :thoughts, placeholder: 'Add a comment...',

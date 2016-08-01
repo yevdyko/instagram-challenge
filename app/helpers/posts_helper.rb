@@ -11,6 +11,16 @@ module PostsHelper
       usernames.to_sentence.html_safe + like_plural(votes)
     end
   end
+  
+  def liked_post(post)
+    if user_signed_in? && current_user.voted_for?(post)
+      link_to '', unlike_post_path(post), remote: true, id: "like_#{post.id}",
+        class: 'glyphicon glyphicon-heart-empty'
+    else
+      link_to '', like_post_path(post), remote: true, id: "like_#{post.id}",
+        class: 'glyphicon glyphicon-heart-empty'
+    end
+  end
 
   private
 
