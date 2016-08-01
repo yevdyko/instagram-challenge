@@ -18,7 +18,7 @@
           - if post.comments
             = render post.comments, post: post
     .comment-like-form.row
-      .col-sm-1
+      .col-sm-1.like-button
         = liked_post post
       .comment-form.col-sm-11
         = form_for([post, post.comments.build], remote: true) do |f|
