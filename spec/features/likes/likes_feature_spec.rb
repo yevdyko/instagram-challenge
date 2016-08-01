@@ -36,4 +36,14 @@ feature 'Liking posts' do
     click_link "like_#{post.id}"
     expect(find('.likes')).to_not have_content user.username
   end
+  
+  # As a User
+  # So that once I've liked a post
+  # I want to see the heart icon turn solid upon clicking it
+  scenario 'can see the heart turn solid red upon liking' do
+    visit root_path
+    expect(page).to have_css('a.glyphicon-heart-empty')
+    click_link "like_#{post.id}"
+    expect(page).to have_css('a.glyphicon-heart')
+  end
 end
