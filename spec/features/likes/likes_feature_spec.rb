@@ -9,7 +9,7 @@ feature 'Liking posts' do
   end
 
   # As a User
-  # So that I can add a ‘Like’ to the post
+  # So that I can add a 'Like' to the post
   # I want to click a little heart icon under the image
   scenario "can add 'Like' to the post" do
     visit root_path
@@ -17,12 +17,23 @@ feature 'Liking posts' do
   end
 
   # As a User
-  # So that once I’ve liked a post
-  # I want to see my username added to the post’s list of likers
+  # So that once I've liked a post
+  # I want to see my username added to the post's list of likers
   scenario "can see username added to the post's list of likers" do
     visit root_path
     expect(find('.likes')).to_not have_content user.username
     click_link "like_#{post.id}"
     expect(find('.likes')).to have_content user.username
+  end
+  
+  # As a User
+  # So that I can revoke my decision
+  # I want to unlike a post by clicking the button again
+  scenario 'can unlike a post' do
+    visit root_path
+    click_link "like_#{post.id}"
+    expect(find('.likes')).to have_content user.username
+    click_link "like_#{post.id}"
+    expect(find('.likes')).to_not have_content user.username
   end
 end
