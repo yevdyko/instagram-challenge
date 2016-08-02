@@ -46,4 +46,19 @@ feature 'Liking posts' do
     click_link "like_#{post.id}"
     expect(page).to have_css('a.glyphicon-heart')
   end
+  
+  # As a User
+  # So that a post has more than or equal to 4 likes
+  # I want to see the number of likes
+  context 'when a post has more than or equal to 4 likes' do
+    scenario 'can see the number of likes' do
+      created_users = create_list(:user, 4)
+      created_users.each do |user|
+        log_out
+        log_in_as user
+        click_link "like_#{post.id}"
+      end  
+      expect(find('.likes')).to have_content '4 likes'
+    end
+  end
 end
