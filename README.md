@@ -50,12 +50,24 @@ So that I can protect comments from deleting by another user
 I want to delete comments that only belong to me
 
 As a User
-So that I can register my appreciation of the picture
-I want to like other users' pictures
+So that I can add a 'Like' to the post
+I want to click a little heart icon under the image
 
 As a User
-So that I can't tally up the likes of a picture
-I want to like pictures once
+So that once I've liked a post
+I want to see my username added to the post's list of likers
+
+As a User
+So that I can revoke my decision
+I want to unlike a post by clicking the button again
+
+As a User
+So that once I've liked a post
+I want to see the heart icon turn solid upon clicking it
+
+As a User
+So that a post has more than or equal to 4 likes
+I want to see the number of likes
 ```
 
 ## Setup
