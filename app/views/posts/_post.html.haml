@@ -2,7 +2,7 @@
   .post
     .post-head
       .username
-        = post.user.username
+        = link_to post.user.username, profile_path(post.user.username)
       .time-ago
         = timeago_tag post.created_at, nojs: true, force: true
     .image.center-block
