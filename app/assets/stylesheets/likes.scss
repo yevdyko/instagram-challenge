@@ -1,0 +1,11 @@
+.likes {
+  margin-bottom: 7px;
+  margin-top: 20px;
+}
+
+.like,
+.like-button a:hover, a:focus {
+  color: $color-heart;
+  outline: none;
+  text-decoration: none;
+}

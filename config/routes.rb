@@ -4,5 +4,9 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+    member do
+      get 'like'
+      get 'unlike'
+    end
   end
 end

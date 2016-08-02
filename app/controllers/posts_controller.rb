@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :like, :unlike]
   before_action :owned_post, only: [:edit, :update, :destroy]
 
   def index
@@ -22,15 +23,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       flash[:success] = "Post updated successfully."
       redirect_to root_path
@@ -41,13 +39,30 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     if @post.destroy
       flash[:notice] = "Post deleted successfully."
       redirect_to root_path
     else
       flash[:alert] = "Delete failed. Please check the form."
       render :edit
+    end
+  end
+
+  def like
+    if @post.liked_by current_user
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
+    end
+  end
+  
+  def unlike
+    if @post.unliked_by current_user
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
     end
   end
 
@@ -65,4 +80,7 @@ class PostsController < ApplicationController
     end
   end
 
+  def set_post
+    @post = Post.find(params[:id])
+  end
 end

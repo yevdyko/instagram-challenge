@@ -19,6 +19,7 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'rails-timeago'
 gem 'puma'
+gem 'acts_as_votable'
 
 group :development, :test do
   gem 'byebug'
