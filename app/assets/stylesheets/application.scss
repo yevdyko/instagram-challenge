@@ -55,7 +55,7 @@ body {
     padding-right: 24px;
     padding-top: 24px;
     padding-bottom: 22px;
-    color: $color-bahamablue;
+    color: $color-black;
     font-size: 15px;
     line-height: 18px;
 
@@ -65,7 +65,16 @@ body {
     }
 
     .username {
-      font-weight: 500;
+      font-weight: 600;
+    }
+
+    .username a {
+      color: $color-black;
+    }
+
+    .username a:hover, a:focus {
+      color: $color-black;
+      text-decoration: none;
     }
 
     .time-ago {
@@ -97,22 +106,32 @@ body {
     margin-bottom: 7px;
   }
 
-  .username {
-    font-weight: 500;
-    color: $color-bahamablue;
+  .username a {
+    color: $color-black;
     font-size: 15px;
+    font-weight: 600;
+  }
+
+  .username a:hover, a:focus {
+    color: $color-black;
+    text-decoration: none;
   }
 
   .username,
   .description-content {
     display: inline;
+
+    .username {
+      color: $color-black;
+      font-weight: 600;
+    }
   }
 
   #comment {
     margin-top: 7px;
 
     .username {
-      font-weight: 500;
+      font-weight: 600;
       margin-right: 0.3em;
     }
 
