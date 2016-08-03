@@ -68,6 +68,14 @@ I want to see the heart icon turn solid upon clicking it
 As a User
 So that a post has more than or equal to 4 likes
 I want to see the number of likes
+
+As a User
+So that I can visit a profile page
+I want to see the username in the URL
+
+As a User
+So that I can visit a profile page
+I want to see only the specified user's post
 ```
 
 ## Setup
