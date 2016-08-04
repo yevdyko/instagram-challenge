@@ -1,3 +1,10 @@
-// Place all the styles related to the profiles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#user_avatar {
+  margin: 20px auto;
+}
+
+.profile-image {
+  border: 1px solid $color-avatargrey;
+  height: 152px;
+  margin: 20px auto;
+  width: 152px;
+}

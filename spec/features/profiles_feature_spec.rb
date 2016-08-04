@@ -37,7 +37,19 @@ feature 'Profiles' do
     scenario 'visiting the Edit profile page shows the edit profile route' do
       click_link 'Edit Profile'
       expect(page.current_path).to eq edit_profile_path(user.username)
-      expect(page).to have_content 'Change your profile'
+    end
+
+    # As a User
+    # So that I can change my own profile details
+    # I want to edit my profile
+    scenario 'can change my own profile details' do
+      click_link 'Edit Profile'
+      attach_file('user_avatar', 'spec/files/images/avatar.jpg')
+      fill_in 'user_bio', with: user.bio
+      click_button 'Update Profile'
+      expect(page.current_path).to eq profile_path(user.username)
+      expect(page).to have_css "img[src*='avatar']"
+      expect(page).to have_content user.bio
     end
   end
 end
