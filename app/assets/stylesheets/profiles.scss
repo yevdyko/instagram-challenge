@@ -6,6 +6,16 @@
   padding: 15px 0;
 }
 
+.profile-title-img {
+  margin-bottom: 20px;
+  margin-top: 25px;
+}
+
+.profile-title-bio {
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+
 .profile-image {
   border: 1px solid $color-avatargrey;
   height: 152px;
@@ -29,14 +39,15 @@
   margin-right: 20px;
 }
 
-.edit-button {
+.edit-btn {
   border-color: $color-btnblue;
   color: $color-btnblue;
   font-size: 15px;
   font-weight: 500;
   vertical-align: top;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: $color-btnblue;
   }
 }
@@ -49,4 +60,26 @@
 .profile-bio,
 .user-statistics {
   font-size: 15px;
+}
+
+.profile-text {
+  border: 1px solid $color-avatargrey;
+  border-radius: 3px;
+  outline: none;
+  padding: 7px;
+  resize: none;
+  width: 100%;
+}
+
+.profile-text:focus {
+  border-color: $color-btnblue;
+}
+
+.profile-textarea {
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+.profile-btn {
+  margin-bottom: 25px;
 }
