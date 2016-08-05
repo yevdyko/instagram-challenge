@@ -2,9 +2,51 @@
   margin: 20px auto;
 }
 
+.profile-header {
+  padding: 15px 0;
+}
+
 .profile-image {
   border: 1px solid $color-avatargrey;
   height: 152px;
-  margin: 20px auto;
+  margin: 0 auto;
   width: 152px;
+}
+
+.profile-details {
+  padding: 0;
+  padding-right: 15px;
+}
+
+.username-and-follow {
+  padding-top: 15px;
+}
+
+.profile-username {
+  display: inline;
+  font-weight: 300;
+  line-height: 36px;
+  margin-right: 20px;
+}
+
+.edit-button {
+  border-color: $color-btnblue;
+  color: $color-btnblue;
+  font-size: 15px;
+  font-weight: 500;
+  vertical-align: top;
+
+  &:hover {
+    color: $color-btnblue;
+  }
+}
+
+.profile-bio {
+  margin-bottom: 13px;
+  margin-top: 16px;
+}
+
+.profile-bio,
+.user-statistics {
+  font-size: 15px;
 }

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   acts_as_voter
 
-  validates :username, presence: true, length: { minimum: 3, maximum: 16 }
+  validates :username, presence: true, length: { minimum: 3, maximum: 12 }
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

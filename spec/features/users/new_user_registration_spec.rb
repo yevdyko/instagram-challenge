@@ -22,9 +22,9 @@ feature 'User signs up' do
     expect(page).to have_content 'minimum is 3 characters'
   end
 
-  scenario 'having a username with more than 16 characters' do
+  scenario 'having a username with more than 12 characters' do
     user = build(:user, username: 'johndoeknucklesjames')
     sign_up_as user
-    expect(page).to have_content 'maximum is 16 characters'
+    expect(page).to have_content 'maximum is 12 characters'
   end
 end
