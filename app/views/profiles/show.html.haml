@@ -10,7 +10,7 @@
         %span
           - if @user == current_user
             = link_to 'Edit Profile', edit_profile_path(@user.username),
-                                      class: 'btn edit-button'
+                                      class: 'btn edit-btn'
       %p.profile-bio
         = @user.bio
       .user-statistics
