@@ -24,6 +24,7 @@ gem 'acts_as_votable'
 group :development, :test do
   gem 'byebug'
   gem 'factory_girl_rails'
+  gem 'i18n-tasks'
 end
 
 group :test do
