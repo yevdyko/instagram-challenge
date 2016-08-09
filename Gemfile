@@ -20,6 +20,7 @@ gem 'simple_form'
 gem 'rails-timeago'
 gem 'puma'
 gem 'acts_as_votable'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'

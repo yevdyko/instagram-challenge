@@ -1,6 +1,10 @@
-.posts-wrapper.row
+.posts
   - if @posts.any?
-    - @posts.each do |post|
-      = render 'post', post: post
+    = render 'posts'
   - else
     = t('posts.index.empty')
+
+.paginator.text-center
+  = link_to_next_page @posts, t('paginator.button'),
+                              remote: true,
+                              class: 'load-more'
