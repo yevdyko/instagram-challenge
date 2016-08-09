@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :owned_post, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.all.order('created_at DESC')
+    @posts = Post.all.order('created_at DESC').page(params[:page])
   end
 
   def new
@@ -56,7 +56,7 @@ class PostsController < ApplicationController
       end
     end
   end
-  
+
   def unlike
     if @post.unliked_by current_user
       respond_to do |format|
