@@ -20,13 +20,14 @@ feature 'User signs up' do
     expect(page).to have_content t('errors.messages.blank')
   end
 
-  scenario 'having a username with less than 3 characters' do
-    user = build(:user, username: 'w')
+  context 'having a username with' do
+    scenario 'less than 3 characters' do
+      user = build(:user, username: 'w')
 
-    sign_up_as user
+      sign_up_as user
 
-    expect(page).to have_content t('errors.messages.too_short.other', count: 3)
-  end
+      expect(page).to have_content t('errors.messages.too_short.other', count: 3)
+    end
 
   scenario 'having a username with more than 12 characters' do
     user = build(:user, username: 'johndoeknucklesjames')
