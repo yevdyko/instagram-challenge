@@ -28,3 +28,17 @@ en:
     header:
       signup: "Sign up to see photos and videos from your friends."
       login: "Log in"
+
+  comments:
+    add: "Add a comment..."
+    submit: "New comment"
+    new:
+      submit: "Send"
+    icon: "Delete"
+    create:
+      alert: "Check the comment form. Something went wrong."
+    destroy:
+      link: "Delete"
+      confirm: "Are you sure?"
+    owned_comment:
+      alert: "That comment doesn't belong to you!"
