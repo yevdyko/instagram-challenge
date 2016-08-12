@@ -1,6 +1,6 @@
 .posts-wrapper.row
   - if @posts.any?
-    -@posts.each do |post|
+    - @posts.each do |post|
       = render 'post', post: post
   - else
-    There are no posts
+    = t('posts.index.empty')

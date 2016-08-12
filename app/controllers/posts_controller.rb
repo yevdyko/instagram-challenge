@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :like, :unlike]
-  before_action :owned_post, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: %i(index show)
+  before_action :set_post, only: %i(show edit update destroy like unlike)
+  before_action :owned_post, only: %i(edit update destroy)
 
   def index
-    @posts = Post.all.order('created_at DESC')
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def new
@@ -14,10 +14,9 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = "Your post has been created."
-      redirect_to root_path
+      redirect_to root_path, notice: t('posts.create.notice')
     else
-      flash[:alert] = "Warning! You need an image to post here!"
+      flash.now[:alert] = t('posts.create.alert')
       render :new
     end
   end
@@ -30,20 +29,18 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:success] = "Post updated successfully."
-      redirect_to root_path
+      redirect_to root_path, notice: t('posts.update.notice')
     else
-      flash[:alert] = "Update failed. Please check the form."
+      flash.now[:alert] = t('posts.update.alert')
       render :edit
     end
   end
 
   def destroy
     if @post.destroy
-      flash[:notice] = "Post deleted successfully."
-      redirect_to root_path
+      redirect_to root_path, notice: t('posts.destroy.notice')
     else
-      flash[:alert] = "Delete failed. Please check the form."
+      flash.now[:alert] = t('posts.destroy.alert')
       render :edit
     end
   end
@@ -56,7 +53,7 @@ class PostsController < ApplicationController
       end
     end
   end
-  
+
   def unlike
     if @post.unliked_by current_user
       respond_to do |format|
@@ -75,8 +72,7 @@ class PostsController < ApplicationController
   def owned_post
     @post = current_user.posts.find_by(id: params[:id])
     if @post.nil?
-      flash[:alert] = "That post doesn't belong to you!"
-      redirect_to root_path
+      redirect_to root_path, alert: t('posts.owned_post.alert')
     end
   end
 

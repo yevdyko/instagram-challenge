@@ -1,15 +1,4 @@
 en:
-  date:
-    formats:
-      default: "%m/%d/%Y"
-      with_weekday: "%a %m/%d/%y"
-
-  time:
-    formats:
-      default: "%a, %b %-d, %Y at %r"
-      date: "%b %-d, %Y"
-      short: "%B %d"
-
   application:
     title: "Pixagram"
     header:
@@ -29,12 +18,34 @@ en:
       signup: "Sign up to see photos and videos from your friends."
       login: "Log in"
 
+  posts:
+    index:
+      empty: "There are no posts"
+    create:
+      notice: "Your post has been created."
+      alert: "Warning! You need an image to post here!"
+    show:
+      cancel: "Cancel"
+      edit: "Edit Post"
+    edit:
+      cancel: "Cancel"
+      delete:
+        link: "Delete"
+        confirm: "Are you sure?"
+    update:
+      notice: "Post updated successfully."
+      alert: "Update failed. Please check the form."
+    destroy:
+      notice: "Post deleted successfully."
+      alert: "Delete failed. Please check the form."
+    owned_post:
+      alert: "That post doesn't belong to you!"
+
   comments:
     add: "Add a comment..."
     submit: "New comment"
     new:
       submit: "Send"
-    icon: "Delete"
     create:
       alert: "Check the comment form. Something went wrong."
     destroy:

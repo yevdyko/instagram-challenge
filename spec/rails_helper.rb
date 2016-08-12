@@ -19,8 +19,9 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   config.include AuthHelpers,     type: :feature
-  config.include PostHelpers,    type: :feature
+  config.include PostsHelpers,    type: :feature
   config.include CommentsHelpers, type: :feature
+  config.include LikesHelpers,    type: :feature
 
   config.infer_spec_type_from_file_location!
 

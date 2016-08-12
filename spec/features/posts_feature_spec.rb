@@ -3,20 +3,20 @@ require 'rails_helper'
 feature 'Posts' do
   given(:user)  { create :user }
   given!(:text) { build :post }
-
-  background do
-    log_in_as user
-  end
+  background { log_in_as user }
 
   context 'no posts have been added' do
     scenario 'displays a link to add a post' do
       visit root_path
-      expect(page).to have_link 'Create Post'
+
+      expect(page).to have_link t('application.header.create_post'),
+                                href: new_post_path
     end
 
     scenario 'displays a message that there are no posts' do
       visit root_path
-      expect(page).to have_content 'There are no posts'
+
+      expect(page).to have_content t('posts.index.empty')
     end
   end
 
@@ -30,20 +30,23 @@ feature 'Posts' do
   context 'creating posts' do
     scenario 'can create a new post' do
       create_post_with text
-      expect(current_path).to eq root_path
-      expect(page).to have_content "#{text.description}"
-      expect(page).to have_css "img[src*='test']"
-      expect(page).not_to have_content 'There are no posts'
-      expect(page).to have_content user.username
+
+      expect(page).to have_current_path root_path
+      expect(page).to have_description text
+      expect(page).to have_image 'test'
+      expect(page).not_to have_content t('posts.index.empty')
+      expect(find('.post-head')).to have_username user
     end
 
     scenario 'needs to add an image' do
       visit root_path
-      click_link 'Create Post'
-      fill_in 'Description', with: 'No picture'
+
+      click_link t('application.header.create_post')
+      fill_in 'post_description', with: 'No picture'
       click_button 'Create Post'
-      expect(page).to have_content 'Warning! You need an image to post here!'
-      expect(page).to have_content "can't be blank"
+
+      expect(page).to have_content t('posts.create.alert')
+      expect(page).to have_content t('errors.messages.blank')
     end
   end
 
@@ -53,28 +56,34 @@ feature 'Posts' do
   context 'viewing posts' do
     scenario 'can see posts in reverse chronological order on the index' do
       other_text = build(:post, description: 'My second peep')
+
       create_post_with text
       create_post_with other_text
+
       within('.description', match: :first) do
-        expect(page).to have_content other_text.description
+        expect(page).to have_description other_text
       end
     end
 
     scenario 'can view an individual post' do
       post = create(:post, user: user)
+
       visit root_path
       find(:xpath, "//a[contains(@href,'posts/#{post.id}')]", match: :first).click
-      expect(page.current_path).to eq(post_path(post.id))
+
+      expect(page).to have_current_path post_path(post.id)
     end
 
     # As a User
     # So that I can better appreciate the context of a post
     # I want to see how long ago picture was posted
     scenario 'can see a post with a created date', js: true do
-      text_1 = create(:post, created_at: 12.minutes.ago, user: user)
-      text_2 = create(:post, created_at: 4.hours.ago, user: user)
-      text_3 = create(:post, created_at: 5.years.ago, user: user)
+      create(:post, created_at: 12.minutes.ago, user: user)
+      create(:post, created_at: 4.hours.ago, user: user)
+      create(:post, created_at: 5.years.ago, user: user)
+
       visit root_path
+
       travel_to Time.now do
         expect(page).to have_content '12 minutes ago'
         expect(page).to have_content 'about 4 hours ago'
@@ -93,34 +102,40 @@ feature 'Posts' do
 
     scenario 'can edit a post as an owner' do
       other_text = build(:post, description: 'My edited post', user: user)
+
       edit_post_with other_text
-      expect(current_path).to eq root_path
-      expect(page).to have_content other_text.description
-      expect(page).to have_content 'Post updated successfully.'
+
+      expect(page).to have_current_path root_path
+      expect(page).to have_description other_text
+      expect(page).to have_content t('posts.update.notice')
     end
 
     context "can't edit a post that doesn't belong to you" do
       scenario 'when visiting the show page' do
-        log_out
-        log_in_as user_two
-        find(:xpath, "//a[contains(@href,'posts/#{post.id}')]", match: :first).click
-        expect(page).to_not have_content 'Edit Post'
+        visit root_path
+
+        find(:xpath, "//a[contains(@href,'posts/#{post_two.id}')]", match: :first).click
+
+        expect(page).to_not have_content t('posts.show.edit')
       end
 
       scenario 'when the url path is directly visited' do
         visit "/posts/#{post_two.id}/edit"
-        expect(page.current_path).to eq root_path
-        expect(page).to have_content "That post doesn't belong to you!"
+
+        expect(page).to have_current_path root_path
+        expect(page).to have_content t('posts.owned_post.alert')
       end
     end
 
     scenario "can't update a post without an attached image" do
       visit root_path
+
       find(:xpath, "//a[contains(@href,'posts/#{post.id}')]", match: :first).click
-      click_link 'Edit Post'
-      attach_file('Image', 'spec/files/test.zip')
+      click_link t('posts.show.edit')
+      attach_file('post_image', 'spec/files/test.zip')
       click_button 'Update Post'
-      expect(page).to have_content 'Update failed. Please check the form.'
+
+      expect(page).to have_content t('posts.update.alert')
     end
   end
 
@@ -132,8 +147,9 @@ feature 'Posts' do
 
     scenario 'can remove a post' do
       delete_post
-      expect(page).not_to have_content text.description
-      expect(page).to have_content 'Post deleted successfully'
+
+      expect(page).not_to have_description text
+      expect(page).to have_content t('posts.destroy.notice')
     end
   end
 end
