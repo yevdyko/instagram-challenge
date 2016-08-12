@@ -22,6 +22,7 @@ RSpec.configure do |config|
   config.include PostsHelpers,    type: :feature
   config.include CommentsHelpers, type: :feature
   config.include LikesHelpers,    type: :feature
+  config.include ProfilesHelpers, type: :feature
 
   config.infer_spec_type_from_file_location!
 

@@ -5,10 +5,10 @@ feature 'Profiles' do
   given(:user_two)  { create :user }
   given!(:post)     { create :post, user: user }
   given!(:post_two) { create :post, user: user_two }
+  background { log_in_as user }
 
   context 'viewing user profiles' do
     background do
-      log_in_as user
       first('.username').click_link user.username
     end
 
@@ -38,7 +38,7 @@ feature 'Profiles' do
     # So that I can visit a edit profile page
     # I want to see the edit profile route
     scenario 'visiting the Edit profile page shows the edit profile route' do
-      expect(page.current_path).to eq edit_profile_path(user.username)
+      expect(page).to have_current_path edit_profile_path(user.username)
     end
 
     # As a User
@@ -48,10 +48,16 @@ feature 'Profiles' do
       attach_file('user_avatar', 'spec/files/images/avatar.jpg')
       fill_in 'user_bio', with: user.bio
       click_button 'Update Profile'
-      expect(page.current_path).to eq profile_path(user.username)
+      expect(page).to have_current_path profile_path(user.username)
       expect(page).to have_css "img[src*='avatar']"
       expect(page).to have_content user.bio
       expect(page).to have_content 'Your profile has been updated.'
+    end
+
+    scenario "can't update profile details with invalid content type" do
+      attach_file('user_avatar', 'spec/files/test.zip')
+      click_button 'Update Profile'
+      expect(page).to have_errors_messages
     end
 
     # As a User
@@ -66,7 +72,7 @@ feature 'Profiles' do
 
       scenario 'when the url path is directly visited' do
         visit "/#{user_two.username}/edit"
-        expect(page.current_path).to eq root_path
+        expect(page).to have_current_path root_path
         expect(page).to have_content "That profile doesn't belong to you!"
       end
     end
