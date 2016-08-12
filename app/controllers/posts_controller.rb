@@ -56,7 +56,7 @@ class PostsController < ApplicationController
       end
     end
   end
-  
+
   def unlike
     if @post.unliked_by current_user
       respond_to do |format|

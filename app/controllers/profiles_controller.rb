@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
       redirect_to profile_path(@user.username)
     else
       @user.errors.full_messages
-      flash[:error] = @user.errors.full_messages
+      flash[:error] = @user.errors.full_messages.to_sentence
       render :edit
     end
   end
