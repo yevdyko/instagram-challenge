@@ -13,7 +13,8 @@
         .description-content
           .username
             = post.user.username
-          = post.description
+          .description-text
+            = post.description
         .comments{ id: "comments_#{post.id}" }
           - if post.comments
             = render post.comments, post: post
