@@ -2,6 +2,7 @@
 @import "bootstrap";
 
 @import "variables";
+@import "posts";
 @import "likes";
 @import "profiles";
 
@@ -31,115 +32,6 @@ body {
 .navbar-container {
   width: 70%;
   margin: 0 auto;
-}
-
-/* ## POST CUSTOMISATIONS ## */
-
-.posts-wrapper {
-  padding-top: 40px;
-  margin: 0 auto;
-  max-width: 602px;
-  width: 100%;
-}
-
-.post {
-  background-color: $color-white;
-  border-color: $color-lightgrey;
-  border-style: solid;
-  border-radius: 3px;
-  border-width: 1px;
-  margin-bottom: 60px;
-
-  .post-head {
-    flex-direction: row;
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-top: 24px;
-    padding-bottom: 22px;
-    color: $color-black;
-    font-size: 15px;
-    line-height: 18px;
-
-    .username,
-    .time-ago {
-      display: inline;
-    }
-
-    .username {
-      font-weight: 600;
-    }
-
-    .username a {
-      color: $color-black;
-    }
-
-    .username a:hover, a:focus {
-      color: $color-black;
-      text-decoration: none;
-    }
-
-    .time-ago {
-      color: $color-steelgrey;
-      float: right;
-    }
-  }
-
-  .image {
-    border-bottom: 1px solid $color-azure;
-    border-top: 1px solid $color-azure;
-  }
-}
-
-.post-bottom {
-  font-size: 15px;
-  line-height: 18px;
-  margin-bottom: 5px;
-  padding-bottom: 10px;
-  padding-left: 24px;
-  padding-right: 24px;
-
-  .username,
-  .comment-content {
-    display: inline;
-  }
-
-  .description {
-    margin-bottom: 7px;
-  }
-
-  .username a {
-    color: $color-black;
-    font-size: 15px;
-    font-weight: 600;
-  }
-
-  .username a:hover, a:focus {
-    color: $color-black;
-    text-decoration: none;
-  }
-
-  .username,
-  .description-content {
-    display: inline;
-
-    .username {
-      color: $color-black;
-      font-weight: 600;
-    }
-  }
-
-  #comment {
-    margin-top: 7px;
-
-    .username {
-      font-weight: 600;
-      margin-right: 0.3em;
-    }
-
-    .delete-comment {
-      float: right;
-    }
-  }
 }
 
 .comment_content {

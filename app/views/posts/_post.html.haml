@@ -5,7 +5,7 @@
         = link_to post.user.username, profile_path(post.user.username)
       .time-ago
         = timeago_tag post.created_at, nojs: true, force: true
-    .image.center-block
+    .post-image.center-block
       = link_to (image_tag post.image.url(:medium), class: 'img-responsive'), post_path(post)
     .post-bottom
       = render 'posts/likes', post: post
