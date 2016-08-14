@@ -1,3 +1,85 @@
-// Place all the styles related to the profiles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#user_avatar {
+  margin: 20px auto;
+}
+
+.profile-header {
+  padding: 15px 0;
+}
+
+.profile-title-img {
+  margin-bottom: 20px;
+  margin-top: 25px;
+}
+
+.profile-title-bio {
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+
+.profile-image {
+  border: 1px solid $color-avatargrey;
+  height: 152px;
+  margin: 0 auto;
+  width: 152px;
+}
+
+.profile-details {
+  padding: 0;
+  padding-right: 15px;
+}
+
+.username-and-follow {
+  padding-top: 15px;
+}
+
+.profile-username {
+  display: inline;
+  font-weight: 300;
+  line-height: 36px;
+  margin-right: 20px;
+}
+
+.edit-btn {
+  border-color: $color-btnblue;
+  color: $color-btnblue;
+  font-size: 15px;
+  font-weight: 500;
+  vertical-align: top;
+
+  &:hover,
+  &:focus {
+    color: $color-btnblue;
+  }
+}
+
+.profile-bio {
+  margin-bottom: 13px;
+  margin-top: 16px;
+}
+
+.profile-bio,
+.user-statistics {
+  font-size: 15px;
+}
+
+.profile-text {
+  border: 1px solid $color-avatargrey;
+  border-radius: 3px;
+  outline: none;
+  padding: 7px;
+  resize: none;
+  width: 100%;
+}
+
+.profile-text:focus {
+  border-color: $color-btnblue;
+}
+
+.profile-textarea {
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+.profile-btn {
+  margin-bottom: 25px;
+}

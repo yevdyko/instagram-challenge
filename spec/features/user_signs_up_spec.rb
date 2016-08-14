@@ -29,12 +29,12 @@ feature 'User signs up' do
       expect(page).to have_content t('errors.messages.too_short.other', count: 3)
     end
 
-    scenario 'more than 16 characters' do
+    scenario 'more than 12 characters' do
       user = build(:user, username: 'johndoeknucklesjames')
 
       sign_up_as user
 
-      expect(page).to have_content t('errors.messages.too_long.other', count: 16)
+      expect(page).to have_content t('errors.messages.too_long.other', count: 12)
     end
   end
 end

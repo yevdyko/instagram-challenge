@@ -1,0 +1,3 @@
+$('.posts').append('<%=j render 'posts' %>');
+$('.paginator').html('<%=j link_to_next_page(@posts, 'Load more', remote: true, class: 'load-more') %>');
+if (!$('.load-more').length) { $('.paginator').remove(); }
