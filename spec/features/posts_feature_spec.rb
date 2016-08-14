@@ -90,6 +90,18 @@ feature 'Posts' do
         expect(page).to have_content '5 years ago'
       end
     end
+
+    # As a User
+    # So that I can redirect to the user profile by clicking on the username in caption
+    # I want to link username in post's description and user profile page
+    scenario 'can redirect to the user profile by clicking on the username in caption' do
+      create(:post, user: user)
+
+      visit root_path
+      first('.description-content').click_link user.username
+
+      expect(page).to have_current_path profile_path(user.username)
+    end
   end
 
   # As a User

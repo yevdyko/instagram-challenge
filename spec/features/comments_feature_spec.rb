@@ -65,12 +65,12 @@ feature 'Comments' do
   end
 
   # As a User
-  # So that I can redirect to the user profile by clicking on the username in comment
-  # I want to link user profile to the username in comment
+  # So that I can see a profile of user who commented on my post
+  # I want to link user's profile to the username in comment
   context 'viewing comments' do
     given!(:message) { create :comment, user: user, post: post }
 
-    scenario 'can redirect to the user profile by clicking on the username in comment' do
+    scenario 'can see a profile of user who commented on my post' do
       visit root_path
 
       first('.comment').click_link user.username
