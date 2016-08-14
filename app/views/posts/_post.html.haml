@@ -13,7 +13,8 @@
         .description-content
           .username
             = post.user.username
-          = post.description
+          .description-text
+            = post.description
         .comments{ id: "comments_#{post.id}" }
           - if post.comments
             = render post.comments, post: post
@@ -22,7 +23,7 @@
         = liked_post post
       .comment-form.col-sm-11
         = form_for([post, post.comments.build], remote: true) do |f|
-          = f.text_field :thoughts, placeholder: 'Add a comment...',
+          = f.text_field :thoughts, placeholder: t('comments.add'),
                                     class: "comment_content",
                                     id: "comment_content_#{post.id}"
-          = f.submit 'New comment', class: 'comment-submit-button'
+          = f.submit t('comments.submit'), class: 'comment-submit-button'

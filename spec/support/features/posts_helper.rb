@@ -1,27 +1,38 @@
 require 'rails_helper'
 
-module PostHelpers
+module PostsHelpers
   def create_post_with(text)
     visit root_path
-    click_link 'Create Post'
-    attach_file('Image', 'spec/files/images/test.jpg')
-    fill_in 'Description', with: text.description
+
+    click_link t('application.header.create_post')
+    attach_file('post_image', 'spec/files/images/test.jpg')
+    fill_in 'post_description', with: text.description
     click_button 'Create Post'
   end
 
   def edit_post_with(text)
     visit root_path
+
     find(:xpath, "//a[contains(@href,'posts/#{post.id}')]", match: :first).click
-    click_link 'Edit Post'
-    fill_in 'Description', with: text.description
+    click_link t('posts.show.edit')
+    fill_in 'post_description', with: text.description
     click_button 'Update Post'
   end
 
   def delete_post
     visit root_path
+
     find(:xpath, "//a[contains(@href,'posts/#{post.id}')]", match: :first).click
-    click_link 'Edit Post'
-    click_link 'Delete Post'
+    click_link t('posts.show.edit')
+    click_link t('posts.edit.delete.link')
+  end
+
+  def have_image(name)
+    have_css("img[src*='#{name}']")
+  end
+
+  def have_description(text)
+    have_css('.description-text', text: text.description)
   end
 
   def have_displayed_posts(count)

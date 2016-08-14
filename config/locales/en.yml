@@ -1,23 +1,68 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  application:
+    title: "Pixagram"
+    header:
+      create_post: "Create Post"
+      signup: "Sign up"
+      login: "Log in"
+      logout: "Log out"
+
+  registration:
+    email: "Email"
+    username: "Username"
+    password: "Password"
+    password_confirmation: "Confirm Password"
+    login: "Log in"
+    signup: "Sign up"
+    header:
+      signup: "Sign up to see photos and videos from your friends."
+      login: "Log in"
+
+  posts:
+    index:
+      empty: "There are no posts"
+    create:
+      notice: "Your post has been created."
+      alert: "Warning! You need an image to post here!"
+    show:
+      cancel: "Cancel"
+      edit: "Edit Post"
+    edit:
+      cancel: "Cancel"
+      delete:
+        link: "Delete"
+        confirm: "Are you sure?"
+    update:
+      notice: "Post updated successfully."
+      alert: "Update failed. Please check the form."
+    destroy:
+      notice: "Post deleted successfully."
+      alert: "Delete failed. Please check the form."
+    owned_post:
+      alert: "That post doesn't belong to you!"
+
+  comments:
+    add: "Add a comment..."
+    submit: "New comment"
+    new:
+      submit: "Send"
+    create:
+      alert: "Check the comment form. Something went wrong."
+    destroy:
+      link: "Delete"
+      confirm: "Are you sure?"
+    owned_comment:
+      alert: "That comment doesn't belong to you!"
+
+  profiles:
+    show:
+      edit: "Edit Profile"
+    edit:
+      title:
+        image: "Change your profile image:"
+        bio: "Update your bio:"
+      submit: "Update Profile"
+    update:
+      notice: "Your profile has been updated."
+    owned_profile:
+      alert: "That profile doesn't belong to you!"

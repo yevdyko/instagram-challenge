@@ -2,7 +2,7 @@
   - if @posts.any?
     = render 'posts'
   - else
-    There are no posts
+    = t('posts.index.empty')
 
 .paginator.text-center
   = link_to_next_page @posts, 'Load more', remote: true, class: 'load-more'
