@@ -12,7 +12,7 @@
       .description
         .description-content
           .username
-            = post.user.username
+            = link_to post.user.username, profile_path(post.user.username)
           .description-text
             = post.description
         .comments{ id: "comments_#{post.id}" }
