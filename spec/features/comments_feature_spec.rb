@@ -14,7 +14,7 @@ feature 'Comments' do
     scenario 'can leave a comment on an existing post' do
       write_comment_with message
 
-      within '#comment' do
+      within '.comment' do
         expect(page).to have_username user
         expect(page).to have_comment message
       end
@@ -28,7 +28,7 @@ feature 'Comments' do
     scenario 'can delete a comment on an existing post' do
       write_comment_with message
 
-      within '#comment' do
+      within '.comment' do
         expect(page).to have_username user
         expect(page).to have_comment message
       end
@@ -47,7 +47,7 @@ feature 'Comments' do
       scenario 'via the user interface' do
         visit root_path
 
-        within '#comment' do
+        within '.comment' do
           expect(page).to have_comment message_two
           expect(page).not_to have_delete_icon
         end
@@ -59,10 +59,23 @@ feature 'Comments' do
         page.driver.submit :delete, "posts/#{post.id}/comments/#{message_two.id}", {}
 
         expect(page).to have_content t('comments.owned_comment.alert')
-        within '#comment' do
-          expect(page).to have_comment message_two
-        end
+        expect(find('.comment')).to have_comment message_two
       end
+    end
+  end
+
+  # As a User
+  # So that I can redirect to the user profile by clicking on the username in comment
+  # I want to link user profile to the username in comment
+  context 'viewing comments' do
+    given!(:message) { create :comment, user: user, post: post }
+
+    scenario 'can redirect to the user profile by clicking on the username in comment' do
+      visit root_path
+
+      first('.comment').click_link user.username
+
+      expect(page).to have_current_path profile_path(user.username)
     end
   end
 end

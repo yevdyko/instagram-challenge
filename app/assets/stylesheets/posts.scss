@@ -61,8 +61,7 @@
   padding-left: 24px;
   padding-right: 24px;
 
-  .username,
-  .comment-content {
+  .username {
     display: inline;
   }
 
@@ -88,19 +87,6 @@
     .username {
       color: $color-black;
       font-weight: 600;
-    }
-  }
-
-  #comment {
-    margin-top: 7px;
-
-    .username {
-      font-weight: 600;
-      margin-right: 0.3em;
-    }
-
-    .delete-comment {
-      float: right;
     }
   }
 }

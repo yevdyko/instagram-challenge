@@ -67,7 +67,7 @@ feature 'Profiles' do
       scenario "when visiting another user's profile" do
         visit root_path
         find(:xpath, "//a[contains(@href,'/#{user_two.username}')]", match: :first).click
-        expect(page).to_not have_content 'Edit Profile'
+        expect(page).to_not have_content t('profiles.show.edit')
       end
 
       scenario 'when the url path is directly visited' do

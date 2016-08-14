@@ -24,6 +24,6 @@
       .comment-form.col-sm-11
         = form_for([post, post.comments.build], remote: true) do |f|
           = f.text_field :thoughts, placeholder: t('comments.add'),
-                                    class: "comment_content",
-                                    id: "comment_content_#{post.id}"
+                                    class: "comment-content",
+                                    id: "comment-content_#{post.id}"
           = f.submit t('comments.submit'), class: 'comment-submit-button'
