@@ -1,3 +1,122 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.posts {
+  padding-top: 60px;
+}
+
+.posts-wrapper {
+  margin: 0 auto;
+  max-width: 602px;
+  width: 100%;
+}
+
+.post {
+  background-color: $color-white;
+  border-color: $color-lightgrey;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 60px;
+
+  .post-head {
+    color: $color-black;
+    flex-direction: row;
+    font-size: 15px;
+    line-height: 18px;
+    padding-bottom: 22px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 24px;
+
+    .username,
+    .time-ago {
+      display: inline;
+    }
+
+    .username {
+      color: $color-black;
+      font-weight: 600;
+    }
+
+    .username a:hover, a:focus {
+      color: $color-black;
+      text-decoration: none;
+    }
+
+    .time-ago {
+      color: $color-steelgrey;
+      float: right;
+    }
+  }
+
+  .post-image {
+    border-bottom: 1px solid $color-azure;
+    border-top: 1px solid $color-azure;
+  }
+}
+
+.post-bottom {
+  font-size: 15px;
+  line-height: 18px;
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  padding-left: 24px;
+  padding-right: 24px;
+
+  .username {
+    display: inline;
+  }
+
+  .description {
+    margin-bottom: 7px;
+  }
+
+  .username a {
+    color: $color-black;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .username a:hover, a:focus {
+    color: $color-black;
+    text-decoration: none;
+  }
+
+  .username,
+  .description-content {
+    display: inline;
+
+    .username {
+      color: $color-black;
+      font-weight: 600;
+    }
+
+    .description-text {
+      display: inline;
+    }
+  }
+}
+
+.paginator {
+  border: 2px solid $color-btnblue;
+  border-radius: 50%;
+  color: $color-btnblue;
+  display: table;
+  height: 120px;
+  margin: 60px auto 40px;
+  position: relative;
+  width: 120px;
+}
+
+.load-more {
+  color: $color-btnblue;
+  display: table-cell;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 9px;
+  text-decoration: none;
+  vertical-align: middle;
+
+  &:hover {
+    color: $color-btnblue;
+    text-decoration: none;
+  }
+}

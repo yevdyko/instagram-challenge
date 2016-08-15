@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post
-  before_action :owned_comment, only: [:destroy]
+  before_action :owned_comment, only: :destroy
 
   def create
     @comment = @post.comments.build(comment_params)
@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
         format.js
       end
     else
-      flash[:alert] = "Check the comment form. Something went wrong."
+      flash.now[:alert] = t('comments.create.alert')
       render root_path
     end
   end
@@ -40,8 +40,7 @@ class CommentsController < ApplicationController
   def owned_comment
     @comment = current_user.comments.find_by(id: params[:id])
     if @comment.nil?
-      flash[:alert] = "That comment doesn't belong to you!"
-      redirect_to root_path
+      redirect_to root_path, alert: t('comments.owned_comment.alert')
     end
   end
 end

@@ -1,0 +1,24 @@
+.posts-wrapper
+  .post
+    .post-body
+      .image-wrap
+        = form_for @user, url: { action: 'update' },
+                          html: { multipart: true } do |f|
+          .row
+            .col-xs-12
+              .form-group.text-center
+                %h4.profile-title-img
+                  = t('profiles.edit.title.image')
+                .img-circle
+                  = profile_avatar_select(@user)
+                = f.file_field :avatar, onChange: 'loadFile(event)'
+          .row
+            .col-xs-12
+              .form-group.text-center
+                %h4.profile-title-bio
+                  = t('profiles.edit.title.bio')
+                .profile-textarea
+                  = f.text_area :bio, label: false, rows: 4,
+                                class: 'profile-text'
+          .form-group.text-center.profile-btn
+            = f.submit t('profiles.edit.submit'), class: 'btn btn-success'

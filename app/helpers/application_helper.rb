@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def alert_for flash_type
+  def alert_for(flash_type)
     {
       success: 'alert-success',
       error:   'alert-danger',
