@@ -31,6 +31,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'capybara-webkit'
   gem 'shoulda'
   gem 'database_cleaner'
   gem 'coveralls', require: false
