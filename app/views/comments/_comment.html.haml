@@ -4,10 +4,10 @@
   .comment-content
     = comment.thoughts
   - if comment.user == current_user
-    = link_to t('comments.destroy.link'),
-              post_comment_path(post, comment),
+    = link_to post_comment_path(post, comment),
               method: :delete,
               data: { confirm: t('comments.destroy.confirm') },
               remote: true,
               id: "delete_#{comment.id}",
-              class: "delete-comment"
+              class: "delete-comment" do
+      %span.glyphicon.glyphicon-remove.delete-comment-icon

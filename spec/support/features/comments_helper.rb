@@ -11,7 +11,7 @@ module CommentsHelpers
   def delete_comment
     visit root_path
 
-    click_link t('comments.destroy.link')
+    click_link "delete_#{message.id}"
   end
 
   def have_username(user)
