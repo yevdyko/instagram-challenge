@@ -37,6 +37,7 @@ group :test do
   gem 'coveralls', require: false
   gem 'selenium-webdriver'
   gem 'orderly'
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :development do
