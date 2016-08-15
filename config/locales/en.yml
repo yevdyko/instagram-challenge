@@ -52,7 +52,6 @@ en:
     create:
       alert: "Check the comment form. Something went wrong."
     destroy:
-      link: "Delete"
       confirm: "Are you sure?"
     owned_comment:
       alert: "That comment doesn't belong to you!"
