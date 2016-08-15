@@ -35,6 +35,7 @@ group :test do
   gem 'database_cleaner'
   gem 'coveralls', require: false
   gem 'selenium-webdriver'
+  gem 'orderly'
 end
 
 group :development do

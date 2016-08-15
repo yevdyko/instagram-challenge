@@ -41,6 +41,9 @@ en:
     owned_post:
       alert: "That post doesn't belong to you!"
 
+  paginator:
+    button: "Load more"
+
   comments:
     add: "Add a comment..."
     submit: "New comment"
