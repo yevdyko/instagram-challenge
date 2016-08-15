@@ -5,10 +5,11 @@ Style/AccessModifierIndentation:
 
 Style/AccessorMethodName:
   Description: Check the naming of accessor methods for get_/set_.
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#accessor_mutator_method_names'
   Enabled: true
 
 Style/Alias:
-  Description: 'Use alias_method instead of alias.'
+  Description: 'Use alias instead of alias_method.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#alias-method'
   Enabled: true
 
@@ -120,7 +121,6 @@ Style/CommandLiteral:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-x'
   Enabled: true
 
-
 Style/ConstantName:
   Description: 'Constants should use SCREAMING_SNAKE_CASE.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#screaming-snake-case'
@@ -131,14 +131,17 @@ Style/DefWithParentheses:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#method-parens'
   Enabled: true
 
-Style/DeprecatedHashMethods:
-  Description: 'Checks for use of deprecated Hash methods.'
+Style/PreferredHashMethods:
+  Description: 'Checks use of `has_key?` and `has_value?` Hash methods.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#hash-key'
   Enabled: true
 
 Style/Documentation:
   Description: 'Document classes and non-namespace modules.'
   Enabled: true
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
 
 Style/DotPosition:
   Description: 'Checks the position of the dot in multi-line method calls.'
@@ -167,7 +170,6 @@ Style/EndBlock:
   Description: 'Avoid the use of END blocks.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-END-blocks'
   Enabled: true
-
 
 Style/EvenOdd:
   Description: 'Favor the use of Fixnum#even? && Fixnum#odd?'
@@ -252,12 +254,9 @@ Style/MethodCallParentheses:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-args-no-parens'
   Enabled: true
 
-
 Style/MethodName:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#parens-no-spaces'
   Enabled: true
-
-
 
 Style/ModuleFunction:
   Description: 'Checks for usage of `extend self` in modules.'
@@ -334,7 +333,6 @@ Style/NumericLiterals:
                  readability.
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#underscores-in-numerics'
   Enabled: true
-
 
 Style/OpMethod:
   Description: 'When defining binary operators, name the argument other.'
@@ -476,7 +474,6 @@ Style/VariableName:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#snake-case-symbols-methods-vars'
   Enabled: true
 
-
 Style/UnlessElse:
   Description: >-
                  Do not use unless with else. Rewrite these with the positive
@@ -515,21 +512,9 @@ Style/WhileUntilDo:
   Description: 'Checks for redundant do after while or until.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-multiline-while-do'
   Enabled: true
-# enable for later challenge
 
-  # Align ends correctly.
-Lint/EndAlignment:
-  # The value `keyword` means that `end` should be aligned with the matching
-  # keyword (if, while, etc.).
-  # The value `variable` means that in assignments, `end` should be aligned
-  # with the start of the variable on the left hand side of `=`. In all other
-  # situations, `end` should still be aligned with the keyword.
-  AlignWith: keyword
-  SupportedStyles:
-    - keyword
-    - variable
-  AutoCorrect: false
-  Enabled: true
+#################### Lint ################################
+### Warnings
 
 Lint/AmbiguousOperator:
   Description: >-
@@ -604,18 +589,6 @@ Lint/EndInMethod:
   Description: 'END blocks should not be placed inside method definitions.'
   Enabled: true
 
-Lint/DefEndAlignment:
-  # The value `def` means that `end` should be aligned with the def keyword.
-  # The value `start_of_line` means that `end` should be aligned with method
-  # calls like `private`, `public`, etc, if present in front of the `def`
-  # keyword on the same line.
-  AlignWith: start_of_line
-  SupportedStyles:
-    - start_of_line
-    - def
-  AutoCorrect: false
-  Enabled: true
-
 Lint/RescueException:
   Description: 'Avoid rescuing the Exception class.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-blind-rescues'
@@ -648,6 +621,8 @@ Lint/UselessAssignment:
   Description: 'Checks for useless assignment to a local variable.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#underscore-unused-vars'
   Enabled: true
+
+#################### Metrics ################################
 
 Metrics/AbcSize:
   Description: >-
@@ -696,6 +671,8 @@ Metrics/PerceivedComplexity:
                  human reader.
   Enabled: true
 
+##################### Rails ##################################
+
 Rails/ActionFilter:
   Description: 'Enforces consistent use of action filter methods.'
   Enabled: true
@@ -704,10 +681,6 @@ Rails/Date:
   Description: >-
                   Checks the correct usage of date aware methods,
                   such as Date.today, Date.current etc.
-  Enabled: true
-
-Rails/DefaultScope:
-  Description: 'Checks if the argument passed to default_scope is a block.'
   Enabled: true
 
 Rails/Delegate:
