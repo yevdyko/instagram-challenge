@@ -1,6 +1,6 @@
 .comment
   .username
-    = link_to comment.user.username, profile_path(post.user.username)
+    = link_to comment.user.username, profile_path(comment.user.username)
   .comment-content
     = comment.thoughts
   - if comment.user == current_user

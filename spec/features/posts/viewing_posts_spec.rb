@@ -34,7 +34,7 @@ feature 'Viewing posts' do
 
     visit root_path
 
-    travel_to Time.now do
+    travel_to Time.zone.now do
       expect(page).to have_content '12 minutes ago'
       expect(page).to have_content 'about 4 hours ago'
       expect(page).to have_content '5 years ago'

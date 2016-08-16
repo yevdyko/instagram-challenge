@@ -70,14 +70,15 @@ feature 'Comments' do
   # So that I can see a profile of user who commented on my post
   # I want to link user's profile to the username in comment
   context 'viewing comments' do
-    given!(:message) { create :comment, user: user, post: post }
+    given(:user_two) { create :user }
+    given!(:message) { create :comment, user: user_two, post: post }
 
     scenario 'can see a profile of user who commented on my post' do
       visit root_path
 
-      first('.comment').click_link user.username
+      first('.comment').click_link user_two.username
 
-      expect(page).to have_current_path profile_path(user.username)
+      expect(page).to have_current_path profile_path(user_two.username)
     end
   end
 end
