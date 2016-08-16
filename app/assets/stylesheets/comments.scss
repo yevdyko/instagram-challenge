@@ -13,8 +13,9 @@
 .comment-content {
   border: medium none;
   color: $color-darkgrey;
+  display: inline;
   font-size: 15px;
-  line-height: 18px;
+  line-height: 1.2;
   outline: none;
   width: 100%;
 }
@@ -31,17 +32,13 @@
     font-weight: 600;
     margin-right: 0.3em;
   }
+}
 
-  .comment-content {
-    display: inline;
-  }
+.delete-comment {
+  float: right;
+}
 
-  .delete-comment {
-    float: right;
-  }
-
-  .delete-comment-icon {
-    color: $color-black;
-    margin-top: 1px;
-  }
+.delete-comment-icon {
+  color: $color-black;
+  margin-top: 2px;
 }

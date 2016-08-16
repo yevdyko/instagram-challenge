@@ -2,14 +2,22 @@
   margin-bottom: 7px;
   margin-top: 20px;
 
-  .username a:hover, a:focus {
-    text-decoration: none;
+  .username a {
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
   }
 }
 
 .like,
-.like-button a:hover, a:focus {
+.like-button a {
   color: $color-heart;
-  outline: none;
-  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
 }
