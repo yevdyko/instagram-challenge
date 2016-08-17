@@ -1,0 +1,23 @@
+.likes {
+  margin-bottom: 7px;
+  margin-top: 20px;
+
+  .username a {
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}
+
+.like,
+.like-button a {
+  color: $color-heart;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
+}

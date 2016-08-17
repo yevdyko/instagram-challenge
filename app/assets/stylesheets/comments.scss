@@ -1,3 +1,44 @@
-// Place all the styles related to the comments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.comment-like-form {
+  align-items: center;
+  border-top: 1px solid $color-azure;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 24px;
+  margin-right: 24px;
+  margin-top: 10px;
+  min-height: 68px;
+  padding-top: 24px;
+}
+
+.comment-content {
+  border: medium none;
+  color: $color-darkgrey;
+  display: inline;
+  font-size: 15px;
+  line-height: 1.2;
+  outline: none;
+  width: 100%;
+}
+
+.comment-submit-button {
+  left: -9999px;
+  position: absolute;
+}
+
+.comment {
+  margin-top: 7px;
+
+  .username {
+    font-weight: 600;
+    margin-right: 0.3em;
+  }
+}
+
+.delete-comment {
+  float: right;
+}
+
+.delete-comment-icon {
+  color: $color-black;
+  margin-top: 2px;
+}

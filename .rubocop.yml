@@ -2,13 +2,16 @@ AllCops:
   DisabledByDefault: true
   DisplayCopNames: true
   DisplayStyleGuide: true
-  RunRailsCops: true
   Exclude:
     - 'spec/spec_helper.rb'
     - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
     - 'bin/**/*'
+  TargetRubyVersion: 2.3
+
+Rails:
+ Enabled: true
 
 inherit_from:
   - enabled.yml

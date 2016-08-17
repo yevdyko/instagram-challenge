@@ -1,0 +1,21 @@
+.posts-wrapper
+  .row.profile-header
+    .col-xs-6
+      .img-circle
+        = profile_avatar_select(@user)
+    .col-xs-6.profile-details
+      .username-and-follow
+        %h2.profile-username
+          = @user.username
+        %span
+          - if @user == current_user
+            = link_to t('profiles.show.edit'),
+                      edit_profile_path(@user.username),
+                      class: 'btn edit-btn'
+      %p.profile-bio
+        = @user.bio
+      .user-statistics
+        %p
+          = pluralize @user.posts.count, 'post'
+- @posts.each do |post|
+  = render 'posts/post', post: post

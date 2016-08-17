@@ -2,28 +2,32 @@ require 'coveralls'
 Coveralls.wear!('rails')
 
 ENV['RAILS_ENV'] ||= 'test'
-require 'spec_helper'
+
 require File.expand_path('../../config/environment', __FILE__)
+abort("The Rails environment is running in production mode!") if Rails.env.production?
+
+require 'spec_helper'
+
 require 'rspec/rails'
 require 'capybara/rails'
 require 'selenium-webdriver'
 
-# Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |file| require file }
 
-Dir[Rails.root.join('spec/helpers/**/*.rb')].each { |f| require f }
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-
-# Checks for pending migration and applies them before tests are run.
-# If you are not using ActiveRecord, you can remove this line.
-ActiveRecord::Migration.maintain_test_schema!
+module Features
+  include AuthHelpers
+  include PostsHelpers
+  include CommentsHelpers
+  include LikesHelpers
+  include ProfilesHelpers
+end
 
 RSpec.configure do |config|
-  config.include AuthHelpers, type: :feature
-  config.include PostHelpers, type: :feature
-  config.include CommentHelpers, type: :feature
-
+  config.include Features, type: :feature
+  config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
-
   config.filter_rails_from_backtrace!
 end
+
+ActiveRecord::Migration.maintain_test_schema!
+Capybara.javascript_driver = :webkit
