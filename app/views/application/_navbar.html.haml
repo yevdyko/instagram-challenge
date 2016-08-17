@@ -9,10 +9,12 @@
           %li
             = link_to t('application.header.create_post'), new_post_path
           %li
-            = link_to t('application.header.logout'), destroy_user_session_path,
-                                                      method: :delete
+            = link_to t('application.header.logout'),
+                      destroy_user_session_path,
+                      method: :delete
         - else
           %li
             = link_to t('application.header.login'), new_user_session_path
           %li
-            = link_to t('application.header.signup'), new_user_registration_path
+            = link_to t('application.header.signup'),
+                      new_user_registration_path

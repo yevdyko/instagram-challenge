@@ -34,4 +34,12 @@ module PostsHelpers
   def have_description(text)
     have_css('.description-text', text: text.description)
   end
+
+  def have_displayed_posts(count)
+    have_css('.posts .post', count: count)
+  end
+
+  def have_pagination_button
+    have_css('.paginator')
+  end
 end

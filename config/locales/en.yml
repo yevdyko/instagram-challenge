@@ -55,3 +55,16 @@ en:
       confirm: "Are you sure?"
     owned_comment:
       alert: "That comment doesn't belong to you!"
+
+  profiles:
+    show:
+      edit: "Edit Profile"
+    edit:
+      title:
+        image: "Change your profile image:"
+        bio: "Update your bio:"
+      submit: "Update Profile"
+    update:
+      notice: "Your profile has been updated."
+    owned_profile:
+      alert: "That profile doesn't belong to you!"

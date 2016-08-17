@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_user
-  before_action :owned_profile, only: [:edit, :update]
+  before_action :owned_profile, only: %i(edit update)
 
   def show
     @posts = User.find_by(username: params[:username]).posts.order(created_at: :desc)
@@ -11,8 +11,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.update(profile_params)
-      flash[:success] = 'Your profile has been updated.'
-      redirect_to profile_path(@user.username)
+      redirect_to profile_path(@user.username), notice: t('profiles.update.notice')
     else
       flash[:error] = @user.errors.full_messages.to_sentence
       render :edit
@@ -27,9 +26,9 @@ class ProfilesController < ApplicationController
 
   def owned_profile
     @user = User.find_by(username: params[:username])
+
     unless current_user == @user
-      flash[:alert] = "That profile doesn't belong to you!"
-      redirect_to root_path
+      redirect_to root_path, alert: t('profiles.owned_profile.alert')
     end
   end
 
