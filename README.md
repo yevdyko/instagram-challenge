@@ -76,6 +76,18 @@ I want to see the username in the URL
 As a User
 So that I can visit a profile page
 I want to see only the specified user's post
+
+As a User
+So that I can visit a edit profile page
+I want to see the edit profile route
+
+As a User
+So that I can change my own profile details
+I want to edit my profile
+
+As a User
+So that I can only change my own profile details
+I want to prevent other users from editing my profile
 ```
 
 ## Setup
