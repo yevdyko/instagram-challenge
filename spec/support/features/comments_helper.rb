@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 module CommentsHelpers
   def write_comment_with(message)
     visit root_path

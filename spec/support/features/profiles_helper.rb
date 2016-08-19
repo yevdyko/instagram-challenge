@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 module ProfilesHelpers
   def have_bio(user)
     have_css('.profile-bio', text: user.bio)

@@ -1,0 +1,14 @@
+.dropdown.notification-dropdown
+  %button.btn.btn-default.dropdown-toggle{ type: 'button',
+                                           id: 'dropdownMenu1',
+                                           data: { toggle: 'dropdown' },
+                                           'aria-haspopup': true,
+                                           'aria-expanded': true }
+    1
+    %span.glyphicon.glyphicon-flag
+  %ul.dropdown-menu{ 'aria-labelledby': 'dropdownMenu1' }
+    %li.dropdown-header.text-center Notifications
+    %li
+      %a{ href: '#' } Notification 1
+    %li
+      %a{ href: '#' } Notification 2
