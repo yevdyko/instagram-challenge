@@ -1,12 +1,13 @@
-require "rails_helper"
+require 'rails_helper'
 
 describe Post do
-  context "associations" do
-    it { is_expected.to belong_to :user }
+  context 'associations' do
+    it { is_expected.to belong_to(:user) }
     it { is_expected.to have_many(:comments).dependent(:destroy) }
+    it { is_expected.to have_many(:notifications).dependent(:destroy) }
   end
 
-  context "validations" do
+  context 'validations' do
     it { is_expected.to validate_presence_of(:image) }
     it { is_expected.to validate_presence_of(:user_id) }
     it do

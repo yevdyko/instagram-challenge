@@ -4,7 +4,7 @@
                                            data: { toggle: 'dropdown' },
                                            'aria-haspopup': true,
                                            'aria-expanded': true }
-    1
+    = current_user.notifications.count
     %span.glyphicon.glyphicon-flag
   %ul.dropdown-menu{ 'aria-labelledby': 'dropdownMenu1' }
     %li.dropdown-header.text-center Notifications
