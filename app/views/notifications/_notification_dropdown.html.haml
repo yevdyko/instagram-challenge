@@ -4,11 +4,11 @@
                                            data: { toggle: 'dropdown' },
                                            'aria-haspopup': true,
                                            'aria-expanded': true }
-    = current_user.notifications.count
+    = current_user.notifications.where(read: false).count
     %span.glyphicon.glyphicon-flag
   %ul.dropdown-menu{ 'aria-labelledby': 'dropdownMenu1' }
-    %li.dropdown-header.text-center Notifications
-    %li
-      %a{ href: '#' } Notification 1
-    %li
-      %a{ href: '#' } Notification 2
+    %li.text-center Notifications
+    %li.divider{ role: 'separator' }
+    = render current_user.notifications.where(read: false)
+    %li.divider{ role: 'separator' }
+    %li.text-center See All
