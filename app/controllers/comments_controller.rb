@@ -51,6 +51,7 @@ class CommentsController < ApplicationController
     Notification.create(user_id: post.user.id,
                         notified_by_id: current_user.id,
                         post_id: post.id,
+                        identifier: @comment.id,
                         notice_type: 'comment')
   end
 end

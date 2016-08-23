@@ -1,20 +1,17 @@
 require 'rails_helper'
 
-feature 'Notifications' do
-  given(:user)     { create :user }
-  given(:user_two) { create :user }
-  given!(:post)    { create(:post, user: user) }
+feature 'Viewing notifications' do
+  given(:user)  { create :user }
+  given!(:post) { create(:post, user: user) }
+  given(:notified_by_user) { create :user }
 
   background do
-    built_messages = build_list(:comment, 10, post: post, user: user_two)
+    create_list(:notification,
+                10,
+                post: post,
+                user: user,
+                notified_by: notified_by_user)
 
-    log_in_as user_two
-
-    built_messages.each do |message|
-      write_comment_with message
-    end
-
-    log_out
     log_in_as user
   end
 
@@ -32,7 +29,7 @@ feature 'Notifications' do
   scenario 'can see only unread notifications in the navbar' do
     6.times do
       click_link t('notifications.dropdown-menu.item',
-                   username: user_two.username,
+                   username: notified_by_user.username,
                    notice_type: 'comment'),
                    match: :first
     end
@@ -56,5 +53,27 @@ feature 'Notifications' do
 
     expect(page).to have_current_path notifications_path
     expect(page).to have_displayed_notifications(10)
+  end
+
+  # As a User
+  # So that I can better appreciate the context of a notification
+  # I want to see how long ago notification was created
+  scenario 'can see a notification with a created date', js: true do
+    different_times = [12.minutes.ago, 4.hours.ago, 5.years.ago]
+    different_times.each do |time|
+      create(:notification,
+             user: user,
+             post: post,
+             notified_by: notified_by_user,
+             created_at: time)
+    end
+
+    visit notifications_path
+
+    travel_to Time.zone.now do
+      expect(page).to have_content '12 minutes ago'
+      expect(page).to have_content 'about 4 hours ago'
+      expect(page).to have_content '5 years ago'
+    end
   end
 end
