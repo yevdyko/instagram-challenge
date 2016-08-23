@@ -5,3 +5,14 @@
     border: 0;
   }
 }
+
+.notification-index-list {
+  list-style: none;
+  margin-top: 20px;
+
+  li {
+    background-color: $color-white;
+    margin-top: 10px;
+    padding: 15px;
+  }
+}

@@ -10,4 +10,8 @@ module NotificationsHelpers
   def have_unread_notifications(count)
     have_css('.dropdown-menu .notification', count: count)
   end
+
+  def have_displayed_notifications(count)
+    have_css('.notification-index-list .notification', count: count)
+  end
 end

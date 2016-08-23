@@ -1,5 +1,6 @@
 %li.notification
   = link_to link_through_path(notification) do
-    #{notification.notified_by.username} has
-    #{notification.notice_type}ed on your post
+    = t('notifications.dropdown-menu.item',
+        username: notification.notified_by.username,
+        notice_type: notification.notice_type)
 

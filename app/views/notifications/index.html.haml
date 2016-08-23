@@ -2,5 +2,6 @@
   .row
     .col-md-6.col-md-offset-3
       %ul.notification-index-list
-        %li.text-center Notifications
+        %li.text-center
+          = t('notifications.index.header')
         = render @notifications
