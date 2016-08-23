@@ -9,6 +9,5 @@
   %ul.dropdown-menu{ 'aria-labelledby': 'dropdownMenu1' }
     %li.text-center Notifications
     %li.divider{ role: 'separator' }
-    = render current_user.notifications.where(read: false)
+    = render current_user.notifications.where(read: false).order(created_at: :desc).last(5)
     %li.divider{ role: 'separator' }
-    %li.text-center See All
