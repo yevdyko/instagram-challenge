@@ -76,3 +76,4 @@ en:
       link: "See All"
     index:
       header: "Notifications"
+      empty: "There are no notifications"

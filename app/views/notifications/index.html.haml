@@ -4,4 +4,7 @@
       %ul.notification-index-list
         %li.text-center
           = t('notifications.index.header')
-        = render @notifications
+        - if @notifications.any?
+          = render @notifications
+        - else
+          = t('notifications.index.empty')
