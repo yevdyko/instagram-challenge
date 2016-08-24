@@ -1,12 +1,13 @@
-require "rails_helper"
+require 'rails_helper'
 
 describe User do
-  context "associations" do
+  context 'associations' do
     it { is_expected.to have_many(:posts).dependent(:destroy) }
     it { is_expected.to have_many(:comments).dependent(:destroy) }
+    it { is_expected.to have_many(:notifications).dependent(:destroy) }
   end
 
-  context "validations" do
+  context 'validations' do
     it { is_expected.to validate_presence_of(:username) }
   end
 end

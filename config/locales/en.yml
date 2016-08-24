@@ -68,3 +68,11 @@ en:
       notice: "Your profile has been updated."
     owned_profile:
       alert: "That profile doesn't belong to you!"
+
+  notifications:
+    dropdown-menu:
+      header: "Notifications"
+      item: "%{username} has %{notice_type}ed on your post"
+      link: "See All"
+    index:
+      header: "Notifications"

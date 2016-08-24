@@ -20,6 +20,7 @@ module Features
   include CommentsHelpers
   include LikesHelpers
   include ProfilesHelpers
+  include NotificationsHelpers
 end
 
 RSpec.configure do |config|
