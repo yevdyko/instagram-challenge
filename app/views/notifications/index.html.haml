@@ -1,0 +1,10 @@
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      %ul.notification-index-list
+        %li.text-center
+          = t('notifications.index.header')
+        - if @notifications.any?
+          = render @notifications
+        - else
+          = t('notifications.index.empty')

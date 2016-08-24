@@ -7,6 +7,8 @@
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li
+            = render 'notifications/notification_dropdown'
+          %li
             = link_to t('application.header.create_post'), new_post_path
           %li
             = link_to t('application.header.logout'),

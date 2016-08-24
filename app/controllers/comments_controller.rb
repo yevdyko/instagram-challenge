@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
+      create_notification @post
       respond_to do |format|
         format.html { redirect_to root_path }
         format.js
@@ -39,8 +40,18 @@ class CommentsController < ApplicationController
 
   def owned_comment
     @comment = current_user.comments.find_by(id: params[:id])
+
     if @comment.nil?
       redirect_to root_path, alert: t('comments.owned_comment.alert')
     end
+  end
+
+  def create_notification(post)
+    return if post.user.id == current_user.id
+    Notification.create(user_id: post.user.id,
+                        notified_by_id: current_user.id,
+                        post_id: post.id,
+                        identifier: @comment.id,
+                        notice_type: 'comment')
   end
 end

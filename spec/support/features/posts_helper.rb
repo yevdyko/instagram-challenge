@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 module PostsHelpers
   def create_post_with(text)
     visit root_path
