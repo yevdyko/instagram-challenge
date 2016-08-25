@@ -12,6 +12,10 @@ module NotificationsHelpers
   end
 
   def have_displayed_notifications(count)
-    have_css('.notification-index-list .notification', count: count)
+    have_css('.notifications .notification', count: count)
+  end
+
+  def have_paginator_link
+    have_css('.paginator-link')
   end
 end

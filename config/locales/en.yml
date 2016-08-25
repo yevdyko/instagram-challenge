@@ -43,6 +43,7 @@ en:
 
   paginator:
     button: "Load more"
+    link: "All %{items}"
 
   comments:
     add: "Add a comment..."
@@ -76,3 +77,4 @@ en:
       link: "See All"
     index:
       header: "Notifications"
+      empty: "There are no notifications"

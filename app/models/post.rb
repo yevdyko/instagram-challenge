@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
   acts_as_votable
 
+  paginates_per 12
+
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy

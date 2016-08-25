@@ -1,4 +1,6 @@
 class Notification < ActiveRecord::Base
+  paginates_per 20
+
   belongs_to :user
   belongs_to :notified_by, class_name: 'User'
   belongs_to :post
