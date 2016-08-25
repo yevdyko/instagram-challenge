@@ -43,6 +43,7 @@ en:
 
   paginator:
     button: "Load more"
+    link: "All %{items}"
 
   comments:
     add: "Add a comment..."

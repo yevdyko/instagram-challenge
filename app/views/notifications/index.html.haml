@@ -1,10 +1,12 @@
-.container
-  .row
-    .col-md-6.col-md-offset-3
-      %ul.notification-index-list
-        %li.text-center
-          = t('notifications.index.header')
-        - if @notifications.any?
-          = render @notifications
-        - else
-          = t('notifications.index.empty')
+.notifications
+  .notification-head
+    = t('notifications.index.header')
+  - if @notifications.any?
+    = render 'notifications'
+  - else
+    = t('notifications.index.empty')
+  .paginator-link.text-center
+    = link_to_next_page @notifications, t('paginator.link',
+                                        items: 'notifications'),
+                                        remote: true,
+                                        class: 'all-notifications'
