@@ -29,7 +29,7 @@ feature 'Viewing notifications' do
     end
 
     # As a User
-    # So that I can find out when someone comments on my post
+    # So that I can find out when someone has reacted to my post
     # I want to display the notification count on navbar
     scenario 'can see the number of notifications on navbar' do
       expect(page).to have_icon_flag
@@ -41,9 +41,8 @@ feature 'Viewing notifications' do
     # I want to mark visited notifications as read
     scenario 'can see only unread notifications in the navbar' do
       6.times do
-        click_link t('notifications.dropdown-menu.item',
-                     username: notified_by_user.username,
-                     notice_type: 'comment'),
+        click_link t('notifications.item.comment',
+                     username: notified_by_user.username),
                      match: :first
       end
 
@@ -88,6 +87,38 @@ feature 'Viewing notifications' do
         expect(page).to have_content 'about 4 hours ago'
         expect(page).to have_content '5 years ago'
       end
+    end
+  end
+
+  # As a User
+  # So that I can find out when someone comments on my post
+  # I want to see notifications
+  context 'can see notifications' do
+    scenario "when someone comments on user's posts" do
+      create(:notification,
+             post: post,
+             user: user,
+             notified_by: notified_by_user,
+             notice_type: 'comment')
+
+      visit notifications_path
+
+      expect(page).to have_notice_type 'comment'
+    end
+
+    # As a User
+    # So that I can find out when someone likes my post
+    # I want to see notifications
+    scenario "when someone likes user's posts" do
+      create(:notification,
+             post: post,
+             user: user,
+             notified_by: notified_by_user,
+             notice_type: 'like')
+
+      visit notifications_path
+
+      expect(page).to have_notice_type 'like'
     end
   end
 end
