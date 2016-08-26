@@ -18,4 +18,10 @@ module NotificationsHelpers
   def have_paginator_link
     have_css('.paginator-link')
   end
+
+  def have_notice_type(type)
+    have_css('.notifications .notification',
+             text: t("notifications.item.#{type}",
+             username: notified_by_user.username))
+  end
 end

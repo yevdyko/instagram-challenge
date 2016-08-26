@@ -73,8 +73,10 @@ en:
   notifications:
     dropdown-menu:
       header: "Notifications"
-      item: "%{username} has %{notice_type}ed on your post"
       link: "See All"
     index:
       header: "Notifications"
       empty: "There are no notifications"
+    item:
+      comment: "%{username} left a comment on your photo."
+      like: "%{username} liked your photo."

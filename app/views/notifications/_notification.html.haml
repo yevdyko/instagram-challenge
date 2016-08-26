@@ -1,7 +1,6 @@
 .notification
   = link_to link_through_path(notification) do
-    = t('notifications.dropdown-menu.item',
-        username: notification.notified_by.username,
-        notice_type: notification.notice_type)
+    = t("notifications.item.#{notification.notice_type}",
+        username: notification.notified_by.username)
     .time-ago
       = timeago_tag notification.created_at, nojs: true, force: true
