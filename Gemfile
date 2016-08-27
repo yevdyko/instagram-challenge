@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'rails', '4.2.7'
+gem 'rails', '5.0'
 gem 'pg'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'paperclip'
-gem 'devise', '3.5.2'
+gem 'devise'
 gem 'launchy'
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -38,6 +38,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'orderly'
   gem 'codeclimate-test-reporter', require: nil
+  gem 'rails-controller-testing'
 end
 
 group :development do
