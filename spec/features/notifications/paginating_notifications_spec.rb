@@ -6,9 +6,9 @@ require 'rails_helper'
 feature 'Paginating notifications' do
   given(:user)  { create :user }
   given!(:post) { create :post }
-  given!(:notified_by_user) { create :user }
+  given(:notified_by_user) { create :user }
 
-  scenario 'with less than one page of posts', js: true do
+  scenario 'with less than one page of notifications', js: true do
     create_list(:notification,
                 10,
                 post: post,
@@ -16,7 +16,6 @@ feature 'Paginating notifications' do
                 notified_by: notified_by_user)
 
     log_in_as user
-
     visit notifications_path
 
     expect(page).to have_displayed_notifications(10)
@@ -31,7 +30,6 @@ feature 'Paginating notifications' do
                 notified_by: notified_by_user)
 
     log_in_as user
-
     visit notifications_path
 
     expect(page).to have_displayed_notifications(20)
@@ -45,9 +43,7 @@ feature 'Paginating notifications' do
                 notified_by: notified_by_user)
 
     log_in_as user
-
     visit notifications_path
-
     click_link t('paginator.link', items: 'notifications')
 
     expect(page).to have_displayed_notifications(4)
