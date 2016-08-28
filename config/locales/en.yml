@@ -60,6 +60,8 @@ en:
   profiles:
     show:
       edit: "Edit Profile"
+      follow: "Follow"
+      following: "Following"
     edit:
       title:
         image: "Change your profile image:"

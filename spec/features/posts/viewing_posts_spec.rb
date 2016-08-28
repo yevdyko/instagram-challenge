@@ -5,7 +5,6 @@ require 'rails_helper'
 # I want to see all pictures in reverse chronological order
 feature 'Viewing posts' do
   given(:user)  { create :user }
-  given!(:post) { create :post, user: user }
 
   scenario 'can see posts in reverse chronological order on the index' do
     old_post = create(:post, created_at: 2.days.ago)
@@ -17,8 +16,9 @@ feature 'Viewing posts' do
   end
 
   scenario 'can view an individual post' do
-    log_in_as user
+    post = create(:post, user: user)
 
+    log_in_as user
     find(:xpath, "//a[contains(@href,'posts/#{post.id}')]", match: :first).click
 
     expect(page).to have_current_path post_path(post.id)
@@ -45,8 +45,9 @@ feature 'Viewing posts' do
   # So that I can redirect to the user profile by clicking on the username in caption
   # I want to link username in post's description and user profile page
   scenario 'can redirect to the user profile by clicking on the username in caption' do
-    visit root_path
+    create(:post, user: user)
 
+    log_in_as user
     first('.description-content').click_link user.username
 
     expect(page).to have_current_path profile_path(user.username)

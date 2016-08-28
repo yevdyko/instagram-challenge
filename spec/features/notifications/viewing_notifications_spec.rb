@@ -4,10 +4,7 @@ feature 'Viewing notifications' do
   given(:user)  { create :user }
   given!(:post) { create(:post, user: user) }
   given(:notified_by_user) { create :user }
-
-  background do
-    log_in_as user
-  end
+  background { log_in_as user }
 
   context 'no notifications have been added' do
     scenario 'displays a message that there are no notifications' do
