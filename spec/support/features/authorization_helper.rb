@@ -1,9 +1,6 @@
-require 'rails_helper'
-
 module AuthHelpers
   def sign_up_as(user)
     visit root_path
-    
     click_link t('application.header.signup')
     fill_in t('registration.email'), with: user.email
     fill_in t('registration.username'), with: user.username
@@ -14,7 +11,6 @@ module AuthHelpers
 
   def log_in_as(user)
     visit root_path
-    
     click_link t('application.header.login')
     fill_in t('registration.email'), with: user.email
     fill_in t('registration.password'), with: user.password

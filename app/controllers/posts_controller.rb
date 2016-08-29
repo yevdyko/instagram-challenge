@@ -47,8 +47,9 @@ class PostsController < ApplicationController
 
   def like
     if @post.liked_by current_user
+      create_notification @post
       respond_to do |format|
-        format.html { redirect_to :back }
+        format.html { redirect_back(fallback_location: root_path) }
         format.js
       end
     end
@@ -57,7 +58,7 @@ class PostsController < ApplicationController
   def unlike
     if @post.unliked_by current_user
       respond_to do |format|
-        format.html { redirect_to :back }
+        format.html { redirect_back(fallback_location: root_path) }
         format.js
       end
     end
@@ -78,5 +79,14 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def create_notification(post)
+    return if post.user.id == current_user.id
+    Notification.create(user_id: post.user.id,
+                        notified_by_id: current_user.id,
+                        post_id: post.id,
+                        identifier: post.id,
+                        notice_type: 'like')
   end
 end

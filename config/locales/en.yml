@@ -43,6 +43,7 @@ en:
 
   paginator:
     button: "Load more"
+    link: "All %{items}"
 
   comments:
     add: "Add a comment..."
@@ -59,6 +60,8 @@ en:
   profiles:
     show:
       edit: "Edit Profile"
+      follow: "Follow"
+      following: "Following"
     edit:
       title:
         image: "Change your profile image:"
@@ -68,3 +71,14 @@ en:
       notice: "Your profile has been updated."
     owned_profile:
       alert: "That profile doesn't belong to you!"
+
+  notifications:
+    dropdown-menu:
+      header: "Notifications"
+      link: "See All"
+    index:
+      header: "Notifications"
+      empty: "There are no notifications"
+    item:
+      comment: "%{username} left a comment on your photo."
+      like: "%{username} liked your photo."

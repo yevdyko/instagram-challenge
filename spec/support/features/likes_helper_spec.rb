@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 module LikesHelpers
   def have_empty_heart_icon
     have_css('a.glyphicon-heart-empty')

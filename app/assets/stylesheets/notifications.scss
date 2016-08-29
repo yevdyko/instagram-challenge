@@ -1,0 +1,49 @@
+.notification-dropdown {
+  margin-top: 10px;
+
+  button {
+    border: 0;
+  }
+}
+
+.dropdown-menu {
+  margin: 0;
+  padding: 0;
+  width: 300px;
+}
+
+.dropdown-menu-head {
+  padding: 8px;
+}
+
+.dropdown-menu-bottom {
+  border-top: 1px solid $color-lightgrey;
+  padding: 8px;
+}
+
+.notifications {
+  margin: 0 auto;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  width: 550px;
+}
+
+.notification-head {
+  background-color: $color-white;
+  color: $color-black;
+  font-size: 16px;
+  padding: 15px;
+  text-align: center;
+}
+
+.notification {
+  background-color: $color-white;
+  border-top: 1px solid $color-lightgrey;
+  padding: 15px;
+}
+
+.paginator-link {
+  background-color: $color-white;
+  border-top: 1px solid $color-lightgrey;
+  padding: 15px;
+}

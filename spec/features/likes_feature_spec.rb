@@ -1,10 +1,9 @@
 require 'rails_helper'
 
-feature 'Liking posts' do
+feature 'Liking / Unliking posts' do
   given(:user)  { create :user }
   given!(:post) { create :post, user: user }
   background { log_in_as user }
-  after { log_out }
 
   # As a User
   # So that I can add a 'Like' to the post

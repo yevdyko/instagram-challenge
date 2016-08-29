@@ -1,0 +1,3 @@
+$('.notifications').append('<%=j render 'notifications' %>');
+$('.paginator-link').html('<%=j link_to_next_page(@notifications, 'All notifications', remote: true, class: 'all-notifications') %>');
+if (!$('.all-notifications').length) { $('.paginator-link').remove(); }

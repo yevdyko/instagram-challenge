@@ -20,6 +20,7 @@ module Features
   include CommentsHelpers
   include LikesHelpers
   include ProfilesHelpers
+  include NotificationsHelpers
 end
 
 RSpec.configure do |config|
@@ -31,3 +32,4 @@ end
 
 ActiveRecord::Migration.maintain_test_schema!
 Capybara.javascript_driver = :webkit
+Capybara.default_max_wait_time = 5

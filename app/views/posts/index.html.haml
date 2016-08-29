@@ -4,7 +4,8 @@
   - else
     = t('posts.index.empty')
 
-.paginator.text-center
+.paginator.text-center#paginator
   = link_to_next_page @posts, t('paginator.button'),
                               remote: true,
-                              class: 'load-more'
+                              class: 'load-more',
+                              id: 'load-more'

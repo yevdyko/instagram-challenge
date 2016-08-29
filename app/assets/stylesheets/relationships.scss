@@ -1,0 +1,30 @@
+.follow-btn {
+  border-color: $color-btnblue;
+  color: $color-btnblue;
+  font-size: 15px;
+  font-weight: 500;
+  vertical-align: top;
+
+  &:visited,
+  &:focus,
+  &:hover {
+    color: $color-btnblue;
+  }
+}
+
+.unfollow-btn {
+  background-color: $color-btngreen;
+  border-color: $color-btngreen;
+  color: $color-white;
+  font-size: 15px;
+  font-weight: 500;
+  vertical-align: top;
+
+  &:visited,
+  &:focus,
+  &:hover {
+    background-color: $color-darkgreen;
+    border-color: $color-darkgreen;
+    color: $color-white;
+  }
+}
