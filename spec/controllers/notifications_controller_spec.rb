@@ -13,12 +13,12 @@ describe NotificationsController do
     end
 
     it 'redirects to the commented post' do
-      get :link_through, id: @notification
+      get :link_through, params: { id: @notification }
       expect(response).to redirect_to post_path(assigns(:notification))
     end
 
     it 'updates the read status to true' do
-      get :link_through, id: @notification
+      get :link_through, params: { id: @notification }
       expect(assigns(:notification).read).to be true
     end
   end

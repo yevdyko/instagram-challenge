@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   acts_as_voter
 
   validates :username, presence: true, length: { minimum: 3, maximum: 12 }
