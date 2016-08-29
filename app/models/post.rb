@@ -14,4 +14,8 @@ class Post < ApplicationRecord
   has_attached_file :image, styles: { medium: "600x" },
                     default_url: "missing.png"
   validates_attachment_content_type :image, content_type: %r{\Aimage/.*\Z}
+
+  scope :followed_users_or_owned_by, lambda { |user|
+    where('user_id = ? or user_id = ?', user.following_ids, user.id)
+  }
 end
