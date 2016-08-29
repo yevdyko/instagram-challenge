@@ -23,8 +23,8 @@
   &:visited,
   &:focus,
   &:hover {
-    border-color: $color-darkgreen;
     background-color: $color-darkgreen;
+    border-color: $color-darkgreen;
     color: $color-white;
   }
 }

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  if ($('.load-more').length == 0) {
-    $('.paginator').remove();
+  if ($('#load-more').length === 0) {
+    $('#paginator').remove();
   }
 });

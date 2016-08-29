@@ -5,8 +5,9 @@
     = render 'notifications'
   - else
     = t('notifications.index.empty')
-  .paginator-link.text-center
+  .paginator-link.text-center#paginator
     = link_to_next_page @notifications, t('paginator.link',
                                         items: 'notifications'),
                                         remote: true,
-                                        class: 'all-notifications'
+                                        class: 'all-notifications',
+                                        id: 'load-more'
