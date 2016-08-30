@@ -16,7 +16,7 @@ en:
     signup: "Sign up"
     header:
       signup: "Sign up to see photos and videos from your friends."
-      login: "Log in"
+      login: "Pixagram"
 
   posts:
     index:

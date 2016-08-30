@@ -1,0 +1,124 @@
+.container {
+  height: 100vh;
+  position: relative;
+}
+
+.panel-wrapper {
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+.panel-auth {
+  width: 350px;
+  background-color: $color-white;
+  border: 1px solid $color-almond-grey;
+  border-radius: 1px;
+  margin: 0 0 10px;
+  padding: 10px 0;
+}
+
+.logo-auth {
+  text-align: center;
+  margin: 20px auto 10px;
+
+  img {
+    height: 53px;
+    width: 161px;
+  }
+}
+
+.header-auth {
+  font-size: 17px;
+  line-height: 20px;
+  margin: 0 40px 10px;
+  text-align: center;
+  color: $color-header-grey;
+  font-weight: 500;
+}
+
+.form-auth {
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin: 0 40px;
+  margin-bottom: 6px;
+}
+
+.panel-body {
+  padding: 0;
+}
+
+.input-auth {
+  background-color: $color-white;
+  border: 1px solid $color-input-border-grey;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: $color-black;
+  font-size: 14px;
+  padding: 9px 8px 7px;
+  outline: none;
+  height: 33px;
+  border-radius: 3px;
+
+  &:focus {
+    border: 1px solid $color-input-border-dark-grey;
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.button-auth {
+  display: block;
+  margin: 10px 40px 14px;
+}
+
+.text-auth {
+  color: $color-black;
+  font-size: 14px;
+  line-height: 1;
+  margin: 15px;
+  text-align: center;
+}
+
+.btn-auth {
+  height: 31px;
+  width: 100%;
+  font-size: 15px;
+  line-height: 29px;
+  padding: 0 11px;
+  font-weight: 500;
+  background-color: $color-btnblue;
+  color: $color-white;
+  border-radius: 3px;
+  border: 1px solid $color-btnblue;
+  outline: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:hover {
+    color: $color-white;
+    background-color: $color-btnblue;
+    border: 1px solid $color-btnblue;
+  }
+
+  &:focus,
+  &:active,
+  &:active:focus {
+    opacity: 0.5;
+    color: $color-white;
+    background-color: $color-btnblue;
+    border: 1px solid $color-btnblue;
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+
+
+
+
+
+
