@@ -13,10 +13,10 @@ en:
     password: "Password"
     password_confirmation: "Confirm Password"
     login: "Log in"
+    login_with_facebook: "Log in with Facebook"
     signup: "Sign up"
     header:
       signup: "Sign up to see photos and videos from your friends."
-      login: "Pixagram"
 
   posts:
     index:

@@ -4,24 +4,24 @@
 }
 
 .panel-wrapper {
+  left: 50%;
   position: absolute;
   top: 50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
 .panel-auth {
-  width: 350px;
   background-color: $color-white;
   border: 1px solid $color-almond-grey;
   border-radius: 1px;
   margin: 0 0 10px;
   padding: 10px 0;
+  width: 350px;
 }
 
 .logo-auth {
-  text-align: center;
   margin: 20px auto 10px;
+  text-align: center;
 
   img {
     height: 53px;
@@ -30,12 +30,12 @@
 }
 
 .header-auth {
+  color: $color-header-grey;
   font-size: 17px;
-  line-height: 20px;
+  font-weight: 500;
+  line-height: 1.2;
   margin: 0 40px 10px;
   text-align: center;
-  color: $color-header-grey;
-  font-weight: 500;
 }
 
 .form-auth {
@@ -58,21 +58,61 @@
   box-sizing: border-box;
   color: $color-black;
   font-size: 14px;
-  padding: 9px 8px 7px;
-  outline: none;
   height: 33px;
-  border-radius: 3px;
+  outline: none;
+  padding: 9px 8px 7px;
 
   &:focus {
     border: 1px solid $color-input-border-dark-grey;
-    outline: none;
     box-shadow: none;
+    outline: none;
   }
 }
 
 .button-auth {
   display: block;
   margin: 10px 40px 14px;
+
+  &--facebook {
+    margin-bottom: 0;
+    margin-top: 8px;
+  }
+}
+
+.divider-auth {
+  display: block;
+  margin: 18px 40px;
+}
+
+.horizontal-line {
+  color: $color-header-grey;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  overflow: hidden;
+  text-align: center;
+  text-transform: uppercase;
+
+  &::before,
+  &::after {
+    background-color: $color-horizontal-grey;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+  }
+
+  &::before {
+    margin-left: -50%;
+    right: 12px;
+  }
+
+  &::after {
+    left: 12px;
+    margin-right: -50%;
+  }
 }
 
 .text-auth {
@@ -83,35 +123,42 @@
   text-align: center;
 }
 
+.fa-facebook-official {
+  font-size: 19px;
+  line-height: 1.6;
+  margin-right: 4px;
+  vertical-align: top;
+}
+
 .btn-auth {
-  height: 31px;
-  width: 100%;
-  font-size: 15px;
-  line-height: 29px;
-  padding: 0 11px;
-  font-weight: 500;
   background-color: $color-btnblue;
-  color: $color-white;
-  border-radius: 3px;
   border: 1px solid $color-btnblue;
+  border-radius: 3px;
+  color: $color-white;
+  font-size: 15px;
+  font-weight: 500;
+  height: 31px;
+  line-height: 1.9;
   outline: none;
   overflow: hidden;
+  padding: 0 11px;
   text-overflow: ellipsis;
+  width: 100%;
 
   &:hover {
-    color: $color-white;
     background-color: $color-btnblue;
     border: 1px solid $color-btnblue;
+    color: $color-white;
   }
 
   &:focus,
   &:active,
   &:active:focus {
-    opacity: 0.5;
-    color: $color-white;
     background-color: $color-btnblue;
     border: 1px solid $color-btnblue;
     box-shadow: none;
+    color: $color-white;
+    opacity: 0.5;
     outline: none;
   }
 }
