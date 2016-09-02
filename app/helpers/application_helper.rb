@@ -1,3 +1,5 @@
+include FontAwesome::Rails::IconHelper
+
 module ApplicationHelper
   FLASH_MSG = {
     success: 'alert-success',
