@@ -3,6 +3,7 @@
 @import "font-awesome";
 
 @import "variables";
+@import "typography";
 @import "navbar";
 @import "posts";
 @import "comments";
@@ -16,12 +17,12 @@ html {
   height: 100%;
 }
 
-body {
-  background-color: $color-snow;
-  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+.container {
+  margin: 0 auto;
+  max-width: 1010px;
+  min-width: 860px;
+  padding: 0 40px;
 }
-
-/* ## Wrapper and styling for the new and edit views ## */
 
 .form-wrapper {
   width: 60%;
