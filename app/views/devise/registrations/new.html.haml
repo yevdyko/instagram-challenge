@@ -1,28 +1,38 @@
-.registration-bg
-  .container
-    .row
-      .col-md-4.col-md-offset-4
-        .log-in.panel
-          .panel-heading
-            %h1
-              = t('application.title')
-          = simple_form_for(resource, as: resource_name,
-                            url: registration_path(resource_name)) do |f|
-            = f.error_notification
-            %h2
-              = t('registration.header.signup')
-            .panel-body
-              = f.input :email, required: true, autofocus: true, label: false,
-                        placeholder: t('registration.email'),
-                        input_html: { class: 'input-lg' }
-              = f.input :username, required: true, label: false,
-                        placeholder: t('registration.username'),
-                        input_html: { class: 'input-lg' }
-              = f.input :password, required: true, label: false,
-                        placeholder: t('registration.password'),
-                        input_html: { class: 'input-lg' }
-              = f.input :password_confirmation, required: true, label: false,
-                        placeholder: t('registration.password_confirmation'),
-                        input_html: { class: 'input-lg' }
-              = f.button :submit, t('registration.signup'),
-                         class: 'btn-lg btn-info btn-block'
+.panel-wrapper
+  .panel-auth
+    .logo-auth
+      = image_tag("pixagram-logo.png", alt: "Pixagram")
+    = simple_form_for(resource, as: resource_name,
+                      html: { autocomplete: 'off' },
+                      url: registration_path(resource_name)) do |f|
+      = f.error_notification
+      %h4.header-auth
+        = t('registration.header.signup')
+      .panel-body
+        %span.button-auth.button-auth--facebook
+          = button_tag(class: 'btn-auth') do
+            = fa_icon 'facebook-official'
+            = t('registration.login_with_facebook')
+        .divider-auth
+          .horizontal-line
+            or
+        = f.input :email, required: true, autofocus: true, label: false,
+                  placeholder: t('registration.email'),
+                  input_html: { class: 'input-auth' }
+        = f.input :username, required: true, label: false,
+                  placeholder: t('registration.username'),
+                  input_html: { class: 'input-auth' }
+        = f.input :password, required: true, label: false,
+                  placeholder: t('registration.password'),
+                  input_html: { class: 'input-auth' }
+        = f.input :password_confirmation, required: true, label: false,
+                  placeholder: t('registration.password_confirmation'),
+                  input_html: { class: 'input-auth' }
+        %span.button-auth
+          = f.button :submit, t('registration.signup'),
+                     class: 'btn-auth'
+  .panel-auth
+    %p.text-auth
+      Have an account?
+      = link_to t('application.header.login'),
+                new_user_session_path

@@ -1,0 +1,171 @@
+.container {
+  height: 100vh;
+  position: relative;
+}
+
+.panel-wrapper {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.panel-auth {
+  background-color: $color-white;
+  border: 1px solid $color-almond-grey;
+  border-radius: 1px;
+  margin: 0 0 10px;
+  padding: 10px 0;
+  width: 350px;
+}
+
+.logo-auth {
+  margin: 20px auto 10px;
+  text-align: center;
+
+  img {
+    height: 53px;
+    width: 161px;
+  }
+}
+
+.header-auth {
+  color: $color-header-grey;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0 40px 10px;
+  text-align: center;
+}
+
+.form-auth {
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin: 0 40px;
+  margin-bottom: 6px;
+}
+
+.panel-body {
+  padding: 0;
+}
+
+.input-auth {
+  background-color: $color-white;
+  border: 1px solid $color-input-border-grey;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: $color-black;
+  font-size: 14px;
+  height: 33px;
+  outline: none;
+  padding: 9px 8px 7px;
+
+  &:focus {
+    border: 1px solid $color-input-border-dark-grey;
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+.button-auth {
+  display: block;
+  margin: 10px 40px 14px;
+
+  &--facebook {
+    margin-bottom: 0;
+    margin-top: 8px;
+  }
+}
+
+.divider-auth {
+  display: block;
+  margin: 18px 40px;
+}
+
+.horizontal-line {
+  color: $color-header-grey;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  overflow: hidden;
+  text-align: center;
+  text-transform: uppercase;
+
+  &::before,
+  &::after {
+    background-color: $color-horizontal-grey;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+  }
+
+  &::before {
+    margin-left: -50%;
+    right: 12px;
+  }
+
+  &::after {
+    left: 12px;
+    margin-right: -50%;
+  }
+}
+
+.text-auth {
+  color: $color-black;
+  font-size: 14px;
+  line-height: 1;
+  margin: 15px;
+  text-align: center;
+}
+
+.fa-facebook-official {
+  font-size: 19px;
+  line-height: 1.6;
+  margin-right: 4px;
+  vertical-align: top;
+}
+
+.btn-auth {
+  background-color: $color-btnblue;
+  border: 1px solid $color-btnblue;
+  border-radius: 3px;
+  color: $color-white;
+  font-size: 15px;
+  font-weight: 500;
+  height: 31px;
+  line-height: 1.9;
+  outline: none;
+  overflow: hidden;
+  padding: 0 11px;
+  text-overflow: ellipsis;
+  width: 100%;
+
+  &:hover {
+    background-color: $color-btnblue;
+    border: 1px solid $color-btnblue;
+    color: $color-white;
+  }
+
+  &:focus,
+  &:active,
+  &:active:focus {
+    background-color: $color-btnblue;
+    border: 1px solid $color-btnblue;
+    box-shadow: none;
+    color: $color-white;
+    opacity: 0.5;
+    outline: none;
+  }
+}
+
+
+
+
+
+
+

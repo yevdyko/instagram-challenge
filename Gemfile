@@ -21,6 +21,7 @@ gem 'rails-timeago'
 gem 'puma'
 gem 'acts_as_votable'
 gem 'kaminari'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug'
