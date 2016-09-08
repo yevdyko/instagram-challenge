@@ -3,6 +3,11 @@
     .navbar-user-block
       - if user_signed_in?
         = render 'notifications/notification_dropdown'
+        = link_to t('application.header.browse_posts'),
+                  browse_posts_path,
+                  class: 'user-block-link'
+        %span.user-block-divider
+          |
         = link_to t('application.header.create_post'),
                   new_post_path,
                   class: 'user-block-link'

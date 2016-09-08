@@ -9,6 +9,10 @@ class PostsController < ApplicationController
                  .page(params[:page])
   end
 
+  def browse
+    @posts = Post.all.order(created_at: :desc).page(params[:page])
+  end
+
   def new
     @post = current_user.posts.build
   end

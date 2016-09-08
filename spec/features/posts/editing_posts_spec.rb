@@ -24,7 +24,7 @@ feature 'Updating posts' do
       johns_post = create(:post, user: john)
 
       log_in_as user
-      start_following john
+      visit browse_posts_path
 
       find(:xpath, "//a[contains(@href,'posts/#{johns_post.id}')]", match: :first).click
 

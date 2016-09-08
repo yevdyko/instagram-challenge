@@ -5,11 +5,9 @@ require 'rails_helper'
 # I want to log in and out of my account
 feature 'User logs in and out' do
   context 'user not logged in and on the homepage' do
-    xscenario "should see 'Log in' and 'Sign up' links" do
+    scenario "should see 'Sign up' link" do
       visit root_path
 
-      expect(page).to have_link t('application.header.login'),
-                                href: new_user_session_path
       expect(page).to have_link t('application.header.signup'),
                                 href: new_user_registration_path
     end
