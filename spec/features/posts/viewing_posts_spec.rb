@@ -63,7 +63,6 @@ feature 'Viewing posts' do
     mikes_post = create(:post, user: mike)
 
     log_in_as user
-
     start_following john
 
     expect(page).to have_description johns_post
@@ -79,5 +78,20 @@ feature 'Viewing posts' do
     log_in_as user
 
     expect(page).to have_description post
+  end
+
+  # As a User
+  # So that I can find new users to follow
+  # I want to browse all other posts
+  scenario 'can see all other posts' do
+    created_users = create_list(:user, 5)
+    created_users.each do |user|
+      create(:post, user: user)
+    end
+
+    log_in_as user
+    click_link t('application.header.browse_posts')
+
+    expect(page).to have_displayed_posts(5)
   end
 end
