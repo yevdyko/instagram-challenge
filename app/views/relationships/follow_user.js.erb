@@ -1,4 +1,8 @@
 $('#follow-button').text('Following')
                    .attr('class', 'btn unfollow-btn')
-                   .attr('href', "/<%= @user.username %>/unfollow_user")
+                   .attr('href', '/<%= @user.username %>/unfollow_user')
                    .attr('id', 'unfollow-button');
+$('#follower-count').html('<span><%= @user.followers.size %></span>' +
+                          '<%= ' follower'.pluralize(@user.followers.size) %>');
+$('#following-count').html('<span><%= @user.followings.size %></span>' +
+                           '<%= ' following'.pluralize(@user.followings.size) %>');

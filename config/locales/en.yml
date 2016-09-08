@@ -22,7 +22,7 @@ en:
 
   posts:
     index:
-      empty: "There are no posts"
+      empty: "No posts yet"
     create:
       notice: "Your post has been created."
       alert: "Warning! You need an image to post here!"
