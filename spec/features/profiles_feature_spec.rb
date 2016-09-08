@@ -1,21 +1,17 @@
 require 'rails_helper'
 
 feature 'Profiles' do
-  given(:user)      { create :user }
-  given(:user_two)  { create :user }
-  given!(:post)     { create :post, user: user }
-  given!(:post_two) { create :post, user: user_two }
-  background { log_in_as user }
+  given(:user)  { create :user }
+  given!(:post) { create(:post, user: user) }
 
+  # As a User
+  # So that I can visit a profile page
+  # I want to see the username in the URL
   context 'viewing user profiles' do
-    background do
-      first('.username').click_link user.username
-    end
-
-    # As a User
-    # So that I can visit a profile page
-    # I want to see the username in the URL
     scenario 'visiting a profile page shows the username in the URL' do
+      log_in_as user
+      first('.username').click_link user.username
+
       expect(page).to have_current_path profile_path(user.username)
     end
 
@@ -23,13 +19,21 @@ feature 'Profiles' do
     # So that I can visit a profile page
     # I want to see only the specified user's posts
     scenario "a profile page only shows the specified user's posts" do
+      john = create :user
+      johns_post = create(:post, user: john)
+
+      log_in_as user
+      start_following john
+      first('.username').click_link user.username
+
       expect(page).to have_description post
-      expect(page).not_to have_description post_two
+      expect(page).not_to have_description johns_post
     end
   end
 
   context 'editing user profiles' do
     background do
+      log_in_as user
       first('.username').click_link user.username
       click_link t('profiles.show.edit')
     end
@@ -67,15 +71,19 @@ feature 'Profiles' do
     # I want to prevent other users from editing my profile
     context "can't edit a profile that doesn't belong to you" do
       scenario "when visiting another user's profile" do
-        visit root_path
+        john = create :user
+        johns_post = create(:post, user: john)
 
-        find(:xpath, "//a[contains(@href,'/#{user_two.username}')]", match: :first).click
+        start_following john
+        find(:xpath, "//a[contains(@href,'/#{john.username}')]", match: :first).click
 
         expect(page).to_not have_content t('profiles.show.edit')
       end
 
       scenario 'when the url path is directly visited' do
-        visit "/#{user_two.username}/edit"
+        john = create :user
+
+        visit "/#{john.username}/edit"
 
         expect(page).to have_current_path root_path
         expect(page).to have_content t('profiles.owned_profile.alert')

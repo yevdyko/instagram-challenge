@@ -37,4 +37,9 @@ module PostsHelpers
   def have_pagination_button
     have_css('.paginator')
   end
+
+  def start_following(user)
+    visit profile_path(user.username)
+    click_on t('profiles.show.follow')
+  end
 end
