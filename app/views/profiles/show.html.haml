@@ -1,9 +1,9 @@
 .posts-wrapper
   .row.profile-header
-    .col-xs-6
+    .col-xs-4
       .img-circle
         = profile_avatar_select(@user)
-    .col-xs-6.profile-details
+    .col-xs-8.profile-details
       .username-and-follow
         %h2.profile-username
           = @user.username
@@ -27,8 +27,18 @@
                                                    method: :post
       %p.profile-bio
         = @user.bio
-      .user-statistics
-        %p
-          = pluralize @user.posts.count, 'post'
+      %ul.user-statistics
+        %li.stat-count#post-count
+          %span
+            = @user.posts.size
+          = 'post'.pluralize(@user.posts.size)
+        %li.stat-count#follower-count
+          %span
+            = @user.followers.size
+          = 'follower'.pluralize(@user.followers.size)
+        %li.stat-count#following-count
+          %span
+            = @user.followings.size
+          = 'following'.pluralize(@user.followings.size)
 - @posts.each do |post|
   = render 'posts/post', post: post
