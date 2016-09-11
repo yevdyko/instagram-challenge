@@ -7,7 +7,12 @@ feature 'Paginating comments' do
   given(:user) { create :user }
 
   scenario 'with less than 20 comments' do
-    create(:post, :with_comments, comments_count: 10, user: user)
+    create(
+      :post,
+      :with_comments,
+      comments_count: 10,
+      user: user
+    )
 
     log_in_as user
 
@@ -16,7 +21,12 @@ feature 'Paginating comments' do
   end
 
   scenario 'viewing only 20 comments at a time' do
-    create(:post, :with_comments, comments_count: 22, user: user)
+    create(
+      :post,
+      :with_comments,
+      comments_count: 22,
+      user: user
+    )
 
     log_in_as user
 
@@ -24,7 +34,12 @@ feature 'Paginating comments' do
   end
 
   scenario 'viewing all comments' do
-    create(:post, :with_comments, comments_count: 25, user: user)
+    create(
+      :post,
+      :with_comments,
+      comments_count: 25,
+      user: user
+    )
 
     log_in_as user
     click_link t('comments.pagination', count: 25)

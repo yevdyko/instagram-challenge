@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('.more-comments').click(function() {
-    $(this).on('ajax:success', function(event, data, status, xhr) {
+    $(this).on('ajax:success', function(event, data) {
       var postId = $(this).data('post-id');
       var link = "<a id='more-comments' data-post-id=" + postId +
                  "data-type='html' data-remote='true' href='/posts/" + postId +

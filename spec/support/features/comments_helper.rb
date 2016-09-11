@@ -5,7 +5,7 @@ module CommentsHelpers
     click_button t('comments.submit'), match: :first
   end
 
-  def delete_comment
+  def delete_comment(message)
     visit root_path
     click_link "delete_#{message.id}"
   end
