@@ -34,8 +34,8 @@ module PostsHelpers
     have_css('.posts .post', count: count)
   end
 
-  def have_pagination_button
-    have_css('.paginator')
+  def have_posts_pagination
+    have_css('.posts-pagination')
   end
 
   def start_following(user)

@@ -17,14 +17,24 @@
           .description-text
             = post.description
         .comments{ id: "comments_#{post.id}" }
-          - if post.comments
-            = render post.comments, post: post
+          - if post.comments.any?
+            - unless post.comments.size <= 20
+              .comments-pagination{ id: "comments-pagination_#{post.id}" }
+                = link_to t('comments.pagination', count: post.comments.size),
+                          post_comments_path(post),
+                          remote: true,
+                          class: 'more-comments',
+                          id: "more-comments_#{post.id}",
+                          data: { post_id: "#{post.id}",
+                                  type: 'html',
+                                  value: "#{post.comments.size}" }
+            = render post.comments.last(20), post: post
     .comment-like-form.row
       .col-sm-1.like-button
         = liked_post post
       .comment-form.col-sm-11
         = form_for([post, post.comments.build], remote: true) do |f|
           = f.text_field :thoughts, placeholder: t('comments.add'),
-                                    class: "comment-content",
+                                    class: 'comment-content',
                                     id: "comment-content_#{post.id}"
           = f.submit t('comments.submit'), class: 'comment-submit-button'

@@ -12,7 +12,7 @@ feature 'Paginating posts' do
     log_in_as user
 
     expect(page).to have_displayed_posts(10)
-    expect(page).to_not have_pagination_button
+    expect(page).to_not have_posts_pagination
   end
 
   scenario 'viewing the first page of posts' do
@@ -27,7 +27,7 @@ feature 'Paginating posts' do
     create_list(:post, 14, user: user)
 
     log_in_as user
-    click_link t('paginator.button')
+    click_link t('posts.pagination')
 
     expect(page).to have_displayed_posts(2)
   end
