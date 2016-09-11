@@ -21,4 +21,12 @@ module CommentsHelpers
   def have_delete_icon
     have_css('.delete-comment', text: t('comments.destroy.link'))
   end
+
+  def have_displayed_comments(count)
+    have_css('.comment', count: count)
+  end
+
+  def have_comments_pagination
+    have_css('.comments-pagination')
+  end
 end

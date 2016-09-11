@@ -3,9 +3,8 @@
     = render 'posts'
   - else
     = t('posts.index.empty')
-
-.paginator.text-center#paginator
-  = link_to_next_page @posts, t('paginator.button'),
+.posts-pagination.text-center#paginator
+  = link_to_next_page @posts, t('posts.pagination'),
                               remote: true,
                               class: 'load-more',
                               id: 'load-more'

@@ -85,7 +85,7 @@
 }
 
 .description-content {
-  display: inline;
+  margin-bottom: 7px;
 
   .username a {
     color: $color-black;
@@ -97,7 +97,7 @@
   display: inline;
 }
 
-.paginator {
+.posts-pagination {
   border: 2px solid $color-btnblue;
   border-radius: 50%;
   color: $color-btnblue;
@@ -117,7 +117,9 @@
   text-decoration: none;
   vertical-align: middle;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:visited {
     color: $color-btnblue;
     text-decoration: none;
   }

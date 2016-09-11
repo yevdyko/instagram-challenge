@@ -42,10 +42,7 @@ en:
       alert: "Delete failed. Please check the form."
     owned_post:
       alert: "That post doesn't belong to you!"
-
-  paginator:
-    button: "Load more"
-    link: "All %{items}"
+    pagination: "Load more"
 
   comments:
     add: "Add a comment..."
@@ -58,6 +55,7 @@ en:
       confirm: "Are you sure?"
     owned_comment:
       alert: "That comment doesn't belong to you!"
+    pagination: "view all %{count} comments"
 
   profiles:
     show:
@@ -84,3 +82,4 @@ en:
     item:
       comment: "%{username} left a comment on your photo."
       like: "%{username} liked your photo."
+    pagination: "All %{items}"

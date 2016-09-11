@@ -44,7 +44,7 @@ feature 'Paginating notifications' do
 
     log_in_as user
     visit notifications_path
-    click_link t('paginator.link', items: 'notifications')
+    click_link t('notifications.pagination', items: 'notifications')
 
     expect(page).to have_displayed_notifications(4)
   end

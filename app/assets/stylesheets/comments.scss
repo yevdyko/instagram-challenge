@@ -26,7 +26,7 @@
 }
 
 .comment {
-  margin-top: 7px;
+  margin-bottom: 7px;
 
   .username {
     font-weight: 600;
@@ -41,4 +41,21 @@
 .delete-comment-icon {
   color: $color-black;
   margin-top: 2px;
+}
+
+.comments-pagination {
+  margin-bottom: 7px;
+}
+
+.more-comments {
+  color: $color-header-grey;
+  font-size: 15px;
+  line-height: 1.2;
+
+  &:hover,
+  &:focus,
+  &:visited {
+    color: $color-header-grey;
+    text-decoration: none;
+  }
 }
