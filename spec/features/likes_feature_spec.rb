@@ -50,6 +50,7 @@ feature 'Liking / Unliking posts' do
       created_users.each do |user|
         log_out
         log_in_as user
+        visit browse_posts_path
         add_like post
       end
 

@@ -1,7 +1,6 @@
 module AuthHelpers
   def sign_up_as(user)
     visit root_path
-    click_link t('application.header.signup')
     fill_in t('registration.email'), with: user.email
     fill_in t('registration.username'), with: user.username
     fill_in t('registration.password'), with: user.password, match: :first
@@ -11,7 +10,7 @@ module AuthHelpers
 
   def log_in_as(user)
     visit root_path
-    click_link t('application.header.login')
+    click_on t('application.header.login')
     fill_in t('registration.email'), with: user.email
     fill_in t('registration.password'), with: user.password
     click_button t('registration.login')

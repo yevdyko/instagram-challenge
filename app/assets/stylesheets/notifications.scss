@@ -1,8 +1,15 @@
 .notification-dropdown {
-  margin-top: 10px;
+  display: inline-block;
+  margin-right: 5px;
 
   button {
     border: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+
+    &:hover {
+      background-color: $color-white;
+    }
   }
 }
 
@@ -42,7 +49,7 @@
   padding: 15px;
 }
 
-.paginator-link {
+.notifications-pagination {
   background-color: $color-white;
   border-top: 1px solid $color-lightgrey;
   padding: 15px;

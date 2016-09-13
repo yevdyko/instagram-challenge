@@ -1,7 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 @import "variables";
+@import "typography";
 @import "navbar";
 @import "posts";
 @import "comments";
@@ -9,17 +11,18 @@
 @import "profiles";
 @import "notifications";
 @import "relationships";
+@import "authentication";
 
 html {
   height: 100%;
 }
 
-body {
-  background-color: $color-snow;
-  font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+.container {
+  margin: 0 auto;
+  max-width: 1010px;
+  min-width: 860px;
+  padding: 0 40px;
 }
-
-/* ## Wrapper and styling for the new and edit views ## */
 
 .form-wrapper {
   width: 60%;
@@ -33,36 +36,6 @@ body {
 .edit-links {
   margin-top: 20px;
   margin-bottom: 40px;
-}
-
-.registration-bg {
-  background-color: grey;
-  padding: 0;
-  margin: 0;
-  padding-top: 4em;
-  height: 100%;
-  background-size: cover;
-}
-
-.login-bg {
-  padding-top: 4em;
-  height: 100%;
-  background-size: cover;
-}
-
-.login {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  border: none;
-}
-
-.panel {
-  border-radius: 8px;
-}
-
-.panel-heading h1 {
-  text-align: center;
 }
 
 .alert {

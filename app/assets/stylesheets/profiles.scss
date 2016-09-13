@@ -1,7 +1,6 @@
 .profile-wrapper {
   margin: 0 auto;
   margin-top: 40px;
-  max-width: 602px;
   width: 100%;
 }
 
@@ -70,11 +69,31 @@
 .profile-bio {
   margin-bottom: 13px;
   margin-top: 16px;
+  font-size: 15px;
 }
 
-.profile-bio,
 .user-statistics {
-  font-size: 15px;
+  font-size: 0;
+  list-style: none;
+  margin: 0;
+  margin-top: 17px;
+  padding: 0;
+}
+
+.stat-count {
+  display: inline-block;
+  font-size: 17px;
+  line-height: 1;
+  margin-right: 40px;
+  vertical-align: middle;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  span {
+    font-weight: 600;
+  }
 }
 
 .profile-text {

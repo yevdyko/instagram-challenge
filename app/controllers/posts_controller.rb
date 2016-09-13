@@ -1,9 +1,15 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: %i(index show)
+  before_action :authenticate_user!
   before_action :set_post, only: %i(show edit update destroy like unlike)
   before_action :owned_post, only: %i(edit update destroy)
 
   def index
+    @posts = Post.followed_users_or_owned_by(current_user)
+                 .order(created_at: :desc)
+                 .page(params[:page])
+  end
+
+  def browse
     @posts = Post.all.order(created_at: :desc).page(params[:page])
   end
 

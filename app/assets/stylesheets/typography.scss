@@ -1,0 +1,72 @@
+@font-face {
+  font-style: normal;
+  font-weight: 300;
+  font-family: "Proxima";
+
+  src: url("/assets/proximanova-light.woff") format("woff");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  font-family: "Proxima";
+
+  src: url("/assets/proximanova-regular.woff") format("woff");
+}
+
+@font-face {
+  font-style: italic;
+  font-weight: 400;
+  font-family: "Proxima";
+
+  src: url("/assets/proximanova-regularitalic.woff") format("woff");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 600;
+  font-family: "Proxima";
+
+  src: url("/assets/proximanova-semibold.woff") format("woff");
+}
+
+@font-face {
+  font-style: italic;
+  font-weight: 600;
+  font-family: "Proxima";
+
+  src: url("/assets/proximanova-semibolditalic.woff") format("woff");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 700;
+  font-family: "Proxima";
+
+  src: url("/assets/proximanova-bold.woff") format("woff");
+}
+
+@font-face {
+  font-style: italic;
+  font-weight: 700;
+  font-family: "Proxima";
+
+  src: url("/assets/proximanova-boldit.woff") format("woff");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 900;
+  font-family: "Proxima";
+
+  src: url("/assets/proximanova-extrabold.woff") format("woff");
+}
+
+body {
+  background-color: $color-snow;
+  color: $color-black;
+
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+}

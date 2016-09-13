@@ -2,6 +2,8 @@ en:
   application:
     title: "Pixagram"
     header:
+      get_app: "Get the app"
+      browse_posts: "Browse Posts"
       create_post: "Create Post"
       signup: "Sign up"
       login: "Log in"
@@ -13,14 +15,14 @@ en:
     password: "Password"
     password_confirmation: "Confirm Password"
     login: "Log in"
+    login_with_facebook: "Log in with Facebook"
     signup: "Sign up"
     header:
       signup: "Sign up to see photos and videos from your friends."
-      login: "Log in"
 
   posts:
     index:
-      empty: "There are no posts"
+      empty: "No posts yet"
     create:
       notice: "Your post has been created."
       alert: "Warning! You need an image to post here!"
@@ -40,10 +42,7 @@ en:
       alert: "Delete failed. Please check the form."
     owned_post:
       alert: "That post doesn't belong to you!"
-
-  paginator:
-    button: "Load more"
-    link: "All %{items}"
+    pagination: "Load more"
 
   comments:
     add: "Add a comment..."
@@ -56,6 +55,7 @@ en:
       confirm: "Are you sure?"
     owned_comment:
       alert: "That comment doesn't belong to you!"
+    pagination: "view all %{count} comments"
 
   profiles:
     show:
@@ -82,3 +82,4 @@ en:
     item:
       comment: "%{username} left a comment on your photo."
       like: "%{username} liked your photo."
+    pagination: "All %{items}"

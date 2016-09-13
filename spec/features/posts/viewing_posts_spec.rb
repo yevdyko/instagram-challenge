@@ -7,10 +7,10 @@ feature 'Viewing posts' do
   given(:user)  { create :user }
 
   scenario 'can see posts in reverse chronological order on the index' do
-    old_post = create(:post, created_at: 2.days.ago)
-    new_post = create(:post, created_at: 1.hour.ago)
+    old_post = create(:post, created_at: 2.days.ago, user: user)
+    new_post = create(:post, created_at: 1.hour.ago, user: user)
 
-    visit root_path
+    log_in_as user
 
     expect(new_post.description).to appear_before(old_post.description)
   end
@@ -32,7 +32,7 @@ feature 'Viewing posts' do
     create(:post, created_at: 4.hours.ago, user: user)
     create(:post, created_at: 5.years.ago, user: user)
 
-    visit root_path
+    log_in_as user
 
     travel_to Time.zone.now do
       expect(page).to have_content '12 minutes ago'
@@ -51,5 +51,47 @@ feature 'Viewing posts' do
     first('.description-content').click_link user.username
 
     expect(page).to have_current_path profile_path(user.username)
+  end
+
+  # As a User
+  # So that I can filter the feed
+  # I want to show only posts for the users I'm following
+  scenario 'can see only posts of followed users' do
+    john = create :user
+    mike = create :user
+    johns_post = create(:post, user: john)
+    mikes_post = create(:post, user: mike)
+
+    log_in_as user
+    start_following john
+
+    expect(page).to have_description johns_post
+    expect(page).not_to have_description mikes_post
+  end
+
+  # As a User
+  # So that I can filter the feed
+  # I want to show my own posts on the dashboard
+  scenario 'can see my own posts' do
+    post = create(:post, user: user)
+
+    log_in_as user
+
+    expect(page).to have_description post
+  end
+
+  # As a User
+  # So that I can find new users to follow
+  # I want to browse all other posts
+  scenario 'can see all other posts' do
+    created_users = create_list(:user, 5)
+    created_users.each do |user|
+      create(:post, user: user)
+    end
+
+    log_in_as user
+    click_link t('application.header.browse_posts')
+
+    expect(page).to have_displayed_posts(5)
   end
 end

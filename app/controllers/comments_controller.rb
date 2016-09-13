@@ -3,6 +3,14 @@ class CommentsController < ApplicationController
   before_action :set_post
   before_action :owned_comment, only: :destroy
 
+  def index
+    @comments = @post.comments.order(created_at: :asc)
+
+    respond_to do |format|
+      format.html { render layout: !request.xhr? }
+    end
+  end
+
   def create
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id

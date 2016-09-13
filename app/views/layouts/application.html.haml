@@ -8,7 +8,8 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': true
     = csrf_meta_tags
   %body
-    = render 'application/navbar'
+    - if @show_navbar
+      = render 'application/navbar'
 
     .container
       - flash.each do |name, msg|

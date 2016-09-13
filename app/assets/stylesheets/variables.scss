@@ -1,10 +1,15 @@
 // Colors
-$color-white: #ffffff;
+$color-white: #fff;
 $color-snow: #fafafa;
 $color-lightgrey: #edeeee;
+$color-almond-grey: #efefef;
 $color-steelgrey: #a5a7aa;
 $color-darkgrey: #4b4f54;
 $color-avatargrey: #c9c7c8;
+$color-header-grey: #999;
+$color-input-border-grey: #dbdbdb;
+$color-input-border-dark-grey: #b2b2b2;
+$color-horizontal-grey: #c7c7c7;
 $color-azure: #eeefef;
 $color-bahamablue: #125688;
 $color-heart: #f00;
@@ -12,3 +17,11 @@ $color-black: #262626;
 $color-btnblue: #3897f0;
 $color-btngreen: #66bd2b;
 $color-darkgreen: #47821F;
+$color-divider-grey: #c7c7c7;
+
+// Typography
+$font-family-base: "Proxima", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-size-base: 14px;
+$line-height-base: 26px;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
