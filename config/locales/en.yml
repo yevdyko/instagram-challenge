@@ -3,11 +3,14 @@ en:
     title: "Pixagram"
     header:
       get_app: "Get the app"
-      browse_posts: "Browse Posts"
-      create_post: "Create Post"
+      browse: "Browse"
       signup: "Sign up"
       login: "Log in"
+      profile: "Profile"
+    modal:
+      create_post: "Create Post"
       logout: "Log out"
+      cancel: "Cancel"
 
   registration:
     email: "Email"

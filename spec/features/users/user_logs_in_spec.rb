@@ -11,11 +11,15 @@ feature 'User logs in' do
       expect(page).to have_current_path new_user_registration_path
     end
 
-    scenario "can't see a 'Log out' link" do
+    scenario "can see 'Sign up' fields and 'Log in' link" do
       visit root_path
 
-      expect(page).not_to have_link t('application.header.logout'),
-                                    href: destroy_user_session_path
+      expect(page).to have_field t('registration.email')
+      expect(page).to have_field t('registration.username')
+      expect(page).to have_field t('registration.password')
+      expect(page).to have_field t('registration.password_confirmation')
+      expect(page).to have_link t('application.header.login'),
+                                href: new_user_session_path
     end
 
     scenario "can't create a new post without logging in" do
@@ -26,12 +30,12 @@ feature 'User logs in' do
   end
 
   context 'User is logged in successfully' do
-    scenario "can't see 'Log in' and 'Sign up' links" do
-      user = create :user
+    given(:user) { create :user }
 
+    scenario "can't see 'Log in' and 'Sign up' links" do
       log_in_as user
 
-      expect(current_path).to eq root_path
+      expect(page).to have_current_path root_path
       expect(page).to have_content t('devise.sessions.signed_in')
       expect(page).not_to have_link t('application.header.login'),
                                     href: new_user_session_path
@@ -39,14 +43,15 @@ feature 'User logs in' do
                                     href: new_user_registration_path
     end
 
-    scenario "can see a 'Log out' link" do
-      user = create :user
-
+    scenario "can see 'Profile' link" do
       log_in_as user
 
-      expect(current_path).to eq root_path
-      expect(page).to have_link t('application.header.logout'),
-                                href: destroy_user_session_path
+      expect(page).to have_current_path root_path
+      expect(page).to have_profile_link
     end
+  end
+
+  def have_profile_link
+    have_selector(:css, "a#profile[href='/#{user.username}']")
   end
 end

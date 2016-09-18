@@ -2,33 +2,34 @@
   .container
     .navbar-user-block
       - if user_signed_in?
-        = render 'notifications/notification_dropdown'
-        = link_to t('application.header.browse_posts'),
-                  browse_posts_path,
-                  class: 'user-block-link'
-        %span.user-block-divider
-          |
-        = link_to t('application.header.create_post'),
-                  new_post_path,
-                  class: 'user-block-link'
-        %span.user-block-divider
-          |
-        = link_to t('application.header.logout'),
-                  destroy_user_session_path,
-                  class: 'user-block-link',
-                  method: :delete
+        .user-block
+          = link_to (image_tag 'icon-explore.png',
+                    alt: t('application.header.browse')),
+                    browse_posts_path,
+                    class: 'user-block-link',
+                    id: 'browse'
+        .user-block
+          = render 'notifications/notification_dropdown'
+        .user-block
+          = link_to (image_tag 'icon-profile.png',
+                    alt: t('application.header.profile')),
+                    profile_path(current_user.username),
+                    class: 'user-block-link',
+                    id: 'profile'
       - else
         = link_to t('application.header.get_app'),
                   root_path,
                   class: 'btn btn-getapp'
         = link_to t('application.header.signup'),
                   new_user_registration_path,
-                  class: 'user-block-link'
+                  class: 'user-block-link',
+                  id: 'signup'
         %span.user-block-divider
           |
         = link_to t('application.header.login'),
                   new_user_session_path,
-                  class: 'user-block-link'
+                  class: 'user-block-link',
+                  id: 'login'
     .navbar-logo
       = link_to (image_tag 'pixagram-logo-with-icon.png', alt: 'Pixagram'),
                 root_path

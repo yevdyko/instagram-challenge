@@ -43,32 +43,42 @@
 }
 
 .username-and-follow {
-  padding-top: 15px;
+  font-size: 0;
+
+  margin-bottom: 20px;
 }
 
 .profile-username {
-  display: inline;
+  display: inline-block;
+
+  font-size: 34px;
   font-weight: 300;
   line-height: 1.2;
+
+  margin: 0;
   margin-right: 20px;
+
+  vertical-align: middle;
 }
 
-.edit-btn {
-  border-color: $color-btnblue;
-  color: $color-btnblue;
-  font-size: 15px;
-  font-weight: 500;
-  vertical-align: top;
+.profile-edit {
+  display: inline-block;
+  margin-right: 4px;
+  padding: 0;
 
-  &:hover,
-  &:focus {
-    color: $color-btnblue;
-  }
+  vertical-align: middle;
+}
+
+.profile-options {
+  display: inline-block;
+
+  vertical-align: middle;
 }
 
 .profile-bio {
   margin-bottom: 13px;
   margin-top: 16px;
+
   font-size: 15px;
 }
 
@@ -76,7 +86,6 @@
   font-size: 0;
   list-style: none;
   margin: 0;
-  margin-top: 17px;
   padding: 0;
 }
 

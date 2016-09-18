@@ -1,6 +1,5 @@
 .notification-dropdown {
   display: inline-block;
-  margin-right: 5px;
 
   button {
     border: 0;
@@ -11,6 +10,12 @@
       background-color: $color-white;
     }
   }
+}
+
+.dropdown-toggle {
+  padding: 0 9px;
+
+  position: relative;
 }
 
 .dropdown-menu {
@@ -26,6 +31,22 @@
 .dropdown-menu-bottom {
   border-top: 1px solid $color-lightgrey;
   padding: 8px;
+}
+
+.notification-count {
+  background-color: $color-iconred;
+  border-radius: 20px;
+  color: $color-white;
+
+  font-size: 10px;
+
+  height: 14px;
+
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  width: 14px;
 }
 
 .notifications {

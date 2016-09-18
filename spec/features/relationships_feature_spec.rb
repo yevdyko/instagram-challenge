@@ -8,13 +8,13 @@ feature 'Following / Unfollowing users' do
   given(:user_two) { create :user }
 
   context 'if user is logged in' do
-    background do
+    scenario 'can follow other users', js: true do
       log_in_as user
+
       visit profile_path(user_two.username)
       click_on t('profiles.show.follow')
-    end
+      wait_for_ajax
 
-    scenario 'can follow other users', js: true do
       expect(page).not_to have_link t('profiles.show.follow'),
                                       href: follow_user_path(user_two.username)
       expect(page).to have_link t('profiles.show.following'),
@@ -22,14 +22,24 @@ feature 'Following / Unfollowing users' do
     end
 
     scenario 'can unfollow other users', js: true do
+      log_in_as user
+
+      visit profile_path(user_two.username)
+      click_on t('profiles.show.follow')
+      wait_for_ajax
+
       expect(page).not_to have_link t('profiles.show.follow'),
                                       href: follow_user_path(user_two.username)
+      expect(page).to have_link t('profiles.show.following'),
+                                  href: unfollow_user_path(user_two.username)
+
       click_on t('profiles.show.following')
+      wait_for_ajax
 
       expect(page).not_to have_link t('profiles.show.following'),
-                                      href: follow_user_path(user_two.username)
+                                      href: unfollow_user_path(user_two.username)
       expect(page).to have_link t('profiles.show.follow'),
-                                  href: unfollow_user_path(user_two.username)
+                                  href: follow_user_path(user_two.username)
     end
   end
 end
