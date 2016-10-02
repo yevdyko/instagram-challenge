@@ -21,6 +21,7 @@ module Features
   include LikesHelpers
   include ProfilesHelpers
   include NotificationsHelpers
+  include WaitForAjax
 end
 
 RSpec.configure do |config|
@@ -30,6 +31,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 end
 
+RSpec.configure do |config|
+
+end
+
 ActiveRecord::Migration.maintain_test_schema!
-Capybara.javascript_driver = :webkit
+Capybara.javascript_driver = :selenium
 Capybara.default_max_wait_time = 5

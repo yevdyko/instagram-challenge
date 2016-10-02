@@ -26,10 +26,24 @@
 
 .navbar-user-block {
   float: right;
-  padding: 22px;
-  padding-right: 0;
+
+  font-size: 0;
+
+  padding: 27px 0;
+  padding-left: 24px;
+
   text-align: right;
-  width: 340px;
+}
+
+.user-block {
+  display: inline-block;
+  margin-left: 23px;
+
+  vertical-align: middle;
+
+  &:first-child {
+    margin-left: 0;
+  }
 }
 
 .user-block-link {

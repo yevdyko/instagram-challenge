@@ -4,8 +4,12 @@
                                            data: { toggle: 'dropdown' },
                                            'aria-haspopup': true,
                                            'aria-expanded': true }
-    = current_user.notifications.where(read: false).count
-    %span.glyphicon.glyphicon-flag
+    = link_to (image_tag 'icon-notifications.png', alt: 'Notifications'),
+               '#',
+               class: 'user-block-link',
+               id: 'notifications'
+    %span.notification-count
+      = current_user.notifications.where(read: false).count
   %ul.dropdown-menu{ 'aria-labelledby': 'dropdownMenu1' }
     %li.dropdown-menu-head.text-center
       = t('notifications.dropdown-menu.header')

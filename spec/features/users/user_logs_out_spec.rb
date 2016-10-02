@@ -4,7 +4,7 @@ require 'rails_helper'
 # So that no one else can use my account
 # I want to log out
 feature 'User logs out' do
-  scenario 'to end his session on the website' do
+  scenario 'to end his session on the website', js: true do
     user = create :user
 
     log_in_as user

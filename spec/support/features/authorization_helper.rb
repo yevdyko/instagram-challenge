@@ -17,6 +17,13 @@ module AuthHelpers
   end
 
   def log_out
-    click_link t('application.header.logout')
+    if Capybara.javascript_driver == :selenium
+      find('.user-block-link#profile').click
+    else
+      find('.user-block-link#profile').trigger('click')
+    end
+
+    find('.btn-options').click
+    click_link t('application.modal.logout')
   end
 end
