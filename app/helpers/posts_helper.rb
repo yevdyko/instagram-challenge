@@ -1,11 +1,11 @@
 module PostsHelper
   def liked_post(post)
     if user_signed_in? && current_user.voted_for?(post)
-      link_to('', unlike_post_path(post), remote: true, id: "like_#{post.id}",
-        class: 'like glyphicon glyphicon-heart')
+      link_to(image_tag('icon-heart.png', id: 'icon-heart'), unlike_post_path(post),
+        remote: true, id: "like_#{post.id}", class: 'like')
     else
-      link_to('', like_post_path(post), remote: true, id: "like_#{post.id}",
-        class: 'like glyphicon glyphicon-heart-empty')
+      link_to(image_tag('icon-heart-empty.png', id: 'icon-heart'), like_post_path(post),
+        remote: true, id: "like_#{post.id}", class: 'like')
     end
   end
 
