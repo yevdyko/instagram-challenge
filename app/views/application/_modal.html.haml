@@ -1,8 +1,8 @@
-.modal#modalOptions{ 'aria-labelledby': 'modalOptionsLabel',
-                     role: 'dialog',
-                     tabindex: '-1',
-                     'data-backdrop': 'true',
-                     'data-keyboard': 'true' }
+.modal#modalProfileOptions{ 'aria-labelledby': 'modalProfileOptionsLabel',
+                            role: 'dialog',
+                            tabindex: '-1',
+                            'data-backdrop': 'true',
+                            'data-keyboard': 'true' }
   .modal-dialog{ role: 'document' }
     .modal-content
       %ul.options-list
@@ -13,8 +13,31 @@
         %li.options-item
           = link_to t('application.modal.logout'),
                     destroy_user_session_path,
-                    class: 'options-link',
-                    method: :delete
+                    method: :delete,
+                    class: 'options-link'
+        %li.options-item
+          = button_tag t('application.modal.cancel'),
+                       type: 'button',
+                       'data-dismiss': 'modal',
+                       class: 'options-link'
+.modal#modalPostOptions{ 'aria-labelledby': 'modalProfileOptionsLabel',
+                         role: 'dialog',
+                         tabindex: '-1',
+                         'data-backdrop': 'true',
+                         'data-keyboard': 'true' }
+  .modal-dialog{ role: 'document' }
+    .modal-content
+      %ul.options-list
+        %li.options-item
+          = link_to t('application.modal.edit_post'),
+                    new_post_path,
+                    class: 'options-link'
+        %li.options-item
+          = link_to t('application.modal.delete_post'),
+                    destroy_user_session_path,
+                    method: :delete,
+                    data: { confirm: t('posts.edit.delete.confirm') },
+                    class: 'options-link'
         %li.options-item
           = button_tag t('application.modal.cancel'),
                        type: 'button',

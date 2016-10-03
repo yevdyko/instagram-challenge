@@ -6,44 +6,44 @@ require 'rails_helper'
 feature 'Paginating comments' do
   given(:user) { create :user }
 
-  scenario 'with less than 20 comments' do
+  scenario 'with less than 4 comments' do
     create(
       :post,
       :with_comments,
-      comments_count: 10,
+      comments_count: 3,
       user: user
     )
 
     log_in_as user
 
-    expect(page).to have_displayed_comments(10)
+    expect(page).to have_displayed_comments(3)
     expect(page).to_not have_comments_pagination
   end
 
-  scenario 'viewing only 20 comments at a time' do
+  scenario 'viewing only 4 comments at a time' do
     create(
       :post,
       :with_comments,
-      comments_count: 22,
+      comments_count: 15,
       user: user
     )
 
     log_in_as user
 
-    expect(page).to have_displayed_comments(20)
+    expect(page).to have_displayed_comments(4)
   end
 
   scenario 'viewing all comments' do
     create(
       :post,
       :with_comments,
-      comments_count: 25,
+      comments_count: 15,
       user: user
     )
 
     log_in_as user
-    click_link t('comments.pagination', count: 25)
+    click_link t('comments.pagination', count: 15)
 
-    expect(page).to have_displayed_comments(25)
+    expect(page).to have_displayed_comments(15)
   end
 end

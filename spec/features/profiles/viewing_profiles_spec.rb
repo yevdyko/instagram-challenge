@@ -11,7 +11,7 @@ feature 'Viewing user profiles' do
     create(:post, user: john)
 
     log_in_as john
-    first('.username').click_link john.username
+    click_link john.username, match: :first
 
     expect(page).to have_current_path profile_path(john.username)
   end
@@ -29,7 +29,7 @@ feature 'Viewing user profiles' do
     expect(page).to have_description johns_post
     expect(page).to have_description mikes_post
 
-    first('.username').click_link john.username
+    click_link john.username, match: :first
 
     expect(page).to have_description johns_post
     expect(page).not_to have_description mikes_post

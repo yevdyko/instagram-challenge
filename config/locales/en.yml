@@ -9,6 +9,8 @@ en:
       profile: "Profile"
     modal:
       create_post: "Create Post"
+      edit_post: "Edit Post"
+      delete_post: "Delete Post"
       logout: "Log out"
       cancel: "Cancel"
 

@@ -14,9 +14,9 @@
                       class: 'btn btn-edit'
           .profile-options
             = button_tag 'Options', type: 'button',
-                                    class: 'btn-options',
+                                    class: 'btn-options btn-options--profile',
                                     'data-toggle': 'modal',
-                                    href: 'modalOptions'
+                                    href: 'modalProfileOptions'
         - else
           - if current_user_is_following(current_user.id, @user.id)
             = link_to t('profiles.show.following'), unfollow_user_path,

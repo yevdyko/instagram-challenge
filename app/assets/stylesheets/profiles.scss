@@ -1,15 +1,15 @@
 .profile-wrapper {
+  width: 100%;
   margin: 0 auto;
   margin-top: 40px;
-  width: 100%;
 }
 
 .profile {
   background-color: $color-white;
   border-color: $color-lightgrey;
-  border-radius: 3px;
   border-style: solid;
   border-width: 1px;
+  border-radius: 3px;
 }
 
 .profile-avatar {
@@ -21,22 +21,23 @@
 }
 
 .profile-title-img {
-  margin-bottom: 20px;
   margin-top: 25px;
+  margin-bottom: 20px;
 }
 
 .profile-title-bio {
-  margin-bottom: 15px;
   margin-top: 5px;
+  margin-bottom: 15px;
 }
 
 .profile-image {
+  width: 152px;
+  height: 152px;
+  margin: 0 auto;
+
   background-color: $color-snow;
   border: 1px solid $color-avatargrey;
   border-radius: 50%;
-  height: 152px;
-  margin: 0 auto;
-  width: 152px;
 }
 
 .profile-details {
@@ -45,28 +46,26 @@
 }
 
 .username-and-follow {
-  font-size: 0;
-
   margin-bottom: 20px;
+
+  font-size: 0;
 }
 
 .profile-username {
   display: inline-block;
+  margin: 0;
+  margin-right: 20px;
 
   font-size: 34px;
   font-weight: 300;
   line-height: 1.2;
-
-  margin: 0;
-  margin-right: 20px;
-
   vertical-align: middle;
 }
 
 .profile-edit {
   display: inline-block;
-  margin-right: 4px;
   padding: 0;
+  margin-right: 4px;
 
   vertical-align: middle;
 }
@@ -78,24 +77,26 @@
 }
 
 .profile-bio {
-  margin-bottom: 13px;
   margin-top: 16px;
+  margin-bottom: 13px;
 
   font-size: 15px;
 }
 
 .user-statistics {
+  padding: 0;
+  margin: 0;
+
   font-size: 0;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .stat-count {
   display: inline-block;
+  margin-right: 40px;
+
   font-size: 17px;
   line-height: 1;
-  margin-right: 40px;
   vertical-align: middle;
 
   &:last-child {
@@ -108,12 +109,14 @@
 }
 
 .profile-text {
+  width: 100%;
+  padding: 7px;
+
   border: 1px solid $color-avatargrey;
   border-radius: 3px;
   outline: none;
-  padding: 7px;
+
   resize: none;
-  width: 100%;
 }
 
 .profile-text:focus {
@@ -121,8 +124,9 @@
 }
 
 .profile-textarea {
-  box-sizing: border-box;
   padding: 0 20px;
+
+  box-sizing: border-box;
 }
 
 .profile-btn {

@@ -1,46 +1,37 @@
-.comment-like-form {
-  align-items: center;
-  border-top: 1px solid $color-azure;
-  flex-direction: row;
-  justify-content: center;
-  margin-left: 24px;
-  margin-right: 24px;
-  margin-top: 10px;
-  min-height: 68px;
-  padding-top: 24px;
-}
-
-.comment-content {
-  border: medium none;
-  color: $color-darkgrey;
-  display: inline;
-  font-size: 15px;
-  line-height: 1.2;
-  outline: none;
-  width: 100%;
-}
-
-.comment-submit-button {
-  left: -9999px;
-  position: absolute;
+.comments {
+  padding-top: 5px;
+  padding-right: 24px;
+  padding-left: 24px;
+  margin-top: -5px;
+  margin-right: -24px;
+  margin-bottom: 0;
+  margin-left: -24px;
 }
 
 .comment {
   margin-bottom: 7px;
 
+  font-size: 0;
+  word-wrap: break-word;
+  list-style: none;
+
   .username {
-    font-weight: 600;
     margin-right: 0.3em;
   }
 }
 
 .comment-delete {
   float: right;
+  margin-left: 10px;
+
+  font-size: $font-size-base;
+  vertical-align: baseline;
 }
 
 .icon-remove {
-  color: $color-horizontal-grey;
   margin-top: 2px;
+
+  color: $color-horizontal-grey;
 }
 
 .comments-pagination {
@@ -48,9 +39,9 @@
 }
 
 .more-comments {
+  font-size: $font-size-base;
+  line-height: $line-height-base;
   color: $color-header-grey;
-  font-size: 15px;
-  line-height: 1.2;
 
   &:hover,
   &:focus,
@@ -58,4 +49,56 @@
     color: $color-header-grey;
     text-decoration: none;
   }
+}
+
+.comment-like-form {
+  min-height: 68px;
+  padding-top: 9px;
+  padding-bottom: 10px;
+  margin: 0;
+  margin-top: 13px;
+
+  font-size: 0;
+
+  border-top: 1px solid $color-almond-grey;
+}
+
+.like-button {
+  display: inline-block;
+  padding: 0;
+
+  vertical-align: middle;
+}
+
+.comment-form {
+  display: inline-block;
+  width: 480px;
+  padding: 0;
+
+  vertical-align: middle;
+}
+
+.comment-content {
+  display: inline;
+  width: 100%;
+  overflow: hidden;
+
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $color-black;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  vertical-align: baseline;
+
+  border: medium none;
+  outline: none;
+
+  &::placeholder {
+    color: $color-header-grey;
+  }
+}
+
+.comment-submit-button {
+  position: absolute;
+  left: -9999px;
 }
