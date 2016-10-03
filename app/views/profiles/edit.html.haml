@@ -7,7 +7,7 @@
           .form-group.text-center
             %h4.profile-title-img
               = t('profiles.edit.title.image')
-            .img-circle
+            .profile-image
               = profile_avatar_select(@user)
             = f.file_field :avatar, onChange: 'loadFile(event)',
                            class: 'profile-avatar'

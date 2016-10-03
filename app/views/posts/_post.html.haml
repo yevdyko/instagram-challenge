@@ -1,13 +1,16 @@
 .posts-wrapper
   .post
     .post-head
+      = link_to profile_avatar_select(post.user),
+                profile_path(post.user.username),
+                class: 'avatar'
       .username
         = link_to post.user.username, profile_path(post.user.username)
-      .time-ago
-        = timeago_tag post.created_at, nojs: true, force: true
+      = link_to (timeago_tag post.created_at, nojs: true, force: true),
+                post_path(post),
+                class: 'time-ago'
     .post-image.center-block
-      = link_to (image_tag post.image.url(:medium), class: 'img-responsive'),
-                post_path(post)
+      = image_tag post.image.url(:medium), class: 'img-responsive'
     .post-bottom
       = render 'posts/likes', post: post
       .description
