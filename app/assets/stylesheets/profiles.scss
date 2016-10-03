@@ -31,7 +31,9 @@
 }
 
 .profile-image {
+  background-color: $color-snow;
   border: 1px solid $color-avatargrey;
+  border-radius: 50%;
   height: 152px;
   margin: 0 auto;
   width: 152px;

@@ -14,38 +14,73 @@
   border-radius: 3px;
   border-style: solid;
   border-width: 1px;
+
   margin-bottom: 60px;
 }
 
 .post-head {
   color: $color-black;
-  flex-direction: row;
+
+  font-size: 0;
+
+  height: 64px;
+  padding: 18px 20px;
+}
+
+.avatar {
+  background-color: $color-snow;
+  border: 1px solid $color-avatargrey;
+  border-radius: 50%;
+  box-sizing: border-box;
+
+  display: inline-block;
+  height: 30px;
+  margin: -1px 10px -1px -5px;
+
+  overflow: hidden;
+
+  vertical-align: middle;
+
+  width: 30px;
+}
+
+.username a {
+  color: $color-black;
+
+  display: inline-block;
+
   font-size: 15px;
+  font-weight: $font-weight-bold;
   line-height: 1.2;
-  padding-bottom: 22px;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-top: 24px;
 
-  .username,
-  .time-ago {
-    display: inline;
-  }
+  vertical-align: middle;
 
-  .username a {
+  width: 100%;
+
+  &:hover,
+  &:focus {
     color: $color-black;
-    font-weight: 600;
-
-    &:hover,
-    &:focus {
-      color: $color-black;
-      text-decoration: none;
-    }
+    text-decoration: none;
   }
+}
 
-  .time-ago {
+.time-ago {
+  color: $color-steelgrey;
+
+  display: inline-block;
+  float: right;
+
+  font-size: 15px;
+  font-weight: $font-weight-normal;
+  line-height: 1.2;
+
+  padding: 5px 0;
+  vertical-align: middle;
+
+  &:hover,
+  &:focus {
     color: $color-steelgrey;
-    float: right;
+    text-decoration: none;
   }
 }
 
@@ -57,6 +92,7 @@
 .post-bottom {
   font-size: 15px;
   line-height: 1.2;
+
   margin-bottom: 5px;
   padding-bottom: 10px;
   padding-left: 24px;
@@ -68,9 +104,11 @@
 
   a {
     color: $color-black;
+
     display: inline;
+
     font-size: 15px;
-    font-weight: 600;
+    font-weight: $font-weight-bold;
 
     &:hover,
     &:focus {
@@ -89,7 +127,7 @@
 
   .username a {
     color: $color-black;
-    font-weight: 600;
+    font-weight: $font-weight-bold;
   }
 }
 
@@ -101,18 +139,24 @@
   border: 2px solid $color-btnblue;
   border-radius: 50%;
   color: $color-btnblue;
+
   display: table;
+
   height: 120px;
   margin: 60px auto 40px;
+
   position: relative;
+
   width: 120px;
 }
 
 .load-more {
   color: $color-btnblue;
+
   display: table-cell;
+
   font-size: 14px;
-  font-weight: 600;
+  font-weight: $font-weight-bold;
   padding: 0 9px;
   text-decoration: none;
   vertical-align: middle;
