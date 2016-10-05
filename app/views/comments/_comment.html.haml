@@ -1,8 +1,4 @@
-.comment
-  .username
-    = link_to comment.user.username, profile_path(comment.user.username)
-  .comment-content
-    = comment.thoughts
+%li.comment
   - if comment.user == current_user
     = link_to post_comment_path(post, comment),
               method: :delete,
@@ -11,3 +7,9 @@
               id: "delete_#{comment.id}",
               class: 'comment-delete' do
       %span.glyphicon.glyphicon-remove.icon-remove
+  = link_to comment.user.username,
+            profile_path(comment.user.username),
+            class: 'username'
+  .comment-content
+    = comment.thoughts
+

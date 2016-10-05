@@ -28,7 +28,9 @@ feature 'Updating posts' do
 
       find(:xpath, "//a[contains(@href,'posts/#{johns_post.id}')]", match: :first).click
 
-      expect(page).to_not have_content t('posts.show.edit')
+      within '.edit-links' do
+        expect(page).to_not have_content t('posts.show.edit')
+      end
     end
 
     scenario 'when the url path is directly visited' do
@@ -47,7 +49,9 @@ feature 'Updating posts' do
     log_in_as user
 
     find(:xpath, "//a[contains(@href,'posts/#{post.id}')]", match: :first).click
-    click_link t('posts.show.edit')
+    within '.edit-links' do
+      click_link t('posts.show.edit')
+    end
     attach_file('post_image', 'spec/files/test.zip')
     click_button 'Update Post'
 

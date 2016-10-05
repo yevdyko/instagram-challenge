@@ -10,7 +10,7 @@
   %body
     - if @show_navbar
       = render 'application/navbar'
-    .container
+    %main.container
       - flash.each do |name, msg|
         = content_tag :div, msg, class: [:alert, alert_for(name)]
       = yield

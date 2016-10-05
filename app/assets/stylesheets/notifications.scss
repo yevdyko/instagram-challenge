@@ -2,9 +2,10 @@
   display: inline-block;
 
   button {
-    border: 0;
-    padding-bottom: 0;
     padding-top: 0;
+    padding-bottom: 0;
+
+    border: 0;
 
     &:hover {
       background-color: $color-white;
@@ -13,15 +14,15 @@
 }
 
 .dropdown-toggle {
-  padding: 0 9px;
-
   position: relative;
+
+  padding: 0 9px;
 }
 
 .dropdown-menu {
-  margin: 0;
-  padding: 0;
   width: 300px;
+  padding: 0;
+  margin: 0;
 }
 
 .dropdown-menu-head {
@@ -29,49 +30,54 @@
 }
 
 .dropdown-menu-bottom {
-  border-top: 1px solid $color-lightgrey;
   padding: 8px;
+
+  border-top: 1px solid $color-lightgrey;
 }
 
 .notification-count {
-  background-color: $color-iconred;
-  border-radius: 20px;
-  color: $color-white;
-
-  font-size: 10px;
-
-  height: 14px;
-
   position: absolute;
-  right: 0;
   top: 0;
+  right: 0;
 
   width: 14px;
+  height: 14px;
+
+  font-size: 10px;
+  color: $color-white;
+
+  background-color: $color-iconred;
+  border-radius: 20px;
 }
 
 .notifications {
-  margin: 0 auto;
-  margin-bottom: 40px;
-  margin-top: 20px;
   width: 550px;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .notification-head {
-  background-color: $color-white;
-  color: $color-black;
-  font-size: 16px;
   padding: 15px;
+
+  font-size: 16px;
+  color: $color-black;
   text-align: center;
+
+  background-color: $color-white;
 }
 
 .notification {
+  padding: 15px;
+
   background-color: $color-white;
   border-top: 1px solid $color-lightgrey;
-  padding: 15px;
 }
 
 .notifications-pagination {
+  padding: 15px;
+
   background-color: $color-white;
   border-top: 1px solid $color-lightgrey;
-  padding: 15px;
 }
+

@@ -23,7 +23,7 @@ module AuthHelpers
       find('.user-block-link#profile').trigger('click')
     end
 
-    find('.btn-options').click
+    find('.btn-options--profile').click
     click_link t('application.modal.logout')
   end
 end

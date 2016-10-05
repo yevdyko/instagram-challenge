@@ -6,7 +6,7 @@ feature 'Editing user profiles' do
 
   background do
     log_in_as user
-    first('.username').click_link user.username
+    click_link user.username, match: :first
     click_link t('profiles.show.edit')
   end
 

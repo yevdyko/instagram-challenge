@@ -16,9 +16,9 @@ feature 'Liking / Unliking posts' do
   # So that once I've liked a post
   # I want to see my username added to the post's list of likers
   scenario "can see username added to the post's list of likers" do
-    expect(find('.likes')).to_not have_username user
+    expect(find('.post-likes')).to_not have_username user
     add_like post
-    expect(find('.likes')).to have_username user
+    expect(find('.post-likes')).to have_username user
   end
 
   # As a User
@@ -26,9 +26,9 @@ feature 'Liking / Unliking posts' do
   # I want to unlike a post by clicking the button again
   scenario 'can unlike a post' do
     add_like post
-    expect(find('.likes')).to have_username user
+    expect(find('.post-likes')).to have_username user
     add_unlike post
-    expect(find('.likes')).to_not have_username user
+    expect(find('.post-likes')).to_not have_username user
   end
 
   # As a User
@@ -54,7 +54,7 @@ feature 'Liking / Unliking posts' do
         add_like post
       end
 
-      expect(find('.likes')).to have_content '4 likes'
+      expect(find('.post-likes')).to have_content '4 likes'
     end
   end
 
@@ -65,7 +65,7 @@ feature 'Liking / Unliking posts' do
     visit root_path
 
     add_like post
-    first('.likes').click_link user.username
+    first('.post-likes').click_link user.username
 
     expect(page).to have_current_path profile_path(user.username)
   end

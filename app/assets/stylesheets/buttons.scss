@@ -1,16 +1,15 @@
 // Profile page
 
 .btn-edit {
-  border-color: $color-header-grey;
-  color: $color-header-grey;
-
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.85;
-
   padding: 0 11px;
 
+  font-size: 16px;
+  font-weight: $font-weight-bold;
+  line-height: 1.85;
+  color: $color-header-grey;
   vertical-align: top;
+
+  border-color: $color-header-grey;
 
   &:hover,
   &:focus {
@@ -19,62 +18,59 @@
 }
 
 .btn-options {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  overflow: hidden;
+
+  text-align: center;
+  text-indent: 100%;
+  white-space: nowrap;
+  cursor: pointer;
+
   background-color: transparent;
   background-image: url("icon-options.png");
   background-position: 50% 50%;
   background-repeat: no-repeat;
   border: 0;
-
-  cursor: pointer;
-  height: 44px;
-
   outline: none;
-  overflow: hidden;
 
-  padding: 0;
-
-  text-align: center;
-  text-indent: 100%;
-  white-space: nowrap;
-
-  width: 44px;
+  &--post {
+    margin-right: -10px;
+    margin-left: 5px;
+  }
 }
 
 // Modal Window
 
 .btn-close {
-  background: transparent;
-  border: 0;
+  position: absolute;
+  top: 5px;
+  right: 10px;
 
   display: block;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
 
   font-size: 0;
 
-  height: 20px;
-
-  margin: 0;
+  background: transparent;
+  border: 0;
   outline: none;
-  padding: 0;
-
-  position: absolute;
-  right: 10px;
-  top: 5px;
-
-  width: 20px;
 }
 
 .btn-close::before,
 .btn-close::after {
-  border: 2px solid $color-white;
-
-  content: "";
-
-  display: block;
-
   position: absolute;
   top: 8px;
 
+  display: block;
   width: 20px;
+
+  border: 2px solid $color-white;
+  content: "";
 }
 
 .btn-close::before {
@@ -83,4 +79,35 @@
 
 .btn-close::after {
   transform: rotate(-45deg);
+}
+
+// Navbar
+
+.btn-getapp {
+  height: 34px;
+  padding: 3px 16px;
+  margin-right: 24px;
+  overflow: hidden;
+
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: 2;
+  color: $color-white;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+
+  background-color: $color-btnblue;
+  border: 0;
+  border-color: $color-btnblue;
+  border-radius: 4px;
+
+  &:hover,
+  &:focus,
+  &:visited {
+    color: $color-white;
+
+    background-color: $color-btnblue;
+    border-color: $color-btnblue;
+  }
 }

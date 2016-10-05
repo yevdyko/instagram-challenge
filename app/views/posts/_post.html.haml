@@ -1,43 +1,49 @@
-.posts-wrapper
-  .post
-    .post-head
-      = link_to profile_avatar_select(post.user),
-                profile_path(post.user.username),
-                class: 'avatar'
-      .username
-        = link_to post.user.username, profile_path(post.user.username)
-      = link_to (timeago_tag post.created_at, nojs: true, force: true),
-                post_path(post),
-                class: 'time-ago'
-    .post-image.center-block
-      = image_tag post.image.url(:medium), class: 'img-responsive'
-    .post-bottom
-      = render 'posts/likes', post: post
-      .description
-        .description-content
-          .username
-            = link_to post.user.username, profile_path(post.user.username)
-          .description-text
-            = post.description
-        .comments{ id: "comments_#{post.id}" }
-          - if post.comments.any?
-            - unless post.comments.size <= 20
-              .comments-pagination{ id: "comments-pagination_#{post.id}" }
-                = link_to t('comments.pagination', count: post.comments.size),
-                          post_comments_path(post),
-                          remote: true,
-                          class: 'more-comments',
-                          id: "more-comments_#{post.id}",
-                          data: { post_id: "#{post.id}",
-                                  type: 'html',
-                                  value: "#{post.comments.size}" }
-            = render post.comments.last(20), post: post
-    .comment-like-form.row
-      .col-sm-1.like-button
+%article.post
+  .post-head
+    = link_to profile_avatar_select(post.user),
+              profile_path(post.user.username),
+              class: 'avatar'
+    = link_to post.user.username,
+              profile_path(post.user.username),
+              class: 'username'
+    = link_to (timeago_tag post.created_at, nojs: true, force: true),
+              post_path(post),
+              class: 'time-ago'
+  .post-image
+    = image_tag post.image.url(:medium), class: 'img-responsive'
+  .post-bottom
+    = render 'posts/likes', post: post
+    .description
+      .description-content
+        = link_to post.user.username,
+                  profile_path(post.user.username),
+                  class: 'username'
+        %span.description-text
+          = post.description
+      %ul.comments{ id: "comments_#{post.id}" }
+        - if post.comments.any?
+          - unless post.comments.size <= 4
+            .comments-pagination{ id: "comments-pagination_#{post.id}" }
+              = link_to t('comments.pagination', count: post.comments.size),
+                        post_comments_path(post),
+                        remote: true,
+                        class: 'more-comments',
+                        id: "more-comments_#{post.id}",
+                        data: { post_id: "#{post.id}",
+                                type: 'html',
+                                value: "#{post.comments.size}" }
+          = render post.comments.last(4), post: post
+    .comment-like-form
+      .like-button
         = liked_post post
-      .comment-form.col-sm-11
+      .comment-form
         = form_for([post, post.comments.build], remote: true) do |f|
           = f.text_field :thoughts, placeholder: t('comments.add'),
                                     class: 'comment-content',
                                     id: "comment-content_#{post.id}"
           = f.submit t('comments.submit'), class: 'comment-submit-button'
+      .post-options
+        = button_tag 'Options', type: 'button',
+                                class: 'btn-options btn-options--post',
+                                'data-toggle': 'modal',
+                                href: 'modalPostOptions'

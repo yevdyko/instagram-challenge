@@ -8,7 +8,6 @@
 @import "navbar";
 @import "posts";
 @import "comments";
-@import "likes";
 @import "profiles";
 @import "notifications";
 @import "relationships";
@@ -20,17 +19,18 @@ html {
 }
 
 .container {
-  margin: 0 auto;
   max-width: 1010px;
   min-width: 860px;
   padding: 0 40px;
+  margin: 0 auto;
 }
 
 .form-wrapper {
   width: 60%;
-  margin: 20px auto;
-  background-color: $color-white;
   padding: 40px;
+  margin: 20px auto;
+
+  background-color: $color-white;
   border: 1px solid $color-azure;
   border-radius: 3px;
 }
@@ -44,5 +44,5 @@ html {
   width: 600px;
   margin: auto;
   margin-top: 20px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
