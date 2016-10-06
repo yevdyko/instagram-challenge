@@ -79,7 +79,8 @@ en:
 
   notifications:
     dropdown-menu:
-      header: "Notifications"
+      header: "Recent Activity on your posts"
+      empty: "When someone comments on or likes ones of your photos or videos, you'll see it here."
       link: "See All"
     index:
       header: "Notifications"

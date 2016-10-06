@@ -1,18 +1,23 @@
-.dropdown.notification-dropdown
-  %button.btn.btn-default.dropdown-toggle{ type: 'button',
-                                           id: 'dropdownMenu1',
-                                           data: { toggle: 'dropdown' },
-                                           'aria-haspopup': true,
-                                           'aria-expanded': true }
+.dropdown
+  %button.dropdown-toggle{ type: 'button',
+                           id: 'dropdownMenu1',
+                           data: { toggle: 'dropdown' },
+                           'aria-haspopup': true,
+                           'aria-expanded': true }
     = link_to (image_tag 'icon-notifications.png', alt: 'Notifications'),
                '#',
                class: 'user-block-link',
                id: 'notifications'
     %span.notification-count
       = current_user.notifications.where(read: false).count
+  .triangle-with-shadow
   %ul.dropdown-menu{ 'aria-labelledby': 'dropdownMenu1' }
-    %li.dropdown-menu-head.text-center
+    %li.dropdown-menu-head
       = t('notifications.dropdown-menu.header')
-    = render current_user.notifications.where(read: false).order(created_at: :desc).last(5)
-    %li.dropdown-menu-bottom.text-center
-      = link_to t('notifications.dropdown-menu.link'), notifications_path
+    - if current_user.notifications.any?
+      = render current_user.notifications.where(read: false).order(created_at: :desc).last(5)
+      %li.dropdown-menu-bottom
+        = link_to t('notifications.dropdown-menu.link'), notifications_path
+    - else
+      %li.dropdown-menu-empty
+        = t('notifications.dropdown-menu.empty')
