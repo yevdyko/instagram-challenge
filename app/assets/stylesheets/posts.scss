@@ -15,7 +15,7 @@
   margin-left: -1px;
 
   background-color: $color-white;
-  border: 1px solid $color-almond-grey;
+  border: 1px solid $color-border-grey;
   border-radius: 3px;
 
   &:last-child {
@@ -92,8 +92,8 @@
 }
 
 .post-image {
-  border-top: 1px solid $color-almond-grey;
-  border-bottom: 1px solid $color-almond-grey;
+  border-top: 1px solid $color-border-grey;
+  border-bottom: 1px solid $color-border-grey;
 }
 
 .post-bottom {
