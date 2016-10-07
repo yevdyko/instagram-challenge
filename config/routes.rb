@@ -21,7 +21,10 @@ Rails.application.routes.draw do
                               as: :omniauth_failure
   end
 
-  root 'posts#index'
+  authenticated :user do
+    root to: 'posts#index', as: :authenticated_root
+  end
+  root to: redirect('/users/signup')
 
   get 'browse', to: 'posts#browse', as: :browse_posts
 
