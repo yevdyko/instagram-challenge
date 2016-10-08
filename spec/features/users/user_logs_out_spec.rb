@@ -4,7 +4,7 @@ require 'rails_helper'
 # So that no one else can use my account
 # I want to be able to log out
 feature 'User logs out' do
-  scenario 'can see a logged out message', js: true do
+  scenario 'returns to the registration page', js: true do
     user = create :user
 
     log_in_as user

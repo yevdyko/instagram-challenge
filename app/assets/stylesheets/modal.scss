@@ -1,0 +1,82 @@
+.modal {
+  padding: 0 !important;
+  margin: 0;
+
+  text-align: center;
+}
+
+.modal::before {
+  display: inline-block;
+  height: 100%;
+  margin-right: -4px;
+
+  vertical-align: middle;
+
+  content: "";
+}
+
+.modal-dialog {
+  display: inline-block;
+  width: 510px;
+  max-width: 100%;
+
+  text-align: left;
+  vertical-align: middle;
+}
+
+.modal-content {
+  border: 0;
+  border-radius: 0;
+
+  box-shadow: none;
+}
+
+.modal-open {
+  padding: 0 !important;
+}
+
+.options-list {
+  padding: 0;
+  margin: 0;
+
+  text-align: center;
+  list-style: none;
+}
+
+.options-item {
+  width: 100%;
+
+  background-color: $color-white;
+  border-bottom: 1px solid $color-input-border-grey;
+
+  &:last-child {
+    border-bottom-width: 0;
+  }
+}
+
+.options-link {
+  display: block;
+  width: 100%;
+  padding: 0 16px;
+  overflow: hidden;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 3.125;
+  color: $color-black;
+  text-align: center;
+  cursor: pointer;
+
+  background: $color-white;
+  border: 0;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    font-weight: 600;
+    color: $color-black;
+    text-decoration: none;
+
+    background-color: $color-border-grey;
+  }
+}

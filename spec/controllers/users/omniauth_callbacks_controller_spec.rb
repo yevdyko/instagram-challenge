@@ -28,7 +28,7 @@ describe Users::OmniauthCallbacksController do
   describe 'GET #failure' do
     it 'renders a failure message on unsuccessful authentication' do
       get :failure
-      expect(flash[:alert]).to eq 'Authentication failed.'
+      expect(flash[:alert]).to eq t('omniauth.failure')
       expect(response).to redirect_to root_path
     end
   end

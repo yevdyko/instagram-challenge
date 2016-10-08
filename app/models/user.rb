@@ -34,13 +34,13 @@ class User < ApplicationRecord
     following_ids.include?(user.id)
   end
 
-  def self.find_or_create_by_auth(auth)
+  def self.find_or_create_by(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      setup_user(user, auth)
+      user_attributes_from_auth(user, auth)
     end
   end
 
-  def self.setup_user(user, auth)
+  def self.user_attributes_from_auth(user, auth)
     user.email    = auth.info.email
     user.username = auth.info.name.delete("\s").downcase
     user.password = Devise.friendly_token[0,20]
@@ -49,7 +49,8 @@ class User < ApplicationRecord
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
+      data = session['devise.facebook_data'] &&
+             session['devise.facebook_data']['extra']['raw_info']
       if data
         user.email = data['email'] if user.email.blank?
       end

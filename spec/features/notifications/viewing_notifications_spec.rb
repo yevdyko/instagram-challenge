@@ -29,7 +29,6 @@ feature 'Viewing notifications' do
     # So that I can find out when someone has reacted to my post
     # I want to display the notification count on navbar
     scenario 'can see the number of notifications on navbar' do
-      expect(page).to have_icon_flag
       expect(page).to have_notification_count '10'
     end
 

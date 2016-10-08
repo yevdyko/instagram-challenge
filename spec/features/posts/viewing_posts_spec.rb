@@ -90,7 +90,7 @@ feature 'Viewing posts' do
     end
 
     log_in_as user
-    click_link t('application.header.browse_posts')
+    find('.user-block-link#browse').click
 
     expect(page).to have_displayed_posts(5)
   end

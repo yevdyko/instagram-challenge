@@ -1,8 +1,9 @@
 // Colors
+
 $color-white: #fff;
 $color-snow: #fafafa;
 $color-lightgrey: #edeeee;
-$color-almond-grey: #efefef;
+$color-border-grey: #efefef;
 $color-steelgrey: #a5a7aa;
 $color-darkgrey: #4b4f54;
 $color-avatargrey: #c9c7c8;
@@ -17,11 +18,17 @@ $color-black: #262626;
 $color-btnblue: #3897f0;
 $color-btngreen: #66bd2b;
 $color-darkgreen: #47821F;
-$color-divider-grey: #c7c7c7;
+$color-iconred: #fa3e3e;
 
 // Typography
+
 $font-family-base: "Proxima", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-size-base: 14px;
-$line-height-base: 26px;
+$font-size-base: 15px;
+$line-height-base: 1.2;
 $font-weight-normal: 400;
-$font-weight-bold: 700;
+$font-weight-bold: 600;
+
+// Shadows
+
+$shadows: 0 0 5px rgba($color-black, 0.13);
+$shadows-triangle: 0 0 5px 1px rgba($color-black, 0.13);

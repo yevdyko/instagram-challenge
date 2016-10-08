@@ -2,7 +2,7 @@ module OmniAuthHelpers
   def valid_facebook_login_setup
     if Rails.env.test?
       OmniAuth.config.test_mode = true
-      OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+      OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(
         provider: 'facebook',
         uid: '123545',
         info: {
@@ -14,7 +14,7 @@ module OmniAuthHelpers
           token: 'ACCESS_TOKEN',
           expires_at: Time.current + 1.week
         }
-      })
+      )
     end
   end
 

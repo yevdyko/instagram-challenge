@@ -1,19 +1,19 @@
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def facebook
-      @user = User.find_or_create_by_auth(auth_hash)
+      @user = User.find_or_create_by(auth_hash)
 
       if @user.persisted?
         sign_in_and_redirect @user, event: :authentication
         set_flash_message(:notice, :success, kind: 'Facebook') if is_navigational_format?
       else
         session['devise.facebook_data'] = auth_hash
-        redirect_to new_user_registration_url, notice: 'Please provide a password to finish setting up your account.'
+        redirect_to new_user_registration_url, notice: t('omniauth.persisted')
       end
     end
 
     def failure
-      flash[:alert] = 'Authentication failed.'
+      flash[:alert] = t('omniauth.failure')
       redirect_to root_path
     end
 

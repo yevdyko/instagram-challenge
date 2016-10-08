@@ -3,11 +3,16 @@ en:
     title: "Pixagram"
     header:
       get_app: "Get the app"
-      browse_posts: "Browse Posts"
-      create_post: "Create Post"
+      browse: "Browse"
       signup: "Sign up"
       login: "Log in"
+      profile: "Profile"
+    modal:
+      create_post: "Create Post"
+      edit_post: "Edit Post"
+      delete_post: "Delete Post"
       logout: "Log out"
+      cancel: "Cancel"
 
   registration:
     email: "Email"
@@ -74,7 +79,8 @@ en:
 
   notifications:
     dropdown-menu:
-      header: "Notifications"
+      header: "Recent Activity on your posts"
+      empty: "When someone comments on or likes ones of your photos or videos, you'll see it here."
       link: "See All"
     index:
       header: "Notifications"
@@ -83,3 +89,7 @@ en:
       comment: "%{username} left a comment on your photo."
       like: "%{username} liked your photo."
     pagination: "All %{items}"
+
+  omniauth:
+    failure: "Authentication failed."
+    persisted: "Please provide a password to finish setting up your account."

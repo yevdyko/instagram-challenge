@@ -1,119 +1,187 @@
-.posts {
+.posts-wrapper {
+  width: 100%;
+  max-width: 600px;
   padding-top: 60px;
+  margin: 0 auto;
 }
 
-.posts-wrapper {
-  margin: 0 auto;
-  max-width: 602px;
-  width: 100%;
+.posts {
+  margin-bottom: 30px;
 }
 
 .post {
-  background-color: $color-white;
-  border-color: $color-lightgrey;
-  border-radius: 3px;
-  border-style: solid;
-  border-width: 1px;
+  margin-right: -1px;
   margin-bottom: 60px;
+  margin-left: -1px;
+
+  background-color: $color-white;
+  border: 1px solid $color-border-grey;
+  border-radius: 3px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .post-head {
+  height: 64px;
+  padding: 18px 20px;
+
+  font-size: 0;
   color: $color-black;
-  flex-direction: row;
-  font-size: 15px;
-  line-height: 1.2;
-  padding-bottom: 22px;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-top: 24px;
 
-  .username,
-  .time-ago {
-    display: inline;
-  }
-
-  .username a {
-    color: $color-black;
-    font-weight: 600;
-
-    &:hover,
-    &:focus {
-      color: $color-black;
-      text-decoration: none;
-    }
-  }
-
-  .time-ago {
-    color: $color-steelgrey;
-    float: right;
+  .username {
+    vertical-align: middle;
   }
 }
 
-.post-image {
-  border-bottom: 1px solid $color-azure;
-  border-top: 1px solid $color-azure;
-}
+.avatar {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: -1px 10px -1px -5px;
+  overflow: hidden;
 
-.post-bottom {
-  font-size: 15px;
-  line-height: 1.2;
-  margin-bottom: 5px;
-  padding-bottom: 10px;
-  padding-left: 24px;
-  padding-right: 24px;
+  vertical-align: middle;
+
+  background-color: $color-snow;
+  border: 1px solid $color-avatargrey;
+  border-radius: 50%;
+
+  box-sizing: border-box;
 }
 
 .username {
   display: inline;
+  width: 100%;
+  padding-left: 5px;
+  margin-left: -5px;
+  overflow: hidden;
 
-  a {
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-base;
+  color: $color-black;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: baseline;
+
+  &:hover,
+  &:focus {
     color: $color-black;
-    display: inline;
-    font-size: 15px;
-    font-weight: 600;
+    text-decoration: none;
+  }
+}
 
-    &:hover,
-    &:focus {
-      color: $color-black;
-      text-decoration: none;
-    }
+.time-ago {
+  display: inline-block;
+  float: right;
+  padding: 5px 0;
+
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  color: $color-header-grey;
+  vertical-align: middle;
+
+  &:hover,
+  &:focus {
+    color: $color-header-grey;
+    text-decoration: none;
+  }
+}
+
+.post-image {
+  border-top: 1px solid $color-border-grey;
+  border-bottom: 1px solid $color-border-grey;
+}
+
+.post-bottom {
+  padding: 0 24px;
+
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+}
+
+.post-likes {
+  margin-top: 20px;
+  margin-bottom: 7px;
+
+  .username {
+    display: inline;
+  }
+}
+
+.post-like {
+  width: 22px;
+  height: 20px;
+  padding: 8px;
+  margin-right: 3px;
+  margin-left: -8px;
+
+  cursor: pointer;
+
+  background-color: transparent;
+  border: 0;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+
+    outline: none;
   }
 }
 
 .description {
+  padding-bottom: 0.1px;
   margin-bottom: 7px;
+
+  .username {
+    margin-right: 0.3em;
+  }
 }
 
 .description-content {
   margin-bottom: 7px;
 
-  .username a {
-    color: $color-black;
-    font-weight: 600;
-  }
+  font-size: 0;
 }
 
 .description-text {
-  display: inline;
+  display: inline-block;
+
+  font-size: 15px;
+  line-height: 1.2;
+  vertical-align: baseline;
+}
+
+.post-options {
+  display: inline-block;
+
+  vertical-align: middle;
 }
 
 .posts-pagination {
-  border: 2px solid $color-btnblue;
-  border-radius: 50%;
-  color: $color-btnblue;
+  position: relative;
+
   display: table;
+  width: 120px;
   height: 120px;
   margin: 60px auto 40px;
-  position: relative;
-  width: 120px;
+
+  color: $color-btnblue;
+
+  border: 2px solid $color-btnblue;
+  border-radius: 50%;
 }
 
 .load-more {
-  color: $color-btnblue;
   display: table-cell;
-  font-size: 14px;
-  font-weight: 600;
   padding: 0 9px;
+
+  font-size: 14px;
+  font-weight: $font-weight-bold;
+  color: $color-btnblue;
   text-decoration: none;
   vertical-align: middle;
 
