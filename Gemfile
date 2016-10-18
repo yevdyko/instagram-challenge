@@ -38,7 +38,7 @@ group :test do
   gem 'shoulda'
   gem 'database_cleaner'
   gem 'coveralls', require: false
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '2.53.4'
   gem 'orderly'
   gem 'codeclimate-test-reporter', require: nil
   gem 'rails-controller-testing'
