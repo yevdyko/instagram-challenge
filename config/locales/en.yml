@@ -89,3 +89,7 @@ en:
       comment: "%{username} left a comment on your photo."
       like: "%{username} liked your photo."
     pagination: "All %{items}"
+
+  omniauth:
+    failure: "Authentication failed."
+    persisted: "Please provide a password to finish setting up your account."

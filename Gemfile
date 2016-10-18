@@ -22,6 +22,8 @@ gem 'puma'
 gem 'acts_as_votable'
 gem 'kaminari'
 gem 'font-awesome-rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'byebug'

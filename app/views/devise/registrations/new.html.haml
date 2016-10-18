@@ -1,7 +1,7 @@
 .panel-wrapper
   .panel-auth
     .logo-auth
-      = image_tag("pixagram-logo.png", alt: "Pixagram")
+      = image_tag('pixagram-logo.png', alt: 'Pixagram')
     = simple_form_for(resource, as: resource_name,
                       html: { autocomplete: 'off' },
                       url: registration_path(resource_name)) do |f|
@@ -10,7 +10,8 @@
         = t('registration.header.signup')
       .panel-body
         %span.button-auth.button-auth--facebook
-          = button_tag(class: 'btn-auth') do
+          = link_to(user_facebook_omniauth_authorize_path,
+                    class: 'btn btn-auth') do
             = fa_icon 'facebook-official'
             = t('registration.login_with_facebook')
         .divider-auth

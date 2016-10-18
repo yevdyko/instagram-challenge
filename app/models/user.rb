@@ -4,7 +4,8 @@ class User < ApplicationRecord
   validates :username, presence: true, length: { minimum: 3, maximum: 12 }
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, omniauth_providers: [:facebook]
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -31,5 +32,28 @@ class User < ApplicationRecord
 
   def following?(user)
     following_ids.include?(user.id)
+  end
+
+  def self.find_or_create_by(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user_attributes_from_auth(user, auth)
+    end
+  end
+
+  def self.user_attributes_from_auth(user, auth)
+    user.email    = auth.info.email
+    user.username = auth.info.name.delete("\s").downcase
+    user.password = Devise.friendly_token[0,20]
+    user.avatar   = auth.info.image
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      data = session['devise.facebook_data'] &&
+             session['devise.facebook_data']['extra']['raw_info']
+      if data
+        user.email = data['email'] if user.email.blank?
+      end
+    end
   end
 end

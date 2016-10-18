@@ -5,14 +5,26 @@ Rails.application.routes.draw do
 
   get 'profiles/show'
 
-  devise_for :users, controllers: { registrations: 'registrations',
-                                    sessions: 'sessions' },
-                     path_names:  { sign_in:  'login',
-                                    sign_up:  'signup',
-                                    sign_out: 'logout' }
+  devise_for :users, controllers: {
+                       registrations:      'users/registrations',
+                       sessions:           'users/sessions',
+                       omniauth_callbacks: 'users/omniauth_callbacks'
+                     },
+                     path_names: {
+                       sign_in:  'login',
+                       sign_up:  'signup',
+                       sign_out: 'logout'
+                     }
 
+  devise_scope :user do
+    get 'users/auth/failure', to: 'users/omniauth_callbacks#failure',
+                              as: :omniauth_failure
+  end
 
-  root 'posts#index'
+  authenticated :user do
+    root to: 'posts#index', as: :authenticated_root
+  end
+  root to: redirect('/users/signup')
 
   get 'browse', to: 'posts#browse', as: :browse_posts
 
