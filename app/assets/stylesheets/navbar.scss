@@ -1,41 +1,56 @@
 .navbar {
+  height: 78px;
+  margin-bottom: 0;
+
   background-color: $color-white;
   border: 0;
   border-bottom: 1px solid $color-input-border-grey;
   border-radius: 0;
-  height: 78px;
-  margin-bottom: 0;
 }
 
 .navbar-logo {
   float: left;
+  width: 188px;
   padding: 24px 20px 18px;
   padding-left: 0;
-  width: 188px;
 
   img {
-    height: 36px;
     width: 168px;
+    height: 36px;
   }
+
 }
 
 .navbar-search {
-  margin: 25px auto;
   width: 215px;
+  margin: 25px auto;
 }
 
 .navbar-user-block {
   float: right;
-  padding: 22px;
-  padding-right: 0;
+  padding: 27px 0;
+  padding-left: 24px;
+
+  font-size: 0;
   text-align: right;
-  width: 340px;
+}
+
+.user-block {
+  display: inline-block;
+  margin-left: 23px;
+
+  vertical-align: middle;
+
+  &:first-child {
+    margin-left: 0;
+  }
 }
 
 .user-block-link {
-  color: $color-btnblue;
-  font-weight: 600;
   padding: 0;
+
+  font-weight: $font-weight-bold;
+  color: $color-btnblue;
   text-decoration: none;
 
   &:hover,
@@ -47,41 +62,29 @@
 }
 
 .user-block-divider {
-  color: $color-divider-grey;
+  padding: 3px 0;
+  margin: 0 7px;
+
   font-size: 16px;
   line-height: 2;
-  margin: 0 7px;
-  padding: 3px 0;
+  color: $color-horizontal-grey;
   vertical-align: middle;
 }
 
-.btn-getapp {
-  background-color: $color-btnblue;
-  border: 0;
-  border-color: $color-btnblue;
-  border-radius: 4px;
-  color: $color-white;
-  cursor: pointer;
-  font-size: $font-size-base;
-  font-weight: $font-weight-normal;
-  height: 34px;
-  line-height: 2;
-  margin-right: 24px;
-  overflow: hidden;
-  padding: 3px 16px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-  &:hover,
-  &:focus,
-  &:visited {
-    background-color: $color-btnblue;
-    border-color: $color-btnblue;
-    color: $color-white;
-  }
-}
 
 .navbar-search-field {
+  z-index: 2;
+
+  width: 100%;
+  height: 28px;
+  padding: 3px 10px 3px 26px;
+
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: $color-header-grey;
+  text-align: center;
+
   background: $color-snow;
   background-image: url("icon-search.png");
   background-position: 76px 8px;
@@ -89,25 +92,18 @@
   background-size: 10px 10px;
   border: solid 1px $color-input-border-grey;
   border-radius: 3px;
-  color: $color-header-grey;
-  font-size: 14px;
-  font-weight: 300;
-  height: 28px;
-  letter-spacing: 0.5px;
   outline: none;
-  padding: 3px 10px 3px 26px;
-  text-align: center;
-  width: 100%;
-  z-index: 2;
-}
 
-.navbar-search-field:focus {
-  background: $color-white;
-  background-image: url("icon-search.png");
-  background-position: 12px 8px;
-  background-repeat: no-repeat;
-  background-size: 10px 10px;
-  color: $color-black;
-  padding-left: 30px;
-  text-align: left;
+  &:focus {
+    padding-left: 30px;
+
+    color: $color-black;
+    text-align: left;
+
+    background: $color-white;
+    background-image: url("icon-search.png");
+    background-position: 12px 8px;
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+  }
 }

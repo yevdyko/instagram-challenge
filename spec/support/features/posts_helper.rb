@@ -1,8 +1,16 @@
 module PostsHelpers
   def create_post_with(text)
     visit root_path
-    click_link t('application.header.create_post')
-    attach_file('post_image', 'spec/files/images/test.jpg')
+
+    if Capybara.javascript_driver == :selenium
+      find('.user-block-link#profile').click
+    else
+      find('.user-block-link#profile').trigger('click')
+    end
+
+    find('.btn-options').click
+    click_link t('application.modal.create_post')
+    attach_file('post_image', Rails.root + 'spec/files/images/test.jpg')
     fill_in 'post_description', with: text.description
     click_button 'Create Post'
   end
@@ -10,7 +18,9 @@ module PostsHelpers
   def edit_post_with(text)
     visit root_path
     find(:xpath, "//a[contains(@href,'posts/#{post.id}')]", match: :first).click
-    click_link t('posts.show.edit')
+    within '.edit-links' do
+      click_link t('posts.show.edit')
+    end
     fill_in 'post_description', with: text.description
     click_button 'Update Post'
   end
@@ -18,7 +28,9 @@ module PostsHelpers
   def delete_post
     visit root_path
     find(:xpath, "//a[contains(@href,'posts/#{post.id}')]", match: :first).click
-    click_link t('posts.show.edit')
+    within '.edit-links' do
+      click_link t('posts.show.edit')
+    end
     click_link t('posts.edit.delete.link')
   end
 

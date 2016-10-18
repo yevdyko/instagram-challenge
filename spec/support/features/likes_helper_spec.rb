@@ -1,10 +1,10 @@
 module LikesHelpers
   def have_empty_heart_icon
-    have_css('a.glyphicon-heart-empty')
+    have_css("img[src*='icon-heart-empty']")
   end
 
   def have_solid_heart_icon
-    have_css('a.glyphicon-heart')
+    have_css("img[src*='icon-heart']")
   end
 
   def add_like(post)

@@ -1,6 +1,6 @@
 .posts
   = render 'post', post: @post
-.text-center.edit-links
+.edit-links.text-center
   - if @post.user.id == current_user.id
     = link_to t('posts.show.cancel'), posts_path
     |

@@ -1,56 +1,138 @@
-.notification-dropdown {
+.dropdown {
+  position: relative;
+
   display: inline-block;
-  margin-right: 5px;
+}
 
-  button {
-    border: 0;
-    padding-bottom: 0;
-    padding-top: 0;
+.dropdown-toggle {
+  position: relative;
 
-    &:hover {
-      background-color: $color-white;
-    }
+  padding: 0 9px;
+
+  background-color: $color-white;
+  border: 0;
+
+  &:hover,
+  &:focus,
+  &:visited {
+    background-color: $color-white;
   }
 }
 
+.triangle-with-shadow {
+  @include box-shadow($shadows-triangle);
+
+  position: absolute;
+  top: 35px;
+  right: 14px;
+
+  display: none;
+  width: 14px;
+  height: 14px;
+
+  background: $color-white;
+  border: 1px solid $color-border-grey;
+  content: "";
+
+  transform: rotate(45deg);
+}
+
+.open > .triangle-with-shadow {
+  display: block;
+}
+
 .dropdown-menu {
-  margin: 0;
+  @include box-shadow($shadows);
+
+  top: 40px;
+
+  width: 500px;
+  max-height: 362px;
+  min-height: 100px;
   padding: 0;
-  width: 300px;
+  margin-left: -412px;
+
+  font-size: 16px;
+  line-height: 1;
+  text-align: center;
+
+  background: $color-white;
+  border: solid 1px $color-border-grey;
+  border-radius: 3px;
+
+  &::before {
+    position: absolute;
+    top: -10px;
+    right: 57px;
+
+    display: inline-block;
+
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid $color-white;
+    border-left: 10px solid transparent;
+    content: "";
+  }
 }
 
 .dropdown-menu-head {
-  padding: 8px;
+  margin-top: 20px;
+
+  font-weight: 600;
+}
+
+.dropdown-menu-empty {
+  margin-top: 10px;
 }
 
 .dropdown-menu-bottom {
-  border-top: 1px solid $color-lightgrey;
   padding: 8px;
+
+  border-top: 1px solid $color-lightgrey;
+}
+
+.notification-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 14px;
+  height: 14px;
+
+  font-size: 10px;
+  color: $color-white;
+
+  background-color: $color-iconred;
+  border-radius: 20px;
 }
 
 .notifications {
-  margin: 0 auto;
-  margin-bottom: 40px;
-  margin-top: 20px;
   width: 550px;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .notification-head {
-  background-color: $color-white;
-  color: $color-black;
-  font-size: 16px;
   padding: 15px;
+
+  font-size: 16px;
+  color: $color-black;
   text-align: center;
+
+  background-color: $color-white;
 }
 
 .notification {
+  padding: 15px;
+
   background-color: $color-white;
   border-top: 1px solid $color-lightgrey;
-  padding: 15px;
 }
 
 .notifications-pagination {
+  padding: 15px;
+
   background-color: $color-white;
   border-top: 1px solid $color-lightgrey;
-  padding: 15px;
 }
+

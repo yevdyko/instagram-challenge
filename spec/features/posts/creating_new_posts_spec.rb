@@ -13,21 +13,21 @@ feature 'Creating posts' do
   background { log_in_as user }
 
   context 'no posts have been added' do
-    scenario 'displays a link to add a post' do
-      visit root_path
-
-      expect(page).to have_link t('application.header.create_post'),
-                                href: new_post_path
-    end
-
     scenario 'displays a message that there are no posts' do
       visit root_path
 
       expect(page).to have_content t('posts.index.empty')
     end
+
+    scenario 'displays a link to add a post' do
+      visit root_path
+
+      expect(page).to have_link t('application.modal.create_post'),
+                                href: new_post_path
+    end
   end
 
-  scenario 'can create a new post' do
+  scenario 'can create a new post', js: true do
     create_post_with text
 
     expect(page).to have_current_path root_path
@@ -37,8 +37,15 @@ feature 'Creating posts' do
     expect(find('.post-head')).to have_username user
   end
 
-  scenario 'needs to add an image' do
-    click_link t('application.header.create_post')
+  scenario 'needs to add an image', js: true do
+    if Capybara.javascript_driver == :selenium
+      find('.user-block-link#profile').click
+    else
+      find('.user-block-link#profile').trigger('click')
+    end
+
+    find('.btn-options').click
+    click_link t('application.modal.create_post')
     fill_in 'post_description', with: 'No picture'
     click_button 'Create Post'
 
