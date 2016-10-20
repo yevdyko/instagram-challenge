@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   def show_navbar
     @show_navbar = true
   end
+
+  def skip_footer
+    @skip_footer = true
+  end
 end
