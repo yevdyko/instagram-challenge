@@ -14,4 +14,5 @@
       - flash.each do |name, msg|
         = content_tag :div, msg, class: [:alert, alert_for(name)]
       = yield
+    = render 'application/footer' unless @skip_footer
     = render 'application/modal'
