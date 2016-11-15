@@ -24,6 +24,7 @@ gem 'kaminari'
 gem 'font-awesome-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'redis'
 
 group :development, :test do
   gem 'byebug'
