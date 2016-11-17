@@ -86,7 +86,7 @@ en:
       header: "Notifications"
       empty: "There are no notifications"
     item:
-      comment: "%{username} left a comment on your photo."
+      comment: "%{username} commented:"
       like: "%{username} liked your photo."
     pagination: "All %{items}"
 

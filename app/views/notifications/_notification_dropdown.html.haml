@@ -8,16 +8,15 @@
                '#',
                class: 'user-block-link',
                id: 'notifications'
-    %span.notification-count
-      = current_user.notifications.where(read: false).count
+    = render 'notifications/counter', counter: current_user.notifications.where(read: false).count
   .triangle-with-shadow
   %ul.dropdown-menu{ 'aria-labelledby': 'dropdownMenu1' }
-    %li.dropdown-menu-head
-      = t('notifications.dropdown-menu.header')
     - if current_user.notifications.any?
       = render current_user.notifications.where(read: false).order(created_at: :desc).last(5)
       %li.dropdown-menu-bottom
         = link_to t('notifications.dropdown-menu.link'), notifications_path
     - else
+      %li.dropdown-menu-head
+        = t('notifications.dropdown-menu.header')
       %li.dropdown-menu-empty
         = t('notifications.dropdown-menu.empty')
