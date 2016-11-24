@@ -44,4 +44,6 @@ Rails.application.routes.draw do
       get 'unlike'
     end
   end
+
+  mount ActionCable.server => '/cable'
 end
