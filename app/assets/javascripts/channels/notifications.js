@@ -4,6 +4,7 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
   disconnected: function() {
   },
   received: function(data) {
+    $('.notification__list').prepend("" + data.notification);
     return this.update_counter(data.counter);
   },
   update_counter: function(counter) {

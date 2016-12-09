@@ -1,11 +1,15 @@
 .notifications
-  .notification-head
-    = t('notifications.index.header')
+  .notification__header
+    %h2.notification__title
+      = t('notifications.index.header')
   - if @notifications.any?
-    = render 'notifications'
+    .notification__content
+      %ul.notification__list
+        = render current_user.notifications
   - else
-    = t('notifications.index.empty')
-  .notifications-pagination.text-center#paginator
+    .notification__content
+      = t('notifications.index.empty')
+  .notification__pagination#paginator
     = link_to_next_page @notifications, t('notifications.pagination',
                                         items: 'notifications'),
                                         remote: true,

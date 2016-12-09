@@ -10,4 +10,9 @@ class NotificationsController < ApplicationController
     @notification.update read: true
     redirect_to post_path @notification.post
   end
+
+  def mark_all_as_read
+    @notification = Notification.find_by(id: params[:id], user: current_user)
+    @notification.update_all read: true
+  end
 end

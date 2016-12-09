@@ -2,103 +2,14 @@ ul {
   list-style: none;
 }
 
-.dropdown {
-  position: relative;
-
-  display: inline-block;
-}
-
-.dropdown-toggle {
-  position: relative;
-
-  padding: 0 9px;
-
-  background-color: $color-white;
-  border: 0;
-
-  &:hover,
-  &:focus,
-  &:visited {
-    background-color: $color-white;
-  }
-}
-
-.triangle-with-shadow {
-  @include box-shadow($shadows-triangle);
-
-  position: absolute;
-  top: 35px;
-  right: 14px;
-
-  display: none;
-  width: 14px;
-  height: 14px;
-
-  background: $color-white;
-  border: 1px solid $color-border-grey;
-  content: "";
-
-  transform: rotate(45deg);
-}
-
-.open > .triangle-with-shadow {
-  display: block;
-}
-
-.dropdown-menu {
-  @include box-shadow($shadows);
-
-  top: 40px;
-
-  width: 500px;
-  max-height: 362px;
-  min-height: 100px;
-  padding: 0;
-  margin-left: -412px;
-
-  font-size: 16px;
-  line-height: 1;
-  text-align: center;
-
-  background: $color-white;
-  border: solid 1px $color-border-grey;
-  border-radius: 3px;
-
-  &::before {
-    position: absolute;
-    top: -10px;
-    right: 57px;
-
-    display: inline-block;
-
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid $color-white;
-    border-left: 10px solid transparent;
-    content: "";
-  }
-}
-
-.dropdown-menu-head {
-  margin-top: 20px;
-
-  font-weight: 600;
-}
-
-.dropdown-menu-empty {
-  margin-top: 10px;
-}
-
-.dropdown-menu-bottom {
-  padding: 8px;
-}
-
-.notification-count {
+.notification__count {
   position: absolute;
   top: 0;
-  right: 0;
+  right: -1px;
 
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
+  padding-top: 1px;
 
   font-size: 10px;
   color: $color-white;
@@ -108,20 +19,32 @@ ul {
 }
 
 .notifications {
-  width: 550px;
+  width: 720px;
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 40px;
 }
 
-.notification-head {
-  padding: 15px;
+.notification__header {
+  margin-bottom: 10px;
+}
+
+.notification__title {
+  padding-top: 6px;
+  padding-bottom: 16px;
 
   font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
   color: $color-black;
   text-align: center;
 
+  border-bottom: 1px solid #aaa;
   background-color: $color-white;
+}
+
+.notification__list {
+  padding: 0;
 }
 
 .notification__item {
@@ -147,12 +70,12 @@ ul {
 
 }
 
-.notification-avatar {
+.notification__avatar {
   display: block;
   flex: 0 0 auto;
 }
 
-.notification-avatar-image {
+.notification__image {
   display: inline-block;
 }
 
@@ -167,7 +90,7 @@ ul {
   box-sizing: border-box;
 }
 
-.notification {
+.notification__link {
   display: block;
   flex: 1 0 0;
   margin: 0 12px;
@@ -176,8 +99,10 @@ ul {
   color: $color-black;
 }
 
-.notifications-pagination {
+.notification__pagination {
   padding: 15px;
+
+  text-align: center;
 
   background-color: $color-white;
   border-top: 1px solid $color-lightgrey;
