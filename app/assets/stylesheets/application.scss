@@ -14,14 +14,19 @@
 @import "relationships";
 @import "authentication";
 @import "modal";
+@import "footer";
 
-html {
+html,
+body {
   height: 100%;
 }
 
 .container {
+  position: relative;
+
   max-width: 1010px;
   min-width: 860px;
+  min-height: 100%;
   padding: 0 40px;
   margin: 0 auto;
 }

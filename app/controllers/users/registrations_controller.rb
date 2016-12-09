@@ -1,6 +1,7 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
     skip_before_action :show_navbar, only: %i(new create)
+    before_action :skip_footer
 
     private
 

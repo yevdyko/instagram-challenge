@@ -43,5 +43,3 @@ Capybara.configure do |config|
   config.javascript_driver = :selenium
   config.default_max_wait_time = 5
 end
-
-
