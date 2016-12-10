@@ -24,6 +24,7 @@ gem 'kaminari'
 gem 'font-awesome-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'aws-sdk', '~> 2'
 
 group :development, :test do
   gem 'byebug'
