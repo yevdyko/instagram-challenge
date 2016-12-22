@@ -41,7 +41,8 @@ group :test do
   gem 'coveralls', require: false
   gem 'selenium-webdriver', '2.53.4'
   gem 'orderly'
-  gem 'codeclimate-test-reporter', require: nil
+  gem 'simplecov'
+  gem 'codeclimate-test-reporter', '~> 1.0.0'
   gem 'rails-controller-testing'
 end
 
