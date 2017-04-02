@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
 
-gem 'rails', '5.0.0.1'
+ruby '2.4.0'
+
+gem 'rails', '5.1.0.rc1'
 gem 'pg'
 gem 'sass-rails'
 gem 'uglifier'
@@ -24,6 +25,7 @@ gem 'kaminari'
 gem 'font-awesome-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'redis'
 
 group :development, :test do
   gem 'byebug'
@@ -40,7 +42,8 @@ group :test do
   gem 'coveralls', require: false
   gem 'selenium-webdriver', '2.53.4'
   gem 'orderly'
-  gem 'codeclimate-test-reporter', require: nil
+  gem 'simplecov'
+  gem 'codeclimate-test-reporter', '~> 1.0.0'
   gem 'rails-controller-testing'
 end
 

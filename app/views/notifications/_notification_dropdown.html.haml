@@ -8,16 +8,17 @@
                '#',
                class: 'user-block-link',
                id: 'notifications'
-    %span.notification-count
-      = current_user.notifications.where(read: false).count
+    = render 'notifications/counter', counter: current_user.notifications.unread.count
   .triangle-with-shadow
-  %ul.dropdown-menu{ 'aria-labelledby': 'dropdownMenu1' }
-    %li.dropdown-menu-head
-      = t('notifications.dropdown-menu.header')
+  .dropdown-menu{ 'aria-labelledby': 'dropdownMenu1' }
     - if current_user.notifications.any?
-      = render current_user.notifications.where(read: false).order(created_at: :desc).last(5)
-      %li.dropdown-menu-bottom
+      .dropdown-menu__content
+        %ul.notification__list
+          = render current_user.notifications.most_recent
+      .dropdown-menu__bottom
         = link_to t('notifications.dropdown-menu.link'), notifications_path
     - else
-      %li.dropdown-menu-empty
+      .dropdown-menu__head
+        = t('notifications.dropdown-menu.header')
+      .dropdown-menu__content
         = t('notifications.dropdown-menu.empty')
