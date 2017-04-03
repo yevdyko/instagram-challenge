@@ -28,4 +28,4 @@ before_install:
 script:
   - bundle exec rake db:create
   - bundle exec rake db:migrate
-  - CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN bundle exec rake spec
+  - CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN bundle exec rspec && bundle exec codeclimate-test-reporter
